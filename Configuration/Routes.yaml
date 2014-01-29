@@ -1,0 +1,17 @@
+-
+  name: 'Login'
+  uriPattern: 'login'
+  defaults:
+    '@format': 'html'
+    '@controller': 'Login'
+    '@action':     'index'
+    '@package': 'Famelo.Saas'
+
+-
+  name: 'Logout'
+  uriPattern: 'logout'
+  defaults:
+    '@format': 'html'
+    '@controller': 'Login'
+    '@action':     'logout'
+    '@package': 'Famelo.Saas'

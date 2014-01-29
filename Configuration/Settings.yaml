@@ -1,0 +1,13 @@
+TYPO3:
+  Flow:
+    security:
+      authentication:
+        providers:
+          SaasProvider:
+            provider: PersistedUsernamePasswordProvider
+            entryPoint: 'WebRedirect'
+            entryPointOptions:
+              uri: login
+    i18n:
+      # The default locale identifier.
+      defaultLocale: de
