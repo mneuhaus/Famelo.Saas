@@ -14,29 +14,15 @@ class LoginController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 	protected $authenticationManager;
 
 	/**
-	 * @var \TYPO3\Flow\Security\Cryptography\HashService
-	 * @Flow\Inject
-	 */
-	protected $hashService;
-
-	/**
-	 * @Flow\Inject
-	 * @var \TYPO3\Flow\Security\AccountRepository
-	 */
-	protected $accountRepository;
-
-	/**
-	 * @Flow\Inject
-	 * @var \TYPO3\Flow\Security\AccountFactory
-	 */
-	protected $accountFactory;
-
-	/**
 	 *
 	 *
 	 * @return string
 	 */
 	public function indexAction() {
+		$account = $this->authenticationManager->getSecurityContext()->getAccount();
+		if (is_object($account)) {
+			return $account->getAccountIdentifier() . ' (' . $account->getAuthenticationProviderName() . ')';
+		}
 	}
 
 	/**
@@ -51,7 +37,7 @@ class LoginController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 	public function authenticateAction() {
 		try {
 			$this->authenticationManager->authenticate();
-			$this->redirect('index', 'Standard');
+			$this->redirect('index', 'Login');
 		} catch (\TYPO3\Flow\Security\Exception\AuthenticationRequiredException $exception) {
 			$this->addFlashMessage('Wrong username or password.');
 			throw $exception;

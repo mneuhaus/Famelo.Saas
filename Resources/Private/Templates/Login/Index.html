@@ -1,0 +1,36 @@
+<f:form name="login" action="authenticate" method="post">
+	<input type="hidden" name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][provider]" value="SaasProvider" />
+	<fieldset>
+		<div class="neos-controls">
+			<input type="text" id="username" type="text" placeholder="Username" class="neos-span12" name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][username]" additionalAttributes="{autofocus: 'autofocus'}" value="{username}" />
+		</div>
+		<div class="neos-controls">
+			<input type="text" id="password" type="password" placeholder="Password" class="neos-span12" name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][password]" />
+		</div>
+		<div class="neos-actions">
+			<!-- Forgot password link will be here -->
+			<f:form.button type="submit" class="neos-span5 neos-pull-right neos-button neos-button-primary neos-button-warning neos-login-btn">
+				Login
+			</f:form.button>
+			<f:flashMessages as="flashMessages">
+				<f:for each="{flashMessages}" as="flashMessage">
+					<f:if condition="{0: flashMessage.severity} == {0: 'OK'}">
+						<div class="neos-tooltip neos-bottom neos-in neos-tooltip-success">
+					</f:if>
+					<f:if condition="{0: flashMessage.severity} == {0: 'Notice'}">
+						<div class="neos-tooltip neos-bottom neos-in neos-tooltip-notice">
+					</f:if>
+					<f:if condition="{0: flashMessage.severity} == {0: 'Warning'}">
+						<div class="neos-tooltip neos-bottom neos-in neos-tooltip-warning">
+					</f:if>
+					<f:if condition="{0: flashMessage.severity} == {0: 'Error'}">
+						<div class="neos-tooltip neos-bottom neos-in neos-tooltip-error">
+					</f:if>
+						<div class="neos-tooltip-arrow"></div>
+						<div class="neos-tooltip-inner">{flashMessage.message -> f:format.raw()}</div>
+					</div>
+				</f:for>
+			</f:flashMessages>
+		</div>
+	</fieldset>
+</f:form>

@@ -1,0 +1,4 @@
+'Famelo.Saas:Login':
+  superTypes: ['TYPO3.Neos:Plugin']
+  ui:
+    label: 'Login Panel'

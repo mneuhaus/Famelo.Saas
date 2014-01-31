@@ -8,6 +8,13 @@ TYPO3:
             entryPoint: 'WebRedirect'
             entryPointOptions:
               uri: login
+            requestPatterns:
+              controllerObjectName: 'Famelo\Saas\Controller\.*'
     i18n:
       # The default locale identifier.
       defaultLocale: de
+
+  Neos:
+    typoScript:
+      autoInclude:
+        'Famelo.Saas': TRUE

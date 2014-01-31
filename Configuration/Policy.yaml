@@ -1,0 +1,12 @@
+#                                                                        #
+# Security policy for the TYPO3.NeosDemoTypo3Org package                 #
+#                                                                        #
+
+resources:
+  methods:
+    Famelo_Saas_PluginAccess: 'method(Famelo\Saas\Controller\(Login)Controller->.*Action())'
+
+acls:
+  Everybody:
+    methods:
+      Famelo_Saas_PluginAccess: GRANT

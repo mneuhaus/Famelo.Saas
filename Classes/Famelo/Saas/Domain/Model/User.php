@@ -12,7 +12,7 @@ use Famelo\Common\Annotations as Common;
  * @Common\Accessable
  * @ORM\HasLifecycleCallbacks
  */
-class Person extends \TYPO3\Party\Domain\Model\Person {
+class User extends \TYPO3\Party\Domain\Model\Person {
 	/**
 	 * @var \Doctrine\Common\Collections\Collection<\TYPO3\Flow\Security\Account>
 	 * @ORM\OneToMany(mappedBy="party", cascade={"persist"})
@@ -37,6 +37,12 @@ class Person extends \TYPO3\Party\Domain\Model\Person {
 	 * @var string
 	 */
 	protected $email;
+
+	/**
+	 * @var \Famelo\Saas\Domain\Model\Plan
+	 * @ORM\ManyToOne(inversedBy="users")
+	 */
+	protected $plan;
 
 	/**
 	 * @ORM\PrePersist

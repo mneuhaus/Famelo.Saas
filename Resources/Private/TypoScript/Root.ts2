@@ -1,0 +1,7 @@
+##
+# Login Plugin
+#
+prototype(Famelo.Saas:Login) < prototype(TYPO3.Neos:Plugin) {
+	package = 'Famelo.Saas'
+	controller = 'Login'
+}

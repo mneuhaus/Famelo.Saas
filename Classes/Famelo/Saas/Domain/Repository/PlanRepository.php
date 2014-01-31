@@ -8,7 +8,7 @@ use TYPO3\Flow\Annotations as Flow;
  *
  * @Flow\Scope("singleton")
  */
-class PersonRepository extends \TYPO3\Flow\Persistence\Repository {
+class PlanRepository extends \TYPO3\Flow\Persistence\Repository {
 
 }
 ?>
