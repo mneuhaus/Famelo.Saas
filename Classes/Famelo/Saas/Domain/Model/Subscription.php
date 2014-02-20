@@ -11,37 +11,28 @@ use Famelo\Common\Annotations as Common;
  * @Flow\Entity
  * @Common\Accessable
  */
-class Plan {
-	const TYPE_FLATRATE = 'Flatrate';
-	const TYPE_DEPOSIT = 'Deposit';
-	const TYPE_BILLING = 'Billing';
+class Subscription {
+	/**
+	 * @var DateTime
+	 */
+	protected $created;
+
+	/**
+	 * @var boolean
+	 */
+	protected $active = TRUE;
 
 	/**
 	 * @var string
 	 */
-	protected $name;
+	protected $plan;
 
 	/**
-	 * @var string
-	 */
-	protected $type;
-
-	/**
-	 * @var string
-	 */
-	protected $cycle = '1 month';
-
-	/**
-	 * @var float
-	 */
-	protected $price;
-
-	/**
-	 * @var \Doctrine\Common\Collections\Collection<\Famelo\Saas\Domain\Model\User>
-	 * @ORM\OneToMany(mappedBy="plan", cascade={"persist"})
+	 * @var \Famelo\Saas\Domain\Model\Team
+	 * @ORM\OneToOne(mappedBy="subscription")
 	 * @Flow\Lazy
 	 */
-	protected $users;
+	protected $team;
 
 	/**
 	 * @var \Doctrine\Common\Collections\Collection<\Famelo\Saas\Domain\Model\Transaction>
@@ -54,8 +45,9 @@ class Plan {
 	 * Upon creation the creationDate property is initialized.
 	 */
 	public function __construct() {
-		// $this->creationDate = new \DateTime();
+		$this->created = new \DateTime();
 		$this->users = new \Doctrine\Common\Collections\ArrayCollection();
+		$this->groups = new \Doctrine\Common\Collections\ArrayCollection();
 	}
 }
 

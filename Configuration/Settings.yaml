@@ -1,15 +1,37 @@
+Famelo:
+  Saas:
+    AdminEmail: mneuhaus@famelo.com
+    Plans:
+        Flatrate:
+          name: "Flatrate"
+          cycle: "1 month"
+          implementation: "Famelo\Saas\Plan\FlatrateImplementation"
+
+        Deposit:
+          name: "Deposit"
+          cycle: "1 month"
+          implementation: "Famelo\Saas\Plan\DepositImplementation"
+
+        Billing:
+          name: "Billing"
+          cycle: "1 month"
+          implementation: "Famelo\Saas\Plan\DepositImplementation"
+
 TYPO3:
   Flow:
     security:
       authentication:
         providers:
+          Typo3BackendProvider:
+            requestPatterns:
+              'Famelo\Saas\Security\NeosRequestPattern': 'backend'
           SaasProvider:
             provider: PersistedUsernamePasswordProvider
+            requestPatterns:
+              'Famelo\Saas\Security\NeosRequestPattern': 'frontend'
             entryPoint: 'WebRedirect'
             entryPointOptions:
-              uri: login
-            requestPatterns:
-              controllerObjectName: 'Famelo\Saas\Controller\.*'
+              uri: login.html
     i18n:
       # The default locale identifier.
       defaultLocale: de

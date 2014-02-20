@@ -1,0 +1,55 @@
+prototype(TYPO3.Expose:Schema:Famelo.Saas.Domain.Model.Subscription) < prototype(TYPO3.Expose:Schema) {
+	properties {
+
+		plan {
+			label = "Plan"
+			element = 'TYPO3.Form:SingleSelectDropdown'
+			optionsProvider {
+				class = 'Famelo\\Saas\\Expose\\OptionsProvider\\PlanOptionsProvider'
+				options {
+					foo = 'Foo'
+					bar = 'Bar'
+				}
+			}
+			infotext = 'This field uses the ArrayOptionsProvider to give choices which will be stored in a simple string field'
+		}
+
+		team.ignore = true
+		active.ignore = true
+
+		// Just Ignore or Hide something
+		// foo.ignore = true
+		// bar.hide = true
+
+		// Set some Label
+		// name {
+		// 	label = 'Some Label'
+
+			// Reposition something
+			// @position= 'after accounts'
+
+			// Make an relation Inline
+			// inline {
+			// 	element = 'TYPO3.Expose:InlineSeamless'
+			// }
+		// }
+	}
+}
+
+# prototype(TYPO3.Expose:RecordList).prototype(TYPO3.Expose:Schema:Famelo.Saas.Domain.Model.Subscription) {
+# 	// Custom Settings for the RecordList
+# }
+
+# prototype(TYPO3.Expose:Schema:Famelo.Saas.Domain.Model.Subscription).prototype(TYPO3.Expose:RecordList) {
+# 	recordList.SubscriptionList = Famelo.Saas:SubscriptionList
+# 	currentFormat = 'SubscriptionList'
+# }
+
+# prototype(Famelo.Saas:SubscriptionList) < prototype(TYPO3.Expose:RecordList.List) {
+# 	templatePath = 'resource://Famelo.Saas/Private/Elements/List/Subscription/Table.html'
+# 	rows.itemRenderer = Famelo.Saas:SubscriptionRow
+# }
+
+# prototype(Famelo.Saas:SubscriptionRow) < prototype(TYPO3.Expose:RecordList.Table.DefaultRow) {
+# 	templatePath = 'resource://Famelo.Saas/Private/Elements/List/Subscription/Row.html'
+# }

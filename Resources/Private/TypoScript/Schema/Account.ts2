@@ -1,0 +1,30 @@
+prototype(TYPO3.Expose:Schema:TYPO3.Flow.Security.Account) < prototype(TYPO3.Expose:Schema) {
+	sections {
+		main {
+			properties = 'accountIdentifier, credentialsSource'
+		}
+	}
+	properties {
+		authenticationProviderName.ignore = true
+		party.ignore = true
+		creationDate.ignore = true
+		expirationDate.ignore = true
+		roles.ignore = true
+
+		accountIdentifier.label = "Benutzername"
+
+		credentialsSource {
+			label = 'Passwort'
+			confirmationLabel = 'Bestätigung'
+			element = 'TYPO3.Expose:PasswordWithHashing'
+		}
+	}
+}
+
+prototype(TYPO3.Expose:Fields) {
+	PasswordWithHashing = TYPO3.Form:Field {
+		properties {
+			confirmationLabel = 'Bestätigung'
+		}
+	}
+}

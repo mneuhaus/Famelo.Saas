@@ -1,0 +1,6 @@
+-
+  requestFilter: 'isDefaultView("TYPO3\Expose\View\TypoScriptView")'
+  options:
+    typoScriptPathPatterns:
+      - 'resource://TYPO3.Expose/Private/TypoScript/'
+      - 'resource://Famelo.Saas/Private/TypoScript/Schema/'

@@ -1,12 +1,13 @@
 <f:form name="login" action="authenticate" method="post">
 	<input type="hidden" name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][provider]" value="SaasProvider" />
 	<fieldset>
-		<div class="neos-controls">
-			<input type="text" id="username" type="text" placeholder="Username" class="neos-span12" name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][username]" additionalAttributes="{autofocus: 'autofocus'}" value="{username}" />
+
+		<div class="form-group">
+	    	<input type="text" id="username" type="text" placeholder="Username" class="form-control" name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][username]" additionalAttributes="{autofocus: 'autofocus'}" value="{username}" />
 		</div>
-		<div class="neos-controls">
-			<input type="text" id="password" type="password" placeholder="Password" class="neos-span12" name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][password]" />
-		</div>
+		<div class="form-group">
+			<input type="password" id="password" type="password" placeholder="Password" class="form-control" name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][password]" />
+	  	</div>
 		<div class="neos-actions">
 			<!-- Forgot password link will be here -->
 			<f:form.button type="submit" class="neos-span5 neos-pull-right neos-button neos-button-primary neos-button-warning neos-login-btn">

@@ -39,10 +39,15 @@ class User extends \TYPO3\Party\Domain\Model\Person {
 	protected $email;
 
 	/**
-	 * @var \Famelo\Saas\Domain\Model\Plan
+	 * @var \Famelo\Saas\Domain\Model\Team
 	 * @ORM\ManyToOne(inversedBy="users")
 	 */
-	protected $plan;
+	protected $team;
+
+	public function __construct() {
+		parent::__construct();
+		$this->accounts->add(new \TYPO3\Flow\Security\Account);
+	}
 
 	/**
 	 * @ORM\PrePersist

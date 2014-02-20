@@ -1,0 +1,34 @@
+prototype(TYPO3.Expose:Schema:Famelo.Saas.Domain.Model.Team) < prototype(TYPO3.Expose:Schema) {
+	properties {
+		active.ignore = true
+		deletedAt.ignore = true
+
+		name {
+			label = 'Firmenname'
+			@position = 'start'
+		}
+
+		subscription {
+			label = 'Abrechnung'
+			inline {
+				element = 'TYPO3.Expose:InlineSeamless'
+			}
+		}
+
+		users {
+			label = 'Benutzer'
+			inline {
+				element = 'TYPO3.Expose:InlineSeamless'
+				multipleMode = false
+			}
+		}
+	}
+}
+
+prototype(Famelo.Saas:Registration) {
+	prototype(TYPO3.Expose:Schema:Famelo.Saas.Domain.Model.Team) {
+		properties {
+			subscription.ignore = true
+		}
+	}
+}
