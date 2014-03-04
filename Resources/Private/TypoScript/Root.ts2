@@ -18,10 +18,6 @@ prototype(Famelo.Saas:Transactions) < prototype(TYPO3.Neos:Plugin) {
 	controller = 'Transaction'
 }
 
-prototype(TYPO3.Neos:Content) < prototype(TYPO3.Neos:Template) {
-	#@exceptionHandler >
-}
-
 prototype(TYPO3.Neos:Menu) {
 	@class = 'Famelo\\Saas\\Neos\\TypoScript\\MenuImplementation'
 }
