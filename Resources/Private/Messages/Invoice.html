@@ -1,0 +1,24 @@
+<html>
+    <head>
+        {namespace m=Famelo\Messaging\ViewHelpers}
+        <m:message
+            to="apocalip@gmail.com:Marc Neuhaus"
+            subject="Rechnung" />
+    </head>
+    <body>
+        <h3>Rechnung</h3>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <td>{transaction.created -> f:format.date(forceLocale: true)}</td>
+                <td>{transaction.amount -> f:format.currency(currency: transaction.currency)}</td>
+                <td>{transaction.note}</td>
+                <td>{transaction.paymentGateway}</td>
+            </tr>
+        </table>
+        -{transaction.subscription}-<br />
+        -{transaction.subscription.team}-<br />
+        -{transaction.subscription.team.bookingUser}-<br />
+        -{transaction.subscription.team.bookingUser.email}-<br />
+        -{transaction.subscription.team.bookingUser.name}-<br />
+    </body>
+</html>

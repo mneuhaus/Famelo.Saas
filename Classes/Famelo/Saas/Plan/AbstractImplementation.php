@@ -1,0 +1,68 @@
+<?php
+namespace Famelo\Saas\Plan;
+
+use Famelo\Saas\Domain\Model\Transaction;
+use TYPO3\Flow\Annotations as Flow;
+use TYPO3\Flow\Configuration\ConfigurationManager;
+use TYPO3\Flow\Error\Message;
+
+/**
+ */
+class AbstractImplementation implements PlanImplementationInterface {
+	/**
+	 * @var \TYPO3\Flow\Configuration\ConfigurationManager
+	 * @Flow\Inject
+	 */
+	protected $configurationManager;
+
+	/**
+	 * @var \Famelo\Saas\Domain\Service\TransactionService
+	 * @Flow\Inject
+	 */
+	protected $transactionService;
+
+	public function createTransaction($amount, $paymentGateway, $currency = NULL, $note = NULL) {
+		$transaction = new Transaction();
+		$transaction->setAmount($amount);
+		$transaction->setCurrency($currency);
+		$transaction->setPaymentGateway($paymentGateway);
+		return $transaction;
+	}
+
+	public function addTransaction($transaction) {
+		if ($this->hasFunds($transaction->getAmount()) === FALSE) {
+			// throw exception maybe?
+		}
+		$this->convertCurrency($transaction);
+		$this->transactionService->getSubscription()->addTransaction($transaction);
+	}
+
+	public function withdraw($amount, $note = NULL, $currency = NULL) {
+		$transaction = new Transaction();
+		$transaction->setAmount(-$amount);
+		$transaction->setCurrency($currency);
+		$transaction->setNote($note);
+		$this->addTransaction($transaction);
+		return $transaction;
+	}
+
+	public function hasFunds($amount) {
+		return $this->transactionService->getSubscription()->getBalance() > $amount;
+	}
+
+	public function convertCurrency($transaction) {
+		$subscriptionCurrency = $this->transactionService->getSubscription()->getCurrency();
+
+		if ($subscriptionCurrency === $transaction->getCurrency()) {
+			return;
+		}
+
+		$exchangeRates = $this->configurationManager->getConfiguration(ConfigurationManager::CONFIGURATION_TYPE_SETTINGS, 'Famelo.Saas.exchangeRates');
+		if ($transaction->getCurrency() == 'POINT') {
+			$amount = $transaction->getAmount() * $exchangeRates[$subscriptionCurrency];
+			$transaction->setAmount($amount);
+			$transaction->setCurrency($subscriptionCurrency);
+		}
+	}
+}
+?>

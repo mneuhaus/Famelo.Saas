@@ -1,0 +1,57 @@
+{namespace s=Famelo\Saas\ViewHelpers}
+
+<div class="row">
+	<div class="col-xs-4">
+		<div class="list-group">
+			<f:link.action action="remove" arguments="{amount: 0.1, currency: 'EUR'}" class="list-group-item">0.1 Euro Abheben</f:link.action>
+			<f:link.action action="remove" arguments="{amount: 2, currency: 'EUR'}" class="list-group-item">2 Euro Abheben</f:link.action>
+			<f:link.action action="remove" arguments="{amount: 10, currency: 'EUR'}" class="list-group-item">10 Euro Abheben</f:link.action>
+			<f:link.action action="remove" arguments="{amount: 30, currency: 'EUR'}" class="list-group-item">30 Euro Abheben</f:link.action>
+			<f:link.action action="remove" arguments="{amount: 100, currency: 'EUR'}" class="list-group-item">100 Euro Abheben</f:link.action>
+		</div>
+		<div class="list-group">
+			<f:link.action action="remove" arguments="{amount: 1, currency: 'POINT'}" class="list-group-item">1 Punkte Abheben</f:link.action>
+			<f:link.action action="remove" arguments="{amount: 2, currency: 'POINT'}" class="list-group-item">2 Punkte Abheben</f:link.action>
+			<f:link.action action="remove" arguments="{amount: 10, currency: 'POINT'}" class="list-group-item">10 Punkte Abheben</f:link.action>
+			<f:link.action action="remove" arguments="{amount: 30, currency: 'POINT'}" class="list-group-item">30 Punkte Abheben</f:link.action>
+			<f:link.action action="choosePayment" arguments="{amount: 10}" class="list-group-item">Guthaben aufladen</f:link.action>
+		</div>
+
+		<div class="list-group">
+			<f:for each="{transactionService.plans}" as="plan" key="planName">
+				<f:link.action action="subscribe" arguments="{plan: planName}" class="list-group-item">{plan.name}</f:link.action>
+			</f:for>
+		</div>
+	</div>
+	<div class="col-xs-8">
+		<f:flashMessages />
+		<h3>Dashboard</h3>
+			<dl class="dl-horizontal">
+  				<dt>Plan</dt>
+  				<dd>
+  					<f:if condition="{transactionService.subscription}">
+  						<f:then>{transactionService.subscription}</f:then>
+  						<f:else>No Subscription</f:else>
+  					</f:if>
+  				</dd>
+
+  				<dt>Balance</dt>
+  				<dd>{transactionService.balance -> s:format.currency()}</dd>
+
+  				<dt>Points</dt>
+  				<dd>{transactionService.balance -> s:format.points()}</dd>
+			</dl>
+
+		<h3>History</h3>
+		<table class="table table-bordered table-striped">
+		<f:for each="{transactionService.transactions}" as="transaction">
+			<tr>
+				<td>{transaction.created -> f:format.date(forceLocale: true)}</td>
+				<td>{transaction.amount -> s:format.points()} ({transaction.amount -> s:format.currency()})</td>
+				<td>{transaction.note}</td>
+				<td>{transaction.paymentGateway}</td>
+			</tr>
+		</f:for>
+		</table>
+	</div>
+</div>

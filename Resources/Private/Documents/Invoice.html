@@ -1,0 +1,17 @@
+<html>
+    <head>
+        {namespace a=TYPO3\Asset\ViewHelpers}
+        <link rel="stylesheet" type="text/css" href="{a:uri(path: 'Styles/Main.less', package: 'Famelo.Broensfin', filters: 'less')}" />
+    </head>
+    <body>
+        <h3>Rechnung</h3>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <td>{transaction.created -> f:format.date(forceLocale: true)}</td>
+                <td>{transaction.amount -> f:format.currency(currency: transaction.currency)}</td>
+                <td>{transaction.note}</td>
+                <td>{transaction.paymentGateway}</td>
+            </tr>
+        </table>
+    </body>
+</html>

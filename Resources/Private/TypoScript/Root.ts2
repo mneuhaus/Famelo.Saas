@@ -13,6 +13,11 @@ prototype(Famelo.Saas:Registration) < prototype(TYPO3.Neos:Plugin) {
 	controller = 'Registration'
 }
 
+prototype(Famelo.Saas:Transactions) < prototype(TYPO3.Neos:Plugin) {
+	package = 'Famelo.Saas'
+	controller = 'Transaction'
+}
+
 prototype(TYPO3.Neos:Content) < prototype(TYPO3.TypoScript:Template) {
 	#@exceptionHandler >
 }

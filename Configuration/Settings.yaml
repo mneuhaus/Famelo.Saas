@@ -1,21 +1,44 @@
 Famelo:
   Saas:
-    AdminEmail: mneuhaus@famelo.com
-    Plans:
+    adminEmail: mneuhaus@famelo.com
+    defaults:
+      InvoiceDocument: "Famelo.Saas:Invoice"
+      InvoiceMessage: "Famelo.Saas:Invoice"
+    paymentUrl: http://broensfin.flow/transaktionen.html?--famelo_saas-transactions%5B%40package%5D=famelo.saas&--famelo_saas-transactions%5B%40controller%5D=transaction&--famelo_saas-transactions%5B%40action%5D=choosepayment
+    plans:
         Flatrate:
           name: "Flatrate"
           cycle: "1 month"
-          implementation: "Famelo\Saas\Plan\FlatrateImplementation"
+          implementation: "Famelo\\Saas\\Plan\\FlatrateImplementation"
 
         Deposit:
           name: "Deposit"
           cycle: "1 month"
-          implementation: "Famelo\Saas\Plan\DepositImplementation"
+          implementation: "Famelo\\Saas\\Plan\\DepositImplementation"
 
         Billing:
           name: "Billing"
           cycle: "1 month"
-          implementation: "Famelo\Saas\Plan\DepositImplementation"
+          implementation: "Famelo\\Saas\\Plan\\DepositImplementation"
+
+    paymentGateways:
+      Invoice:
+          name: "Invoice"
+          gateway: Manual
+      PayPal:
+          name: "PayPal Express"
+          gateway: PayPal_Express
+          parameters:
+            username: sandbox-facilitator_api1.famelo.com
+            password: 1393410139
+            signature: AfeGGKOlXPvusrtcaK4I8f8TUGQUAg7eNYweX2MSkTIspTix6sWzHHqm
+            testMode: true
+            brandName: 'Broensfin'
+
+    usePoints: true
+    exchangeRates:
+      EUR: 0.1
+      USD: 0.2
 
 TYPO3:
   Flow:
@@ -36,7 +59,14 @@ TYPO3:
       # The default locale identifier.
       defaultLocale: de
 
+    object:
+      excludeClasses:
+       'Omnipay.Common': ['.*']
+       'Guzzle.Http': ['.*']
+
   Neos:
     typoScript:
       autoInclude:
         'Famelo.Saas': TRUE
+
+        TYPO3:

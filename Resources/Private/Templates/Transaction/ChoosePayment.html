@@ -1,0 +1,29 @@
+<f:form action="makePayment">
+	<f:flashMessages />
+
+	<fieldset>
+		<div class="radio">
+			<label><f:form.radio name="amount" value="10" />10</label>
+		</div>
+		<div class="radio">
+			<label><f:form.radio name="amount" value="20" />20</label>
+		</div>
+		<div class="radio">
+			<label><f:form.radio name="amount" value="30" />30</label>
+		</div>
+	</fieldset>
+
+	<fieldset>
+		<f:for each="{paymentGateways}" as="paymentGateway" key="paymentGatewayName">
+			<div class="radio">
+				<label>
+					<f:form.radio name="paymentGateway" value="{paymentGatewayName}" />
+			    	{paymentGateway.name}
+			  	</label>
+			</div>
+		</f:for>
+	</fieldset>
+
+	<button type="submit" class="btn btn-default">Submit</button>
+
+</f:form>

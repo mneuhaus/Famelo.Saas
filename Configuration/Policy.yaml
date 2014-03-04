@@ -4,7 +4,7 @@
 
 resources:
   methods:
-    Famelo_Saas_PluginAccess: 'method(Famelo\Saas\Controller\(Login|Registration)Controller->.*Action())'
+    Famelo_Saas_PluginAccess: 'method(Famelo\Saas\Controller\(Login|Registration|Transaction)Controller->.*Action())'
 
 acls:
   Everybody:

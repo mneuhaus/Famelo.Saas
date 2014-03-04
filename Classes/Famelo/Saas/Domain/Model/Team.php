@@ -1,6 +1,5 @@
 <?php
 namespace Famelo\Saas\Domain\Model;
-
 use Doctrine\ORM\Mapping as ORM;
 use TYPO3\Flow\Annotations as Flow;
 use Famelo\Common\Annotations as Common;
@@ -8,34 +7,32 @@ use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @Flow\Entity
- * @Common\Accessable
  * @ORM\HasLifecycleCallbacks
  * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false)
  */
 class Team {
-	/**
-	 * @var \Doctrine\Common\Collections\Collection<\Famelo\Saas\Domain\Model\User>
-	 * @ORM\OneToMany(mappedBy="team", cascade={"persist"})
-	 * @Flow\Lazy
-	 */
-	protected $users;
 
-	/**
-	 * @var string
-	 */
-	protected $name;
+    /**
+     * @var \Doctrine\Common\Collections\Collection<\Famelo\Saas\Domain\Model\User>
+     * @ORM\OneToMany(mappedBy="team", cascade={"persist"})
+     */
+    protected $users;
 
-	/**
-	 * @var \Famelo\Saas\Domain\Model\Subscription
-	 * @ORM\OneToOne(mappedBy="team")
-	 * @Flow\Lazy
-	 */
-	protected $subscription;
+    /**
+     * @var string
+     */
+    protected $name;
 
-	/**
-	 * @var boolean
-	 */
-	protected $active = FALSE;
+    /**
+     * @var \Famelo\Saas\Domain\Model\Subscription
+     * @ORM\OneToOne(mappedBy="team")
+     */
+    protected $subscription;
+
+    /**
+     * @var boolean
+     */
+    protected $active = FALSE;
 
     /**
      * @var \DateTime
@@ -43,23 +40,145 @@ class Team {
      */
     protected $deletedAt;
 
-	public function __construct() {
-		$this->users = new \Doctrine\Common\Collections\ArrayCollection();
-		$this->users->add(new User);
-	}
+    /**
+    * TODO: Document this Method! ( __construct )
+    */
+    public function __construct() {
+        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->users->add(new User());
+    }
 
-	/**
-	 * @ORM\PrePersist
-	 */
-	public function updateUsers() {
-		foreach ($this->users as $user) {
-			$user->setTeam($this);
-		}
-	}
+    /**
+    * TODO: Document this Method! ( __toString )
+    */
+    public function __toString() {
+        return $this->name;
+    }
 
-	public function __toString() {
-		return $this->name;
-	}
+    /**
+     * Gets active.
+     *
+     * @return boolean $active
+     */
+    public function getActive() {
+        return $this->active;
+    }
+
+    /**
+     * Sets the active.
+     *
+     * @param boolean $active
+     */
+    public function setActive($active) {
+        $this->active = $active;
+    }
+
+    /**
+    * TODO: Document this Method! ( getBookingUser )
+    */
+    public function getBookingUser() {
+        return $this->getUsers()->first();
+    }
+
+    /**
+     * Gets deletedAt.
+     *
+     * @return \DateTime $deletedAt
+     */
+    public function getDeletedAt() {
+        return $this->deletedAt;
+    }
+
+    /**
+     * Sets the deletedAt.
+     *
+     * @param \DateTime $deletedAt
+     */
+    public function setDeletedAt($deletedAt) {
+        $this->deletedAt = $deletedAt;
+    }
+
+    /**
+     * Gets name.
+     *
+     * @return string $name
+     */
+    public function getName() {
+        return $this->name;
+    }
+
+    /**
+     * Sets the name.
+     *
+     * @param string $name
+     */
+    public function setName($name) {
+        $this->name = $name;
+    }
+
+    /**
+     * Gets subscription.
+     *
+     * @return \Famelo\Saas\Domain\Model\Subscription $subscription
+     */
+    public function getSubscription() {
+        return $this->subscription;
+    }
+
+    /**
+     * Sets the subscription.
+     *
+     * @param \Famelo\Saas\Domain\Model\Subscription $subscription
+     */
+    public function setSubscription($subscription) {
+        $this->subscription = $subscription;
+    }
+
+    /**
+     * Add to the users.
+     *
+     * @param \Famelo\Saas\Domain\Model\User $user
+     */
+    public function addUser($user) {
+        $this->users->add($user);
+    }
+
+    /**
+     * Remove from users.
+     *
+     * @param \Famelo\Saas\Domain\Model\User $user
+     */
+    public function removeUser($user) {
+        $this->users->remove($user);
+    }
+
+    /**
+     * Gets users.
+     *
+     * @return \Doctrine\Common\Collections\Collection<\Famelo\Saas\Domain\Model\User> $users
+     */
+    public function getUsers() {
+        return $this->users;
+    }
+
+    /**
+     * Sets the users.
+     *
+     * @param \Doctrine\Common\Collections\Collection<\Famelo\Saas\Domain\Model\User> $users
+     */
+    public function setUsers($users) {
+        $this->users = $users;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function updateUsers() {
+        foreach ($this->users as $user) {
+            $user->setTeam($this);
+        }
+    }
+
 }
 
 ?>

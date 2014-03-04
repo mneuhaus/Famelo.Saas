@@ -32,3 +32,8 @@
   superTypes: ['TYPO3.Neos:Plugin']
   ui:
     label: 'Registration'
+
+'Famelo.Saas:Transactions':
+  superTypes: ['TYPO3.Neos:Plugin']
+  ui:
+    label: 'User Transactions'
