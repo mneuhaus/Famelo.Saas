@@ -1,39 +1,40 @@
+
 'TYPO3.Neos:Document':
   properties:
     access:
       type: string
-      defaultValue: 'everyone'
+      defaultValue: everyone
       ui:
-        label: 'Access'
-        reloadIfChanged: TRUE
+        label: Access
+        reloadIfChanged: true
         inspector:
           group: visibility
-          editor: 'TYPO3.Neos/Inspector/Editors/SelectBoxEditor'
+          editor: TYPO3.Neos/Inspector/Editors/SelectBoxEditor
           editorOptions:
             values:
               everyone:
-                label: 'Everyone'
+                label: Everyone
               authenticated:
                 label: 'Authenticated Users'
               guests:
-                label: 'Guests'
-
+                label: Guests
 'Famelo.Saas:Login':
-  superTypes: ['TYPO3.Neos:Plugin']
+  superTypes:
+    - 'TYPO3.Neos:Plugin'
   ui:
     label: 'Login Panel'
-
 'Famelo.Saas:Logout':
-  superTypes: ['TYPO3.Neos:Plugin']
+  superTypes:
+    - 'TYPO3.Neos:Plugin'
   ui:
-    label: 'Logout'
-
+    label: Logout
 'Famelo.Saas:Registration':
-  superTypes: ['TYPO3.Neos:Plugin']
+  superTypes:
+    - 'TYPO3.Neos:Plugin'
   ui:
-    label: 'Registration'
-
+    label: Registration
 'Famelo.Saas:Transactions':
-  superTypes: ['TYPO3.Neos:Plugin']
+  superTypes:
+    - 'TYPO3.Neos:Plugin'
   ui:
     label: 'User Transactions'
