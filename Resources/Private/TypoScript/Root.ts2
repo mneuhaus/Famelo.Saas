@@ -18,7 +18,7 @@ prototype(Famelo.Saas:Transactions) < prototype(TYPO3.Neos:Plugin) {
 	controller = 'Transaction'
 }
 
-prototype(TYPO3.Neos:Content) < prototype(TYPO3.TypoScript:Template) {
+prototype(TYPO3.Neos:Content) < prototype(TYPO3.Neos:Template) {
 	#@exceptionHandler >
 }
 
