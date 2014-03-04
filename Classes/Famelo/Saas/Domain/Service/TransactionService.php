@@ -64,15 +64,15 @@ class TransactionService {
 		}
 		$this->initialized = TRUE;
 
-		if ($this->user !== NULL) {
+		if ($this->user instanceof \Famelo\Saas\Domain\Model\User) {
 			$this->team = $this->user->getTeam();
 		}
 
-		if ($this->team !== NULL) {
+		if ($this->team instanceof \Famelo\Saas\Domain\Model\Team) {
 			$this->subscription = $this->team->getSubscription();
 		}
 
-		if ($this->subscription !== NULL) {
+		if ($this->subscription instanceof \Famelo\Saas\Domain\Model\Subscription) {
 			$plan = $this->getPlan();
 			$implementationClassName = $plan['implementation'];
 			$this->implementation = new $implementationClassName($this);
@@ -89,7 +89,10 @@ class TransactionService {
 
 	public function getTransactions() {
 		$this->initialize();
-		return $this->team->getSubscription()->getTransactions();
+		if (!$this->subscription instanceof \Famelo\Saas\Domain\Model\Subscription) {
+			return array();
+		}
+		return $this->subscription->getTransactions();
 	}
 
 	public function getSubscription() {
