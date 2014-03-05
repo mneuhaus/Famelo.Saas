@@ -26,10 +26,10 @@ use TYPO3\Fluid\Core\ViewHelper\Exception as ViewHelperException;
 class CurrencyViewHelper extends \TYPO3\Fluid\ViewHelpers\Format\CurrencyViewHelper {
 
 	/**
-	 * @var \TYPO3\Flow\I18n\Service
+	 * @var \Famelo\Saas\Services\I18nService
 	 * @Flow\Inject
 	 */
-	protected $l18nService;
+	protected $i18nService;
 
 	/**
 	 * @var \Famelo\Saas\Domain\Service\TransactionService
@@ -49,7 +49,6 @@ class CurrencyViewHelper extends \TYPO3\Fluid\ViewHelpers\Format\CurrencyViewHel
 	 * @api
 	 */
 	public function render($currencySign = '', $decimalSeparator = ',', $thousandsSeparator = '.', $currency = NULL) {
-
 		$useLocale = $this->getLocale();
 
 		if ($currency === NULL) {
