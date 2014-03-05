@@ -8,7 +8,6 @@ use Famelo\Common\Annotations as Common;
  * A person
  *
  * @Flow\Entity
- * @Common\Accessable
  */
 class Subscription {
 

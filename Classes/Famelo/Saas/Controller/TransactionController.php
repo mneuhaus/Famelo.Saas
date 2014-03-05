@@ -23,11 +23,6 @@ class TransactionController extends \TYPO3\Flow\Mvc\Controller\ActionController 
 	 * @return string
 	 */
 	public function indexAction() {
-		$id = '41f1793d-c78b-93e8-3aa9-9468ee0d1c26';
-		$foo = $this->persistenceManager->getObjectByIdentifier($id, 'Famelo\Saas\Domain\Model\Transaction');
-		// d($foo);
-		// d($foo->getSubscription());
-		// exit();
 		$this->view->assign('transactionService', $this->transactionService);
 	}
 
