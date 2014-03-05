@@ -68,5 +68,3 @@ TYPO3:
     typoScript:
       autoInclude:
         'Famelo.Saas': TRUE
-
-        TYPO3:
