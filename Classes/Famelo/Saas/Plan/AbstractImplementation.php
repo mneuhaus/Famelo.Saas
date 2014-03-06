@@ -30,8 +30,8 @@ class AbstractImplementation implements PlanImplementationInterface {
 	}
 
 	public function addTransaction($transaction) {
-		if ($this->hasFunds($transaction->getAmount()) === FALSE) {
-			// throw exception maybe?
+		if ($this->hasFunds($transaction) === FALSE) {
+			throw new \Famelo\Saas\Exception\InsufficientFundsException();
 		}
 		$this->convertCurrency($transaction);
 		$this->transactionService->getSubscription()->addTransaction($transaction);
@@ -46,13 +46,13 @@ class AbstractImplementation implements PlanImplementationInterface {
 		return $transaction;
 	}
 
-	public function hasFunds($amount) {
-		return $this->transactionService->getSubscription()->getBalance() > $amount;
+	public function hasFunds($transaction) {
+		$this->convertCurrency($transaction);
+		return ($this->transactionService->getSubscription()->getBalance() + $transaction->getAmount()) > 0;
 	}
 
 	public function convertCurrency($transaction) {
 		$subscriptionCurrency = $this->transactionService->getSubscription()->getCurrency();
-
 		if ($subscriptionCurrency === $transaction->getCurrency()) {
 			return;
 		}

@@ -88,11 +88,7 @@ class TransactionService {
 	}
 
 	public function getTransactions() {
-		$this->initialize();
-		if (!$this->subscription instanceof \Famelo\Saas\Domain\Model\Subscription) {
-			return array();
-		}
-		return $this->subscription->getTransactions();
+		return $this->transactionRepository->getUserTransactions();
 	}
 
 	public function getSubscription() {
@@ -144,6 +140,7 @@ class TransactionService {
 	}
 
 	public function createTransaction($amount, $paymentGateway, $currency) {
+		$this->initialize();
 		$transaction = $this->implementation->createTransaction($amount, $paymentGateway, $currency);
 		$this->persistenceManager->add($transaction);
 		$this->persistenceManager->persistAll();
@@ -161,11 +158,11 @@ class TransactionService {
 	}
 
 	/**
-	 * @param float amount
+	 * @param \Famelo\Saas\Domain\Model\Transaction $transaction
 	 */
-	public function hasFunds($amount) {
+	public function hasFunds($transaction) {
 		$this->initialize();
-		return $this->implementation->hasFunds($amount);
+		return $this->implementation->hasFunds($transaction);
 	}
 
 	/**
@@ -219,22 +216,14 @@ class TransactionService {
 		$invoicePath = $transaction->getInvoicePath();
 		\TYPO3\Flow\Utility\Files::createDirectoryRecursively(dirname($invoicePath));
 
-		$id = '41f1793d-c78b-93e8-3aa9-9468ee0d1c26';
-		$foo = $this->persistenceManager->getObjectByIdentifier($id, 'Famelo\Saas\Domain\Model\Transaction');
-		d($foo);
-		d($this->user);
-		d($this->team);
-		d($transaction);
-		exit();
-
         $document = new \Famelo\PDF\Document('Famelo.Saas:Invoice');
         $document->assign('transaction', $transaction);
         $document->save($invoicePath);
 
         $mail = new \Famelo\Messaging\Message();
         $mail->setMessage('Famelo.Saas:Invoice')
-             ->assign('transaction', $transaction)
-             ->send();
+            	->assign('transaction', $transaction)
+            	->send();
 
         $this->persistenceManager->update($transaction);
         $this->persistenceManager->persistAll();

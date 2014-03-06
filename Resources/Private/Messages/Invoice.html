@@ -1,24 +1,14 @@
 <html>
     <head>
         {namespace m=Famelo\Messaging\ViewHelpers}
+        {namespace s=Famelo\Saas\ViewHelpers}
         <m:message
-            to="apocalip@gmail.com:Marc Neuhaus"
+            toEmail="{transaction.subscription.team.bookingUser.email}"
+            toName="{transaction.subscription.team.bookingUser.name}"
             subject="Rechnung" />
     </head>
     <body>
         <h3>Rechnung</h3>
-        <table class="table table-bordered table-striped">
-            <tr>
-                <td>{transaction.created -> f:format.date(forceLocale: true)}</td>
-                <td>{transaction.amount -> f:format.currency(currency: transaction.currency)}</td>
-                <td>{transaction.note}</td>
-                <td>{transaction.paymentGateway}</td>
-            </tr>
-        </table>
-        -{transaction.subscription}-<br />
-        -{transaction.subscription.team}-<br />
-        -{transaction.subscription.team.bookingUser}-<br />
-        -{transaction.subscription.team.bookingUser.email}-<br />
-        -{transaction.subscription.team.bookingUser.name}-<br />
+        <f:link.action action="index" controller="Invoice" package="Famelo.Saas" arguments="{transaction: transaction}">Rechnung.pdf</f:link.action>
     </body>
 </html>

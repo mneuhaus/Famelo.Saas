@@ -4,8 +4,17 @@
 
 resources:
   methods:
-    Famelo_Saas_PluginAccess: 'method(Famelo\Saas\Controller\(Login|Registration|Transaction)Controller->.*Action())'
+    Famelo_Saas_General: 'method(Famelo\Saas\Controller\(Login|Registration|Invoice)Controller->.*Action())'
+    Famelo_Saas_Transaction: 'method(Famelo\Saas\Controller\TransactionController->.*Action())'
+
+roles:
+  Administrator: [Customer]
+  Customer: [Everybody]
+
 acls:
   Everybody:
     methods:
-      Famelo_Saas_PluginAccess: GRANT
+      Famelo_Saas_General: GRANT
+  Customer:
+    methods:
+      Famelo_Saas_Transaction: GRANT

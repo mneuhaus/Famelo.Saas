@@ -31,14 +31,14 @@ class TransactionController extends \TYPO3\Flow\Mvc\Controller\ActionController 
 	 * @param string $currency
 	 */
 	public function removeAction($amount, $currency = 'EUR') {
-		if ($this->transactionService->hasFunds($amount) === FALSE) {
-			$this->flashMessageContainer->addMessage(new Message('Insufficient funds'));
-			$this->redirect('choosePayment');
-		}
 		$transaction = new Transaction();
 		$transaction->setAmount(-$amount);
 		$transaction->setCurrency($currency);
 		$transaction->setNote('Simple Withdrawel');
+		if ($this->transactionService->hasFunds($transaction) === FALSE) {
+			$this->flashMessageContainer->addMessage(new Message('Insufficient funds'));
+			$this->redirect('choosePayment');
+		}
 		$this->transactionService->addTransaction($transaction);
 		$this->redirect('index');
 	}

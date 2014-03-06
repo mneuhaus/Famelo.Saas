@@ -177,7 +177,9 @@ class Subscription {
      * @param \Famelo\Saas\Domain\Model\Transaction $transaction
      */
     public function addTransaction($transaction) {
+        $this->balance += $transaction->getAmount();
         $this->transactions->add($transaction);
+        $transaction->setSubscription($this);
     }
 
     /**

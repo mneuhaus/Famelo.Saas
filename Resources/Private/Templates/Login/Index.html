@@ -1,4 +1,4 @@
-<f:form name="login" action="authenticate" method="post">
+<f:form name="login" action="authenticate" method="post" class="login-box">
 	<input type="hidden" name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][provider]" value="SaasProvider" />
 	<fieldset>
 
@@ -10,7 +10,7 @@
 	  	</div>
 		<div class="neos-actions">
 			<!-- Forgot password link will be here -->
-			<f:form.button type="submit" class="neos-span5 neos-pull-right neos-button neos-button-primary neos-button-warning neos-login-btn">
+			<f:form.button type="submit" class="pull-right">
 				Login
 			</f:form.button>
 			<f:flashMessages as="flashMessages">

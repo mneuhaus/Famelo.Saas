@@ -55,7 +55,7 @@ class CurrencyViewHelper extends \TYPO3\Fluid\ViewHelpers\Format\CurrencyViewHel
 			$currency = $this->transactionService->getSubscription()->getCurrency();
 		}
 
-		$currency = $this->l18nService->getCurrency($currency, $useLocale);
+		$currency = $this->i18nService->getCurrency($currency, $useLocale);
 		$currencySign = $currency['symbol'];
 
 		return parent::render($currencySign, $decimalSeparator, $thousandsSeparator);

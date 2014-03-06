@@ -12,7 +12,9 @@ namespace Famelo\Saas\Services;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
+use TYPO3\Flow\Configuration\ConfigurationManager;
 use TYPO3\Flow\I18n\Cldr\CldrModel;
+use TYPO3\Flow\I18n\Configuration;
 use TYPO3\Flow\I18n\Locale;
 use TYPO3\Flow\Utility\Files;
 
@@ -23,12 +25,33 @@ use TYPO3\Flow\Utility\Files;
  * @api
  */
 class I18nService extends \TYPO3\Flow\I18n\Service {
+	/**
+	 * @var array
+	 * @Flow\Inject(setting="i18n", package="")
+	 */
+	protected $settings;
 
 	/**
 	 * @Flow\Inject(lazy=false)
 	 * @var \TYPO3\Flow\I18n\Cldr\CldrRepository
 	 */
 	protected $cldrRepository;
+
+	/**
+	 * @param array $settings
+	 * @return void
+	 */
+	public function injectSettings(array $settings) {
+		return;
+	}
+
+	/**
+	 * @param \TYPO3\Flow\Configuration\ConfigurationManager $settings
+	 * @return void
+	 */
+	public function __construct(\TYPO3\Flow\Configuration\ConfigurationManager $configurationManager) {
+		$this->settings = $configurationManager->getConfiguration(ConfigurationManager::CONFIGURATION_TYPE_SETTINGS, 'TYPO3.Flow.i18n');
+	}
 
 	/**
 	 * @param \TYPO3\Flow\I18n\Locale $locale Desired locale of localized file

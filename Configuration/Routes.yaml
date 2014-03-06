@@ -1,13 +1,4 @@
 -
-  name: 'Login'
-  uriPattern: 'login'
-  defaults:
-    '@format': 'html'
-    '@controller': 'Login'
-    '@action':     'index'
-    '@package': 'Famelo.Saas'
-
--
   name: 'Logout'
   uriPattern: 'logout'
   defaults:
@@ -15,3 +6,13 @@
     '@controller': 'Login'
     '@action':     'logout'
     '@package': 'Famelo.Saas'
+
+-
+  name: 'Invoice'
+  uriPattern: 'invoice'
+  defaults:
+    '@format': 'html'
+    '@controller': 'Invoice'
+    '@action':     'index'
+    '@package': 'Famelo.Saas'
+  appendExceedingArguments: true
