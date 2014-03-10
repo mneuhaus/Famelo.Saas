@@ -79,6 +79,13 @@ class Team {
     /**
     * TODO: Document this Method! ( getBookingUser )
     */
+    public function getMainUser() {
+        return $this->getUsers()->first();
+    }
+
+    /**
+    * TODO: Document this Method! ( getBookingUser )
+    */
     public function getBookingUser() {
         return $this->getUsers()->first();
     }
