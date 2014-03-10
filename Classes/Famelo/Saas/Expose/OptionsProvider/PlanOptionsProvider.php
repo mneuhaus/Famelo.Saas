@@ -30,7 +30,7 @@ class PlanOptionsProvider extends \TYPO3\Expose\Core\OptionsProvider\AbstractOpt
 	 * @return array
 	 */
 	public function getOptions() {
-		$planDefinitions = $this->configurationManager->getConfiguration(\TYPO3\Flow\Configuration\ConfigurationManager::CONFIGURATION_TYPE_SETTINGS, 'Famelo.Saas.Plans');
+		$planDefinitions = $this->configurationManager->getConfiguration(\TYPO3\Flow\Configuration\ConfigurationManager::CONFIGURATION_TYPE_SETTINGS, 'Famelo.Saas.plans');
 		$plans = array();
 		foreach ($planDefinitions as $planKey => $planDefinition) {
 			$plans[$planKey] = $planDefinition['name'];
