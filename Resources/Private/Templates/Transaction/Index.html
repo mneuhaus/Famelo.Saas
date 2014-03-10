@@ -2,22 +2,27 @@
 {namespace c=Famelo\Common\ViewHelpers}
 
 <f:flashMessages />
+
 <h3>Dashboard</h3>
-	<dl class="dl-horizontal">
-			<dt>Plan</dt>
-			<dd>
-				<f:if condition="{transactionService.subscription}">
-					<f:then>{transactionService.subscription}</f:then>
-					<f:else>No Subscription</f:else>
-				</f:if>
-			</dd>
+<f:link.action action="choosePayment" class="btn btn-default pull-right">Buy more Points</f:link.action>
 
-			<dt>Balance</dt>
-			<dd>{transactionService.balance -> s:format.currency()}</dd>
+<f:link.action action="remove" arguments="{amount: 10, currency: 'EUR'}" class="btn btn-default pull-right">Withdraw 10 Euro</f:link.action>
 
-			<dt>Points</dt>
-			<dd>{transactionService.balance -> s:format.points()}</dd>
-	</dl>
+<dl class="dl-horizontal">
+		<dt>Plan</dt>
+		<dd>
+			<f:if condition="{transactionService.subscription}">
+				<f:then>{transactionService.subscription}</f:then>
+				<f:else>No Subscription</f:else>
+			</f:if>
+		</dd>
+
+		<dt>Balance</dt>
+		<dd>{transactionService.balance -> s:format.currency()}</dd>
+
+		<dt>Points</dt>
+		<dd>{transactionService.balance -> s:format.points()}</dd>
+</dl>
 
 <h3>History</h3>
 <c:query.paginate objects="{transactionService.transactions}" as="transactions">

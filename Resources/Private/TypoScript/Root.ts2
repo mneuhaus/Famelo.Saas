@@ -13,6 +13,11 @@ prototype(Famelo.Saas:Registration) < prototype(TYPO3.Neos:Plugin) {
 	controller = 'Registration'
 }
 
+prototype(Famelo.Saas:Invite) < prototype(TYPO3.Neos:Plugin) {
+	package = 'Famelo.Saas'
+	controller = 'Invite'
+}
+
 prototype(Famelo.Saas:Transactions) < prototype(TYPO3.Neos:Plugin) {
 	package = 'Famelo.Saas'
 	controller = 'Transaction'

@@ -20,6 +20,12 @@ class TransactionController extends \TYPO3\Flow\Mvc\Controller\ActionController 
 	protected $transactionService;
 
 	/**
+	 * @var \Famelo\Saas\Services\SaasService
+	 * @Flow\Inject
+	 */
+	protected $saasService;
+
+	/**
 	 * @return string
 	 */
 	public function indexAction() {
@@ -92,6 +98,7 @@ class TransactionController extends \TYPO3\Flow\Mvc\Controller\ActionController 
 			$transaction->setNote($response->getTransactionReference());
 			$this->transactionService->addTransaction($transaction);
             $this->transactionService->sendInvoice($transaction);
+			$this->redirectToOriginalRequest();
 		} elseif ($response->isRedirect()) {
 			$response->redirect();
 		} else {
@@ -126,6 +133,7 @@ class TransactionController extends \TYPO3\Flow\Mvc\Controller\ActionController 
 				$transaction->setNote($response->getTransactionReference());
 				$this->transactionService->addTransaction($transaction);
 				$this->transactionService->sendInvoice($transaction);
+				$this->redirectToOriginalRequest();
 			} else {
 				$this->flashMessageContainer->addMessage(new Message('Payment failed: ' . $response->getMessage()));
 			}
@@ -144,6 +152,14 @@ class TransactionController extends \TYPO3\Flow\Mvc\Controller\ActionController 
 	public function getCancelUrl() {
 		$this->uriBuilder->reset()->setCreateAbsoluteUri(TRUE);
 		return $this->uriBuilder->uriFor('index');
+	}
+
+	public function redirectToOriginalRequest() {
+		$originalRequest = $this->saasService->getInterceptedRequest();
+		if ($originalRequest !== NULL) {
+			$this->saasService->setInterceptedRequest(NULL);
+			$this->redirectToRequest($originalRequest);
+		}
 	}
 }
 

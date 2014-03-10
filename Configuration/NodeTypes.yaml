@@ -18,21 +18,31 @@
                 label: 'Authenticated Users'
               guests:
                 label: Guests
+
 'Famelo.Saas:Login':
   superTypes:
     - 'TYPO3.Neos:Plugin'
   ui:
     label: 'Login Panel'
+
 'Famelo.Saas:Logout':
   superTypes:
     - 'TYPO3.Neos:Plugin'
   ui:
     label: Logout
+
 'Famelo.Saas:Registration':
   superTypes:
     - 'TYPO3.Neos:Plugin'
   ui:
     label: Registration
+
+'Famelo.Saas:Invite':
+  superTypes:
+    - 'TYPO3.Neos:Plugin'
+  ui:
+    label: Invite
+
 'Famelo.Saas:Transactions':
   superTypes:
     - 'TYPO3.Neos:Plugin'
