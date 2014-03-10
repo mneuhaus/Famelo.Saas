@@ -21,7 +21,7 @@ class Team {
     /**
      * @var string
      */
-    protected $name;
+    protected $name = '';
 
     /**
      * @var \Famelo\Saas\Domain\Model\Subscription
@@ -52,6 +52,9 @@ class Team {
     * TODO: Document this Method! ( __toString )
     */
     public function __toString() {
+        if ($this->name == '') {
+            return $this->getMainUser()->__toString();
+        }
         return $this->name;
     }
 
