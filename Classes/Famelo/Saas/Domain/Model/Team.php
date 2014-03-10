@@ -58,6 +58,10 @@ class Team {
         return $this->name;
     }
 
+    public function getCurrency() {
+        return $this->subscription->getCurrency();
+    }
+
     /**
      * Gets active.
      *
