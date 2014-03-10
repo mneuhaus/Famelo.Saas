@@ -1,8 +1,9 @@
 <?php
 namespace Famelo\Saas\Domain\Model;
 use Doctrine\ORM\Mapping as ORM;
-use TYPO3\Flow\Annotations as Flow;
 use Famelo\Common\Annotations as Common;
+use TYPO3\Flow\Annotations as Flow;
+use TYPO3\Flow\Security\Policy\Role;
 
 /**
  * A person
@@ -12,6 +13,11 @@ use Famelo\Common\Annotations as Common;
  * @ORM\HasLifecycleCallbacks
  */
 class User extends \TYPO3\Party\Domain\Model\Person {
+    /**
+     * @var \TYPO3\Flow\Security\Policy\PolicyService
+     * @Flow\Inject
+     */
+    protected $policyService;
 
     /**
      * @var \Doctrine\Common\Collections\Collection<\TYPO3\Flow\Security\Account>
@@ -52,6 +58,10 @@ class User extends \TYPO3\Party\Domain\Model\Person {
         $this->accounts->add(new \TYPO3\Flow\Security\Account());
     }
 
+    public function getIdentifier() {
+        return $this->Persistence_Object_Identifier;
+    }
+
     /**
     * TODO: Document this Method! ( __toString )
     */
@@ -65,6 +75,7 @@ class User extends \TYPO3\Party\Domain\Model\Person {
      * @param \TYPO3\Flow\Security\Account $account
      */
     public function addAccount(\TYPO3\Flow\Security\Account $account) {
+        $account->setAuthenticationProviderName('SaasProvider');
         $this->accounts->add($account);
     }
 
@@ -87,11 +98,23 @@ class User extends \TYPO3\Party\Domain\Model\Person {
     }
 
     /**
+     * Gets account
+     *
+     * @return \TYPO3\Flow\Security\Account
+     */
+    public function getAccount() {
+        return $this->accounts->first();
+    }
+
+    /**
      * Sets the accounts.
      *
      * @param \Doctrine\Common\Collections\Collection<\TYPO3\Flow\Security\Account> $accounts
      */
     public function setAccounts($accounts) {
+        foreach ($accounts as $account) {
+            $account->setParty($this);
+        }
         $this->accounts = $accounts;
     }
 
@@ -99,8 +122,10 @@ class User extends \TYPO3\Party\Domain\Model\Person {
      * @ORM\PrePersist
      */
     public function updateAccounts() {
+        // $role = $this->policyService->getRole('Famelo.Saas:Customer');
         foreach ($this->accounts as $account) {
             $account->setParty($this);
+            // $account->addRole($role);
         }
     }
 
