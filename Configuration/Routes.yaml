@@ -1,6 +1,6 @@
 -
   name: 'Logout'
-  uriPattern: 'logout'
+  uriPattern: 'logout.html'
   defaults:
     '@format': 'html'
     '@controller': 'Login'

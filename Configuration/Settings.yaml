@@ -4,22 +4,22 @@ Famelo:
     defaults:
       InvoiceDocument: "Famelo.Saas:Invoice"
       InvoiceMessage: "Famelo.Saas:Invoice"
-    paymentUrl: http://broensfin.flow/transaktionen.html?--famelo_saas-transactions%5B%40package%5D=famelo.saas&--famelo_saas-transactions%5B%40controller%5D=transaction&--famelo_saas-transactions%5B%40action%5D=choosepayment
+    paymentUrl: http://broensfin.flow/mein-konto.html?--famelo_saas-transactions%5B%40package%5D=famelo.saas&--famelo_saas-transactions%5B%40controller%5D=transaction&--famelo_saas-transactions%5B%40action%5D=choosepayment
     plans:
-        Flatrate:
-          name: "Flatrate"
-          cycle: "1 month"
-          implementation: "Famelo\\Saas\\Plan\\FlatrateImplementation"
+      Flatrate:
+        name: "Flatrate"
+        cycle: "1 month"
+        implementation: "Famelo\\Saas\\Plan\\FlatrateImplementation"
 
-        Deposit:
-          name: "Deposit"
-          cycle: "1 month"
-          implementation: "Famelo\\Saas\\Plan\\DepositImplementation"
+      Deposit:
+        name: "Deposit"
+        cycle: "1 month"
+        implementation: "Famelo\\Saas\\Plan\\DepositImplementation"
 
-        Billing:
-          name: "Billing"
-          cycle: "1 month"
-          implementation: "Famelo\\Saas\\Plan\\DepositImplementation"
+      Billing:
+        name: "Billing"
+        cycle: "1 month"
+        implementation: "Famelo\\Saas\\Plan\\DepositImplementation"
 
     paymentGateways:
       Invoice:
@@ -55,9 +55,6 @@ TYPO3:
             entryPoint: 'WebRedirect'
             entryPointOptions:
               uri: login.html
-    i18n:
-      # The default locale identifier.
-      defaultLocale: de
 
     object:
       excludeClasses:

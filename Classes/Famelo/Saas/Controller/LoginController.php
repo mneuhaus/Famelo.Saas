@@ -19,9 +19,10 @@ class LoginController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 	 * @return string
 	 */
 	public function indexAction() {
-		// if ($this->authenticationManager->getSecurityContext()->getAccount() !== NULL) {
-		// 	$this->redirectToUri('/');
-		// }
+		if ($this->authenticationManager->getSecurityContext()->getAccount() !== NULL) {
+			$this->redirectToUri('/mein-konto.html');
+		}
+
 		$output = NULL;
 
 		foreach ($this->authenticationManager->getSecurityContext()->getAuthenticationTokens() as $token) {
