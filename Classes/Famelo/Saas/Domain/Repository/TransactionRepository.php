@@ -25,6 +25,9 @@ class TransactionRepository extends \TYPO3\Flow\Persistence\Repository {
 			$subscription = $team->getSubscription();
 			$query = $this->createQuery();
 			$query->matching($query->equals('subscription', $subscription));
+			$query->setOrderings(array(
+				'created' => \TYPO3\Flow\Persistence\QueryInterface::ORDER_DESCENDING
+			));
 			return $query->execute();
 		}
 
