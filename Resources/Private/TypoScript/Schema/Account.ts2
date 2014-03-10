@@ -1,21 +1,26 @@
 prototype(TYPO3.Expose:Schema:TYPO3.Flow.Security.Account) < prototype(TYPO3.Expose:Schema) {
+	translationPackage = 'Famelo.Saas'
 	sections {
 		main {
-			properties = 'accountIdentifier, credentialsSource'
+			properties = 'accountIdentifier, credentialsSource, authenticationProviderName'
 		}
 	}
 	properties {
-		authenticationProviderName.ignore = true
 		party.ignore = true
 		creationDate.ignore = true
 		expirationDate.ignore = true
 		roles.ignore = true
 
-		accountIdentifier.label = "Benutzername"
+		authenticationProviderName {
+			value = 'SaasProvider'
+			element = 'TYPO3.Expose:Hidden'
+		}
+
+		accountIdentifier.label = "Username"
 
 		credentialsSource {
-			label = 'Passwort'
-			confirmationLabel = 'Bestätigung'
+			label = 'Password'
+			confirmationLabel = 'Confirmation'
 			element = 'TYPO3.Expose:PasswordWithHashing'
 		}
 	}
@@ -24,7 +29,7 @@ prototype(TYPO3.Expose:Schema:TYPO3.Flow.Security.Account) < prototype(TYPO3.Exp
 prototype(TYPO3.Expose:Fields) {
 	PasswordWithHashing = TYPO3.Form:Field {
 		properties {
-			confirmationLabel = 'Bestätigung'
+			confirmationLabel = 'Confirmation'
 		}
 	}
 }

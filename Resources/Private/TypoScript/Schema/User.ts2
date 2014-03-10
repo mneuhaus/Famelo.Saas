@@ -20,8 +20,8 @@ prototype(TYPO3.Expose:Schema:Famelo.Saas.Domain.Model.User) < prototype(TYPO3.E
 			@position = 'start'
 		}
 
-		phone.label = 'Telefonnummer'
-		mobile.label = 'Handynummer'
+		phone.label = 'Phone number'
+		mobile.label = 'Mobile number'
 		email.label = 'E-Mail'
 	}
 }

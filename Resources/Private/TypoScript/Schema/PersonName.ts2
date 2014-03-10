@@ -1,12 +1,9 @@
 prototype(TYPO3.Expose:Schema:TYPO3.Party.Domain.Model.PersonName) < prototype(TYPO3.Expose:Schema) {
+	translationPackage = 'Famelo.Saas'
 	properties {
 		middleName.ignore = true
 		otherName.ignore = true
 		alias.ignore = true
 		fullName.ignore = true
-
-		title.label = "Titel"
-		firstName.label = "Vorname"
-		lastName.label = "Nachname"
 	}
 }

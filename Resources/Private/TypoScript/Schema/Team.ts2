@@ -4,19 +4,20 @@ prototype(TYPO3.Expose:Schema:Famelo.Saas.Domain.Model.Team) < prototype(TYPO3.E
 		deletedAt.ignore = true
 
 		name {
-			label = 'Firmenname'
+			label = 'Company Name'
 			@position = 'start'
 		}
 
 		subscription {
-			label = 'Abrechnung'
+			label = 'Subscription'
+			ignore = true
 			inline {
 				element = 'TYPO3.Expose:InlineSeamless'
 			}
 		}
 
 		users {
-			label = 'Benutzer'
+			noLabel = true
 			inline {
 				element = 'TYPO3.Expose:InlineSeamless'
 				multipleMode = false
