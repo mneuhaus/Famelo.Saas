@@ -58,7 +58,7 @@ class SaasService {
 
 		$this->request = ObjectAccess::getProperty($joinPoint->getProxy(), 'request', TRUE);
 		$this->response = ObjectAccess::getProperty($joinPoint->getProxy(), 'response', TRUE);
-		$policyMatcher = new SaasMatcher($this->request, NULL, $joinPoint);
+		$policyMatcher = new SaasMatcher($this->request, NULL, $joinPoint, $joinPoint->getMethodName(), $joinPoint->getClassName());
 		$context = new Context($policyMatcher);
 
 		foreach ($checks as $name => $check) {
@@ -74,9 +74,15 @@ class SaasService {
 			}
 
 			if ($this->eelEvaluator->evaluate($check['bill'], $context) === TRUE) {
-				var_dump($name, $check, 'bill');
-				var_dump($joinPoint->getClassName(), $joinPoint->getMethodName());
-				exit();
+				if ($this->transactionService->hasFunds($transaction) === FALSE) {
+					$this->flashMessageContainer->addMessage(new Message('Insufficient funds'));
+					$this->setInterceptedRequest($this->request);
+					$this->redirectToUri($this->paymentUrl);
+				}
+				if (isset($check['note'])) {
+					$transaction->setNote($check['note']);
+				}
+				$this->transactionService->addTransaction($transaction);
 			}
 		}
 	}
