@@ -58,8 +58,8 @@ class SaasService {
 
 		$this->request = ObjectAccess::getProperty($joinPoint->getProxy(), 'request', TRUE);
 		$this->response = ObjectAccess::getProperty($joinPoint->getProxy(), 'response', TRUE);
-		$policyMatcher = new SaasMatcher($this->request, NULL, $joinPoint, $joinPoint->getMethodName(), $joinPoint->getClassName());
-		$context = new Context($policyMatcher);
+		$saasMatcher = new SaasMatcher($this->request, NULL, $joinPoint);
+		$context = new Context($saasMatcher);
 
 		foreach ($checks as $name => $check) {
 			if ($this->eelEvaluator->evaluate($check['check'], $context) === TRUE) {
