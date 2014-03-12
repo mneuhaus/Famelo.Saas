@@ -1,4 +1,5 @@
 prototype(TYPO3.Expose:Schema:Famelo.Saas.Domain.Model.User) < prototype(TYPO3.Expose:Schema) {
+	factory = '\\Famelo\\Saas\\Domain\\Factory\\UserFactory'
 	properties {
 		team.ignore = true
 		electronicAddresses.ignore = true

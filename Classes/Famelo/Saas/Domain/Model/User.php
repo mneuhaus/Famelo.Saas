@@ -55,7 +55,6 @@ class User extends \TYPO3\Party\Domain\Model\Person {
     */
     public function __construct() {
         parent::__construct();
-        $this->accounts->add(new \TYPO3\Flow\Security\Account());
     }
 
     public function getIdentifier() {
@@ -75,7 +74,7 @@ class User extends \TYPO3\Party\Domain\Model\Person {
      * @param \TYPO3\Flow\Security\Account $account
      */
     public function addAccount(\TYPO3\Flow\Security\Account $account) {
-        $account->setAuthenticationProviderName('SaasProvider');
+        // $account->setAuthenticationProviderName('SaasProvider');
         $this->accounts->add($account);
     }
 
@@ -122,11 +121,11 @@ class User extends \TYPO3\Party\Domain\Model\Person {
      * @ORM\PrePersist
      */
     public function updateAccounts() {
-        // $role = $this->policyService->getRole('Famelo.Saas:Customer');
-        foreach ($this->accounts as $account) {
-            $account->setParty($this);
-            // $account->addRole($role);
-        }
+        // // $role = $this->policyService->getRole('Famelo.Saas:Customer');
+        // foreach ($this->accounts as $account) {
+        //     $account->setParty($this);
+        //     // $account->addRole($role);
+        // }
     }
 
     /**

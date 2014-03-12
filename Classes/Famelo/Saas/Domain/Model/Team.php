@@ -45,7 +45,7 @@ class Team {
     */
     public function __construct() {
         $this->users = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->users->add(new User());
+        // $this->users->add(new User());
     }
 
     /**
@@ -154,6 +154,7 @@ class Team {
      * @param \Famelo\Saas\Domain\Model\User $user
      */
     public function addUser($user) {
+        $user->setTeam($this);
         $this->users->add($user);
     }
 

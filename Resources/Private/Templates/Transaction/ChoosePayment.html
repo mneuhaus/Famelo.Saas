@@ -1,29 +1,78 @@
 <f:form action="makePayment">
 	<f:flashMessages />
+<h4>1. Betrag wählen</h4>
 
-	<fieldset>
-		<div class="radio">
-			<label><f:form.radio name="amount" value="10" />10 Euro</label>
+<section class="payment">
+	<fieldset class="row">
+		<div class=" col-sm-4">
+			<div class="radio">
+			<label>
+				<div class="header">
+					<p class="title">10 €</p>
+				</div>
+				<div class="body">
+					<p class="credits">
+						1.000 <br />
+						Credits
+					</p>
+					<div class="order">
+						10 Euro<f:form.radio name="amount" value="10" />		
+					</div>
+				</div>
+			</label> 
+			</div>	
 		</div>
-		<div class="radio">
-			<label><f:form.radio name="amount" value="20" />20 Euro</label>
-		</div>
-		<div class="radio">
-			<label><f:form.radio name="amount" value="30" />30 Euro</label>
-		</div>
+		<div class=" col-sm-4">
+			<div class="radio">
+			<label>
+				<div class="header">
+					<p class="title">20 €</p>
+				</div>
+				<div class="body">
+					<p class="credits">
+						2.000 <br />
+						Credits
+					</p>
+					<div class="order">
+						20 Euro <f:form.radio name="amount" value="20" />
+						
+					</div>
+				</div>
+			</label>
+			</div>	
+		</div>		
+		<div class=" col-sm-4">
+			<div class="radio">
+			<label>
+				<div class="header">
+					<p class="title">30 €</p>
+				</div>
+				<div class="body">
+					<p class="credits">
+						3.000 <br />
+						Credits
+					</p>
+					<div class="order">
+						30 Euro <f:form.radio name="amount" value="30" />		
+					</div>
+				</div>
+			</label>
+			</div>	
+		</div>	
 	</fieldset>
-
+</section>	
+<h4>2. Zahlungsweise wählen</h4>
+<section class="payment payment-second ">
 	<fieldset>
 		<f:for each="{paymentGateways}" as="paymentGateway" key="paymentGatewayName">
-			<div class="radio">
 				<label>
 					<f:form.radio name="paymentGateway" value="{paymentGatewayName}" />
 			    	{paymentGateway.name}
 			  	</label>
-			</div>
 		</f:for>
 	</fieldset>
+</section>
 
-	<button type="submit" class="btn btn-default">Submit</button>
+	<button type="submit" class="btn btn-success pull-right">Jetzt kaufen</button>
 
 </f:form>

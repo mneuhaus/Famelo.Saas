@@ -4,6 +4,9 @@ Famelo:
     defaults:
       InvoiceDocument: "Famelo.Saas:Invoice"
       InvoiceMessage: "Famelo.Saas:Invoice"
+      plan: 'Deposit'
+      currency: 'EUR'
+      balance: 5
     paymentUrl: http://broensfin.flow/mein-konto.html?--famelo_saas-transactions%5B%40package%5D=famelo.saas&--famelo_saas-transactions%5B%40controller%5D=transaction&--famelo_saas-transactions%5B%40action%5D=choosepayment
     plans:
       Flatrate:

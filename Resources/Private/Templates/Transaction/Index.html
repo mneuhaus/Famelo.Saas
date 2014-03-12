@@ -1,46 +1,51 @@
 {namespace s=Famelo\Saas\ViewHelpers}
 {namespace c=Famelo\Common\ViewHelpers}
 
+
 <f:flashMessages />
 
-<h3>Dashboard</h3>
-<f:link.action action="choosePayment" class="btn btn-default pull-right">Buy more Points</f:link.action>
+<h2>Dashboard</h2>
+<f:link.action action="choosePayment" class="btn btn-success pull-right">Buy credits</f:link.action>
 
-<f:link.action action="remove" arguments="{amount: 10, currency: 'EUR'}" class="btn btn-default pull-right">Withdraw 10 Euro</f:link.action>
-
-<dl class="dl-horizontal">
-		<dt>Plan</dt>
-		<dd>
-			<f:if condition="{transactionService.subscription}">
-				<f:then>{transactionService.subscription}</f:then>
-				<f:else>No Subscription</f:else>
-			</f:if>
-		</dd>
-
-		<dt>Balance</dt>
-		<dd>{transactionService.balance -> s:format.currency()}</dd>
-
-		<dt>Points</dt>
-		<dd>{transactionService.balance -> s:format.points()}</dd>
-</dl>
-
-<h3>History</h3>
-<c:query.paginate objects="{transactionService.transactions}" as="transactions">
-	<table class="table table-bordered table-striped">
-		<f:for each="{transactions}" as="transaction">
-			<tr>
-				<td>{transaction.created -> f:format.date(forceLocale: true)}</td>
-				<td>{transaction.amount -> s:format.points()} ({transaction.amount -> s:format.currency()})</td>
-				<td>{transaction.note}</td>
-				<td>
-					<f:if condition="{transaction.invoiceNumber}">
-						<f:link.action action="index" controller="Invoice" package="Famelo.Saas" arguments="{transaction: transaction}">
-							Invoice
-						</f:link.action>
-					</f:if>
-				</td>
-			</tr>
-		</f:for>
-	</table>
-	<f:render partial="Pagination" arguments="{action: 'index', pagination: pagination}" />
-</c:query.paginate>
+<section role="overview">
+	<article role="forderungen">
+	<h3>Meine Forderungen</h3>
+		<f:render partial="fakeclaimtable" />
+	</article>
+	<hr />
+	<article role="verbindlichkeiten">
+	<h3>Meine Verbindlichkeiten</h3>
+		<f:render partial="fakeclaimtable" />
+	</article>	
+</section>
+<hr />
+<div class="transactions">
+	<h3>Balance history</h3>
+	<c:query.paginate objects="{transactionService.transactions}" as="transactions">
+		<table class="table table-striped">
+			<thead>
+			      <tr>
+			        <th><i class="fa fa-calendar"></i> Date</th>
+			        <th>Amount</th>
+			        <th><i class="fa fa-paperclip"></i> Note</th>
+			        <th><i class="fa fa-file-text-o"></i> Invoice</i></th>
+			      </tr>
+			    </thead>
+			<f:for each="{transactions}" as="transaction">
+				<tr>
+					<td>{transaction.created -> f:format.date(forceLocale: true)}</td>
+					<td>{transaction.amount -> s:format.points()} ({transaction.amount -> s:format.currency()})</td>
+					<td>{transaction.note}</td>
+					<td>
+						<f:if condition="{transaction.invoiceNumber}">
+							<f:link.action action="index" controller="Invoice" package="Famelo.Saas" arguments="{transaction: transaction}">
+								 Download invoice
+							</f:link.action>
+						</f:if>
+					</td>
+				</tr>
+			</f:for>
+		</table>
+		<f:render partial="Pagination" arguments="{action: 'index', pagination: pagination}" />
+	</c:query.paginate>
+</div>

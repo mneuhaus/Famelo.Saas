@@ -1,4 +1,5 @@
 prototype(TYPO3.Expose:Schema:Famelo.Saas.Domain.Model.Team) < prototype(TYPO3.Expose:Schema) {
+	factory = '\\Famelo\\Saas\\Domain\\Factory\\TeamFactory'
 	properties {
 		active.ignore = true
 		deletedAt.ignore = true
