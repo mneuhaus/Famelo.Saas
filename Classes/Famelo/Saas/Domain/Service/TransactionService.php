@@ -55,7 +55,7 @@ class TransactionService {
 	protected $initialized = FALSE;
 
 	public function __construct(\TYPO3\Flow\Security\Context $securityContext) {
-		$this->user = $securityContext->getParty();
+		$this->user = $securityContext->getPartyByType('\Famelo\Saas\Domain\Model\User');
 	}
 
 	public function initialize() {

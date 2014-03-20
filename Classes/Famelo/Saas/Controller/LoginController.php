@@ -20,7 +20,7 @@ class LoginController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 	 */
 	public function indexAction() {
 		if ($this->authenticationManager->getSecurityContext()->getAccount() !== NULL) {
-			$this->redirectToUri('/mein-konto.html');
+			$this->redirectToUri('/de/mein-konto.html');
 		}
 
 		$output = NULL;

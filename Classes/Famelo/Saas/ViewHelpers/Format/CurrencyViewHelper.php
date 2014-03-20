@@ -51,6 +51,10 @@ class CurrencyViewHelper extends \TYPO3\Fluid\ViewHelpers\Format\CurrencyViewHel
 	public function render($currencySign = '', $decimalSeparator = ',', $thousandsSeparator = '.', $currency = NULL) {
 		$useLocale = $this->getLocale();
 
+		if (!is_object($this->transactionService->getSubscription())) {
+			return;
+		}
+
 		if ($currency === NULL) {
 			$currency = $this->transactionService->getSubscription()->getCurrency();
 		}

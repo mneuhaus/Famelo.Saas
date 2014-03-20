@@ -1,5 +1,7 @@
 Famelo:
   Saas:
+    targets:
+      payment: http://broensfin.flow/de/mein-konto.html?--famelo_saas-transactions%5B%40package%5D=famelo.saas&--famelo_saas-transactions%5B%40controller%5D=transaction&--famelo_saas-transactions%5B%40action%5D=choosepayment
     adminEmail: mneuhaus@famelo.com
     defaults:
       InvoiceDocument: "Famelo.Saas:Invoice"
@@ -57,7 +59,7 @@ TYPO3:
               'Famelo\Saas\Security\NeosRequestPattern': 'frontend'
             entryPoint: 'WebRedirect'
             entryPointOptions:
-              uri: login.html
+              uri: de/login.html
 
     object:
       excludeClasses:

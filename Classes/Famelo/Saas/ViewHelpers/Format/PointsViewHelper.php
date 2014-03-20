@@ -51,7 +51,7 @@ class PointsViewHelper extends AbstractViewHelper {
 
 		$exchangeRates = $this->configurationManager->getConfiguration(ConfigurationManager::CONFIGURATION_TYPE_SETTINGS, 'Famelo.Saas.exchangeRates');
 
-		if ($currency === NULL) {
+		if (is_object($this->transactionService->getSubscription()) && $currency === NULL) {
 			$currency = $this->transactionService->getSubscription()->getCurrency();
 		}
 

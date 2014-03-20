@@ -28,6 +28,7 @@ class RegistrationController extends \TYPO3\Flow\Mvc\Controller\ActionController
 		foreach ($teams as $team) {
 			$factory->preSave($team);
 			$this->persistenceManager->add($team);
+			$this->persistenceManager->add($team->getMainUser()->getAccount());
 		}
 	}
 }

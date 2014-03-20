@@ -15,7 +15,7 @@ class TransactionRepository extends \TYPO3\Flow\Persistence\Repository {
 	protected $securityContext;
 
 	public function getUserTransactions() {
-		$user = $this->securityContext->getParty();
+		$user = $this->securityContext->getPartyByType('\Famelo\Saas\Domain\Model\User');
 
 		if ($user instanceof \Famelo\Saas\Domain\Model\User) {
 			$team = $user->getTeam();
