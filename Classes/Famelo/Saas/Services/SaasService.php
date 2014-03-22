@@ -58,7 +58,7 @@ class SaasService {
 
 		$this->request = ObjectAccess::getProperty($joinPoint->getProxy(), 'request', TRUE);
 		$this->response = ObjectAccess::getProperty($joinPoint->getProxy(), 'response', TRUE);
-		$saasMatcher = new SaasMatcher($this->request, NULL, $joinPoint);
+		$saasMatcher = new SaasMatcher($this->request, NULL, $joinPoint, $joinPoint->getMethodName(), $joinPoint->getClassName());
 		$context = new Context($saasMatcher);
 
 		foreach ($checks as $name => $check) {

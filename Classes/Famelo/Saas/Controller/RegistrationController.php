@@ -3,6 +3,7 @@ namespace Famelo\Saas\Controller;
 
 use Famelo\Saas\Domain\Factory\TeamFactory;
 use TYPO3\Flow\Annotations as Flow;
+use TYPO3\Flow\Error\Message;
 
 /**
  * @Flow\Scope("singleton")
@@ -30,6 +31,8 @@ class RegistrationController extends \TYPO3\Flow\Mvc\Controller\ActionController
 			$this->persistenceManager->add($team);
 			$this->persistenceManager->add($team->getMainUser()->getAccount());
 		}
+		$this->flashMessageContainer->addMessage(new Message('Account has been created.'));
+		$this->redirectToUri('/de/login.html');
 	}
 }
 

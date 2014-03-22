@@ -59,10 +59,12 @@ class TeamFactory {
 	 */
 	public function create($name = NULL, $username = NULL, $password = NULL, $email = NULL, $firstName = NULL, $lastName = NULL, array $roleIdentifiers = NULL) {
 		$team = new \Famelo\Saas\Domain\Model\Team();
+		$team->setName($name);
 
 		$userFactory = new UserFactory();
 		$user = $userFactory->create($username, $password, $email, $firstName, $lastName, $roleIdentifiers);
 		$team->addUser($user);
+		$user->setTeam($team);
 
 		return $team;
 	}
@@ -78,6 +80,7 @@ class TeamFactory {
 		$subscription = new Subscription();
 		$subscription->setPlan($this->defaultPlan);
 		$subscription->setCurrency($this->defaultCurrency);
+		$subscription->setTeam($team);
 
 		if ($this->defaultBalance > 0) {
 			$transaction = new Transaction();

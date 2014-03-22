@@ -2,6 +2,7 @@
 namespace Famelo\Saas\Controller;
 
 use TYPO3\Flow\Annotations as Flow;
+use TYPO3\Flow\Error\Message;
 
 /**
  * @Flow\Scope("singleton")
@@ -36,9 +37,10 @@ class InviteController extends \TYPO3\Flow\Mvc\Controller\ActionController {
             $account->setAuthenticationProviderName('SaasProvider');
             $account->addRole($role);
 			$this->persistenceManager->update($team);
+			$this->persistenceManager->add($account);
 		}
-		// $user->addAccount(new \TYPO3\Flow\Security\Account());
-		// $this->view->assign('team', $user->getTeam());
+		$this->flashMessageContainer->addMessage(new Message('Account has been created.'));
+		$this->redirectToUri('/de/mein-konto.html');
 	}
 }
 

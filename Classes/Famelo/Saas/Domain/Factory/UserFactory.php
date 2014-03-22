@@ -67,6 +67,7 @@ class UserFactory {
 		$accountFactory = new AccountFactory();
 		$account = $accountFactory->create($username, $password, $roleIdentifiers);
 		$user->addAccount($account);
+		$account->setParty($user);
 
 		return $user;
 	}

@@ -48,6 +48,10 @@ class Team {
         // $this->users->add(new User());
     }
 
+    public function getIdentifier() {
+        return $this->Persistence_Object_Identifier;
+    }
+
     /**
     * TODO: Document this Method! ( __toString )
     */

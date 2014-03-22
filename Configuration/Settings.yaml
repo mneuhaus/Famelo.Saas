@@ -1,7 +1,7 @@
 Famelo:
   Saas:
     targets:
-      payment: http://broensfin.flow/de/mein-konto.html?--famelo_saas-transactions%5B%40package%5D=famelo.saas&--famelo_saas-transactions%5B%40controller%5D=transaction&--famelo_saas-transactions%5B%40action%5D=choosepayment
+      payment: /de/mein-konto.html?--famelo_saas-transactions%5B%40package%5D=famelo.saas&--famelo_saas-transactions%5B%40controller%5D=transaction&--famelo_saas-transactions%5B%40action%5D=choosepayment
     adminEmail: mneuhaus@famelo.com
     defaults:
       InvoiceDocument: "Famelo.Saas:Invoice"
@@ -9,7 +9,7 @@ Famelo:
       plan: 'Deposit'
       currency: 'EUR'
       balance: 5
-    paymentUrl: http://broensfin.flow/mein-konto.html?--famelo_saas-transactions%5B%40package%5D=famelo.saas&--famelo_saas-transactions%5B%40controller%5D=transaction&--famelo_saas-transactions%5B%40action%5D=choosepayment
+    paymentUrl: /mein-konto.html?--famelo_saas-transactions%5B%40package%5D=famelo.saas&--famelo_saas-transactions%5B%40controller%5D=transaction&--famelo_saas-transactions%5B%40action%5D=choosepayment
     plans:
       Flatrate:
         name: "Flatrate"

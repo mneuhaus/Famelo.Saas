@@ -3,8 +3,7 @@
         {namespace m=Famelo\Messaging\ViewHelpers}
         {namespace s=Famelo\Saas\ViewHelpers}
         <m:message
-            toEmail="{transaction.subscription.team.bookingUser.email}"
-            toName="{transaction.subscription.team.bookingUser.name}"
+            to="{transaction.subscription.team.mainUser.email}:{transaction.subscription.team.mainUser.name}"
             subject="Rechnung" />
     </head>
     <body>
