@@ -114,6 +114,10 @@
         <source>roles</source>
         <target>roles</target>
       </trans-unit>
+      <trans-unit id="Famelo.Saas.Domain.Model.User.policyService.label">
+        <source>policyService</source>
+        <target>policyService</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
