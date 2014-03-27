@@ -42,7 +42,7 @@ Famelo:
 
     usePoints: true
     exchangeRates:
-      EUR: 0.1
+      EUR: 0.5
       USD: 0.2
 
 TYPO3:
