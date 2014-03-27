@@ -5,5 +5,16 @@ prototype(TYPO3.Expose:Schema:TYPO3.Party.Domain.Model.PersonName) < prototype(T
 		otherName.ignore = true
 		alias.ignore = true
 		fullName.ignore = true
+		firstName.validate {
+			0 {
+				type = "NotEmpty"
+			}
+		}
+
+		lastName.validate {
+			0 {
+				type = "NotEmpty"
+			}
+		}
 	}
 }
