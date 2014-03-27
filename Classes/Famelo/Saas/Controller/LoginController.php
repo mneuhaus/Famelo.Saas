@@ -47,7 +47,7 @@ class LoginController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 	public function authenticateAction() {
 		try {
 			$this->authenticationManager->authenticate();
-			$this->redirectToUri('/');
+			$this->redirectToUri('/de/mein-konto.html');
 		} catch (\TYPO3\Flow\Security\Exception\AuthenticationRequiredException $exception) {
 			$this->addFlashMessage('Wrong username or password.');
 			throw $exception;
