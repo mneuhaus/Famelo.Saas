@@ -2,19 +2,18 @@
 <f:form name="login" action="authenticate" method="post" class="login-box">
 	<input type="hidden" name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][provider]" value="SaasProvider" />
 	<fieldset>
-
 		<div class="form-group">
-			<label>Username</label>
-	    	<input type="text" id="username" type="text" placeholder="Username" class="form-control" name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][username]" additionalAttributes="{autofocus: 'autofocus'}" value="{username}" />
+			<label>{f:translate(value: 'Username')}</label>
+	    	<input type="text" id="username" type="text" placeholder="{f:translate(value: 'Username')}" class="form-control" name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][username]" additionalAttributes="{autofocus: 'autofocus'}" value="{username}" />
 		</div>
 		<div class="form-group">
-			<label>Password</label>
-			<input type="password" id="password" type="password" placeholder="Password" class="form-control" name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][password]" />
+			<label>{f:translate(value: 'Password')}</label>
+			<input type="password" id="password" type="password" placeholder="{f:translate(value: 'Password')}" class="form-control" name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][password]" />
 	  	</div>
 		<div class="neos-actions">
 			<!-- Forgot password link will be here -->
 			<f:form.button type="submit" class="pull-right">
-				Login
+				<f:translate>Login</f:translate>
 			</f:form.button>
 			<b:flashMessages />
 		</div>

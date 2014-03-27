@@ -9,15 +9,24 @@
 
 <hr />
 <div class="transactions">
-	<h3>Balance history</h3>
+	<h3><f:translate id="balance-history">Balance history</f:translate></h3>
 	<c:query.paginate objects="{transactionService.transactions}" as="transactions">
 		<table class="table table-striped">
 			<thead>
 			      <tr>
-			        <th><i class="fa fa-calendar"></i> Date</th>
+			        <th>
+			        	<i class="fa fa-calendar"></i>
+			        	<f:translate id="balance.date">Date</f:translate>
+			        </th>
 			        <th>Amount</th>
-			        <th><i class="fa fa-paperclip"></i> Note</th>
-			        <th><i class="fa fa-file-text-o"></i> Invoice</i></th>
+			        <th>
+			        	<i class="fa fa-paperclip"></i>
+			        	<f:translate id="balance.note">Note</f:translate>
+			        </th>
+			        <th>
+			        	<i class="fa fa-file-text-o"></i>
+			        	<f:translate id="balance.invoice">Invoice</f:translate>
+			        </th>
 			      </tr>
 			    </thead>
 			<f:for each="{transactions}" as="transaction" iteration="iteration">
@@ -28,7 +37,7 @@
 					<td>
 						<f:if condition="{transaction.invoiceNumber}">
 							<f:link.action action="index" controller="Invoice" package="Famelo.Saas" arguments="{transaction: transaction}">
-								 Download invoice
+								 <f:translate>Download invoice</f:translate>
 							</f:link.action>
 						</f:if>
 					</td>

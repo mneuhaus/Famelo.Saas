@@ -114,6 +114,30 @@
         <source>roles</source>
         <target>roles</target>
       </trans-unit>
+      <trans-unit id="balance-history">
+        <source>Balance history</source>
+        <target>Balance history</target>
+      </trans-unit>
+      <trans-unit id="balance.date">
+        <source>Date</source>
+        <target>Date</target>
+      </trans-unit>
+      <trans-unit id="balance.note">
+        <source>Note</source>
+        <target>Note</target>
+      </trans-unit>
+      <trans-unit id="balance.invoice">
+        <source>Invoice</source>
+        <target>Invoice</target>
+      </trans-unit>
+      <trans-unit id="slug.download-invoice">
+        <source>Download invoice</source>
+        <target>Download invoice</target>
+      </trans-unit>
+      <trans-unit id="slug.login">
+        <source>Login</source>
+        <target>Login</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
