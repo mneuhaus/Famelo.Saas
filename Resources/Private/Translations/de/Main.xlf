@@ -138,6 +138,10 @@
         <source>Login</source>
         <target>Login</target>
       </trans-unit>
+      <trans-unit id="status.accepted">
+        <source>accepted</source>
+        <target>accepted</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

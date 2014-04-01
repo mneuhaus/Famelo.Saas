@@ -24,6 +24,14 @@ prototype(TYPO3.Expose:Schema:Famelo.Saas.Domain.Model.Team) < prototype(TYPO3.E
 				multipleMode = false
 			}
 		}
+
+		country {
+			element = 'TYPO3.Form:SingleSelectDropdown'
+			optionsProvider {
+				class = 'I18n'
+				type = 'Countries'
+			}
+		}
 	}
 }
 

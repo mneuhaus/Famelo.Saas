@@ -118,6 +118,66 @@
         <source>policyService</source>
         <target>policyService</target>
       </trans-unit>
+      <trans-unit id="form-objects_0_accounts_0_credentialsSource-confirmation">
+        <source>Confirmation</source>
+        <target>Confirmation</target>
+      </trans-unit>
+      <trans-unit id="Famelo.Saas.Domain.Model.Team.user.label">
+        <source>user</source>
+        <target>user</target>
+      </trans-unit>
+      <trans-unit id="Famelo.Saas.Domain.Model.Transaction.subscription.label">
+        <source>subscription</source>
+        <target>subscription</target>
+      </trans-unit>
+      <trans-unit id="Famelo.Saas.Domain.Model.Transaction.created.label">
+        <source>created</source>
+        <target>created</target>
+      </trans-unit>
+      <trans-unit id="Famelo.Saas.Domain.Model.Transaction.amount.label">
+        <source>amount</source>
+        <target>amount</target>
+      </trans-unit>
+      <trans-unit id="Famelo.Saas.Domain.Model.Transaction.currency.label">
+        <source>currency</source>
+        <target>currency</target>
+      </trans-unit>
+      <trans-unit id="Famelo.Saas.Domain.Model.Transaction.note.label">
+        <source>note</source>
+        <target>note</target>
+      </trans-unit>
+      <trans-unit id="Famelo.Saas.Domain.Model.Transaction.paymentGateway.label">
+        <source>paymentGateway</source>
+        <target>paymentGateway</target>
+      </trans-unit>
+      <trans-unit id="Famelo.Saas.Domain.Model.Transaction.invoiceNumber.label">
+        <source>invoiceNumber</source>
+        <target>invoiceNumber</target>
+      </trans-unit>
+      <trans-unit id="form-objects_10_accounts_0_credentialsSource-confirmation">
+        <source>Confirmation</source>
+        <target>Confirmation</target>
+      </trans-unit>
+      <trans-unit id="Famelo.Saas.Domain.Model.Team.street.label">
+        <source>street</source>
+        <target>street</target>
+      </trans-unit>
+      <trans-unit id="Famelo.Saas.Domain.Model.Team.city.label">
+        <source>city</source>
+        <target>city</target>
+      </trans-unit>
+      <trans-unit id="Famelo.Saas.Domain.Model.Team.zip.label">
+        <source>zip</source>
+        <target>zip</target>
+      </trans-unit>
+      <trans-unit id="Famelo.Saas.Domain.Model.Team.notify.label">
+        <source>notify</source>
+        <target>notify</target>
+      </trans-unit>
+      <trans-unit id="Famelo.Saas.Domain.Model.Team.country.label">
+        <source>country</source>
+        <target>country</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

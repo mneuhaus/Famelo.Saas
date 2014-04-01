@@ -8,6 +8,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 /**
  * @Flow\Entity
  * @ORM\HasLifecycleCallbacks
+ * @Common\Accessable
  * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false)
  */
 class Team {
@@ -41,11 +42,35 @@ class Team {
     protected $deletedAt;
 
     /**
+     * @var string
+     */
+    protected $street;
+
+    /**
+     * @var string
+     */
+    protected $city;
+
+    /**
+     * @var string
+     */
+    protected $zip;
+
+    /**
+     * @var string
+     */
+    protected $country = 'DE';
+
+    /**
+     * @var boolean
+     */
+    protected $notify;
+
+    /**
     * TODO: Document this Method! ( __construct )
     */
     public function __construct() {
         $this->users = new \Doctrine\Common\Collections\ArrayCollection();
-        // $this->users->add(new User());
     }
 
     public function getIdentifier() {
@@ -59,7 +84,7 @@ class Team {
         if ($this->name == '') {
             return $this->getMainUser()->__toString();
         }
-        return $this->name;
+        return $this->name . ', ' . $this->street . ', ' . $this->zip . ' ' . $this->city;
     }
 
     public function getCurrency() {
