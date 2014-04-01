@@ -58,6 +58,10 @@ class Transaction {
         $this->created = new \DateTime();
     }
 
+    public function getTeam() {
+        return $this->subscription->getTeam();
+    }
+
     /**
      * Gets amount.
      *

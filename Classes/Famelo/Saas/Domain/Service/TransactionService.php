@@ -79,6 +79,16 @@ class TransactionService {
 		}
 	}
 
+	public function getTeam() {
+		$this->initialize();
+		return $this->team;
+	}
+
+	public function getUser() {
+		$this->initialize();
+		return $this->user;
+	}
+
 	public function getBalance() {
 		$this->initialize();
 		if ($this->subscription === NULL) {

@@ -26,9 +26,37 @@ class TransactionController extends \TYPO3\Flow\Mvc\Controller\ActionController 
 	protected $saasService;
 
 	/**
+	 * @var \Famelo\Broensfin\Domain\Repository\ClaimRepository
+	 * @Flow\Inject
+	 */
+	protected $claimRepository;
+
+	/**
 	 * @return string
 	 */
 	public function indexAction() {
+		$stats = array(
+			'debts' => array(),
+			'claims' => array()
+		);
+
+		foreach ($this->claimRepository->createCreditorQuery()->execute() as $claim) {
+			$status = $claim->getCurrentState()->__toString();
+			if (!isset($stats['debts'][$status])) {
+				$stats['debts'][$status] = 0;
+			}
+			$stats['debts'][$status]++;
+		}
+
+		foreach ($this->claimRepository->createDebtorQuery()->execute() as $claim) {
+			$status = $claim->getCurrentState()->__toString();
+			if (!isset($stats['claims'][$status])) {
+				$stats['claims'][$status] = 0;
+			}
+			$stats['claims'][$status]++;
+		}
+
+		$this->view->assign('stats', $stats);
 		$this->view->assign('transactionService', $this->transactionService);
 	}
 
