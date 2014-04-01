@@ -44,6 +44,15 @@ Famelo:
     exchangeRates:
       EUR: 0.5
       USD: 0.2
+    taxes:
+      DE:
+        name: "MwSt."
+        amount: 19
+        type: included
+        labels:
+          subtotal: "Zwischensumme (netto)"
+          tax: "zzgl. MwSt. 19,00%"
+          total: "Gesamtsumme (brutto)"
 
 TYPO3:
   Flow:

@@ -13,6 +13,11 @@ class InvoiceController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 	 * @return string
 	 */
 	public function indexAction($transaction) {
+		$document = new \Famelo\PDF\Document('Famelo.Saas:Invoice');
+        $document->assign('transaction', $transaction);
+        echo $document->send();
+        exit();
+
 		$invoice = $transaction->getInvoicePath();
 		header('Content-type: application/pdf');
 		header('Content-Disposition: attachment; filename="Broensfin - Invoice - ' . basename($invoice) . '"');

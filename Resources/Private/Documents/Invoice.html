@@ -1,18 +1,120 @@
-<html>
+<html style="background: #efefef;">
     <head>
         {namespace a=TYPO3\Asset\ViewHelpers}
         {namespace s=Famelo\Saas\ViewHelpers}
-        <link rel="stylesheet" type="text/css" href="{a:uri(path: 'Styles/Main.less', package: 'Famelo.Broensfin', filters: 'less')}" />
+        <link rel="stylesheet" type="text/css" href="{a:uri(path: 'Styles/Document.less', package: 'Famelo.Broensfin', filters: 'less')}" />
     </head>
-    <body>
-        <h3>Rechnung</h3>
-        <table class="table table-bordered table-striped">
-            <tr>
-                <td>{transaction.created -> f:format.date(forceLocale: true)}</td>
-                <td>{transaction.amount -> s:format.currency()}</td>
-                <td>{transaction.note}</td>
-                <td>{transaction.paymentGateway}</td>
-            </tr>
-        </table>
+    <body class="document">
+
+        <header>
+            <table>
+                <tr>
+                    <td width="82%">
+                        <img src="{f:uri.resource(path: 'Media/Broensfin-Logo.png', package: 'Famelo.Broensfin')}" width="200px" alt="Broensfin" />
+                    </td>
+                    <td>
+                        Haverkamp 37 <br />
+                        33334 Gütersloh<br />
+                        Umsatzsteuer-ID:<br />
+                        DE293528834
+                    </td>
+                </tr>
+            </table>
+        </header>
+
+        <div class="document-information">
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Umsatzsteuer-ID:</th>
+                        <td>DE293528834</td>
+                    </tr>
+                    <tr>
+                        <th>Rechnugnsnummer:</th>
+                        <td>{transaction.invoiceNumber}</td>
+                    </tr>
+                    <tr>
+                        <th>Datum:</th>
+                        <td>{transaction.created -> f:format.date(forceLocale: true, localeFormatType: 'date')}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <footer>
+            <div class="row">
+                <div class="col-xs-4">
+                    <strong>Web: </strong><a href="http://broensfin.com">www.broensfin.com</a>
+                </div>
+                <div class="col-xs-4">
+                    <strong>E-Mail: </strong> <a href="mailto:info@broensfin.com">info@broensfin.com</a>
+                </div>
+                <div class="col-xs-4">
+                    <strong>Tel.:</strong> +49 (0) 5241 3000393
+                </div>
+            </div>
+        </footer>
+
+        <address>
+            <div class="return">Broensfin UG, Haverkamp 37, 33334 Gütersloh</div>
+            <strong>{transaction.team.name}</strong><br>
+            {transaction.team.street}<br>
+            {transaction.team.zip}, {transaction.team.city}
+        </address>
+
+        <div class="content">
+            <h3>Rechnung vom {transaction.created -> f:format.date(forceLocale: true, localeFormatType: 'date')}</h3>
+
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Beschreibung</th>
+                        <th>Datum</th>
+                        <th>Preis</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{transaction.amount -> s:format.points()} Punkte für Broensfin.com</td>
+                        <td>{transaction.created -> f:format.date(forceLocale: true, localeFormatType: 'date')}</td>
+                        <td>{transaction.amount -> s:format.currency()}</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <s:tax transaction="{transaction}">
+                        <f:if condition="{tax}">
+                            <f:then>
+                                <tr>
+                                    <td colspan="2" class="text-right">{tax.labels.subtotal}</td>
+                                    <td>{tax.subtotal -> s:format.currency()}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="text-right">{tax.labels.tax}</td>
+                                    <td>{tax.tax -> s:format.currency()}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="text-right">{tax.labels.total}</td>
+                                    <td>{tax.total -> s:format.currency()}</td>
+                                </tr>
+                            </f:then>
+                            <f:else>
+                                <tr>
+                                    <td colspan="2" class="text-right">
+                                        Gesamtsumme:<br />
+                                        <small>Denken Sie daran, die in Ihrem Land eventuel anfallenden Steuern, etc. zu begleichen.</small>
+                                    </td>
+                                    <td>{transaction.amount -> s:format.currency()}</td>
+                                </tr>
+                            </f:else>
+                        </f:if>
+                    </s:tax>
+                </tfoot>
+            </table>
+
+            <p>
+                Mit freundlichen Grüssen <br />
+                Broensfin
+            </p>
+        </div>
     </body>
 </html>
