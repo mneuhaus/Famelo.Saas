@@ -26,3 +26,28 @@ prototype(TYPO3.Expose:Schema:Famelo.Saas.Domain.Model.User) < prototype(TYPO3.E
 		email.label = 'E-Mail'
 	}
 }
+
+prototype(Famelo.Saas:Profile) {
+	prototype(TYPO3.Expose:Schema:Famelo.Saas.Domain.Model.User) {
+		factory = '\\Famelo\\Saas\\Domain\\Factory\\UserFactory'
+		properties {
+			team {
+				ignore = false
+				noLabel = true
+				inline {
+					element = 'TYPO3.Expose:InlineSeamless'
+				}
+				@position = 'start'
+			}
+		}
+	}
+
+	prototype(TYPO3.Expose:Schema:Famelo.Saas.Domain.Model.Team) {
+		factory = '\\Famelo\\Saas\\Domain\\Factory\\UserFactory'
+		properties {
+			users.ignore = true
+			name.ignore = true
+			subscription.ignore = true
+		}
+	}
+}

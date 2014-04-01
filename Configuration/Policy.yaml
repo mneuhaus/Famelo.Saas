@@ -4,7 +4,7 @@
 
 resources:
   methods:
-    Famelo_Saas_General: 'method(Famelo\Saas\Controller\(Login|Registration|Invoice|Invite)Controller->.*Action())'
+    Famelo_Saas_General: 'method(Famelo\Saas\Controller\(Login|Registration|Profile|Invoice|Invite)Controller->.*Action())'
     Famelo_Saas_Transaction: 'method(Famelo\Saas\Controller\TransactionController->.*Action())'
 
 roles:

@@ -37,6 +37,12 @@
   ui:
     label: Registration
 
+'Famelo.Saas:Profile':
+  superTypes:
+    - 'TYPO3.Neos:Plugin'
+  ui:
+    label: Profile
+
 'Famelo.Saas:Invite':
   superTypes:
     - 'TYPO3.Neos:Plugin'
