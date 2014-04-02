@@ -41,6 +41,9 @@ class MenuImplementation extends \TYPO3\Neos\TypoScript\MenuImplementation {
 			if ($access === 'authenticated' && $this->securityContext->getAccount() === NULL) {
 				return NULL;
 			}
+			if (!in_array($access, array('guests', 'authenticated')) && $this->securityContext->hasRole($access) === FALSE) {
+				return NULL;
+			}
 		}
 		return parent::buildMenuItemRecursive($currentNode);
 	}
