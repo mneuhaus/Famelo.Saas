@@ -178,6 +178,10 @@
         <source>country</source>
         <target>country</target>
       </trans-unit>
+      <trans-unit id="Famelo.Saas.Domain.Model.Transaction.state.label">
+        <source>state</source>
+        <target>state</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

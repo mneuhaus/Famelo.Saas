@@ -33,5 +33,11 @@ class TransactionRepository extends \TYPO3\Flow\Persistence\Repository {
 
 		return NULL;
 	}
+
+	public function createInvoiceQuery() {
+		$query = $this->createQuery();
+		$query->matching($query->greaterThan('amount', 0));
+		return $query;
+	}
 }
 ?>

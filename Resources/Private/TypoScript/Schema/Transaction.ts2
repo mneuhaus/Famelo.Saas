@@ -1,0 +1,46 @@
+prototype(TYPO3.Expose:Schema:Famelo.Saas.Domain.Model.Transaction) < prototype(TYPO3.Expose:Schema) {
+	queryMethod = 'createInvoiceQuery'
+}
+
+prototype(Famelo.Broensfin:Invoices) {
+	prototype(TYPO3.Expose:RecordList) {
+		topRegion = TYPO3.TypoScript:Array {
+			@position = 'start'
+
+			controllerLinks {
+				10 >
+			}
+		}
+		recordList.TransactionList = Famelo.Saas:TransactionList
+		currentFormat = 'TransactionList'
+	}
+}
+
+prototype(Famelo.Saas:TransactionList) < prototype(TYPO3.Expose:RecordList.Table) {
+	templatePath = 'resource://Famelo.Saas/Private/Elements/List/Transaction/Table.html'
+	tableBody.itemRenderer = Famelo.Saas:TransactionRow
+}
+
+prototype(Famelo.Saas:TransactionRow) < prototype(TYPO3.Expose:RecordList.Table.Row) {
+	templatePath = 'resource://Famelo.Saas/Private/Elements/List/Transaction/Row.html'
+	controllerLinks{
+		10 {
+			action = 'setState'
+			controller = 'Famelo\\Saas\\Controller\\Transaction\\StateController'
+			label = '<i class="fa fa-check"></i>'
+			arguments.state = 'paid'
+		}
+		20 {
+			action = 'setState'
+			controller = 'Famelo\\Saas\\Controller\\Transaction\\StateController'
+			label = '<i class="fa fa-undo"></i>'
+			arguments.state = 'open'
+		}
+		30 {
+			action = 'setState'
+			controller = 'Famelo\\Saas\\Controller\\Transaction\\StateController'
+			label = '<i class="fa fa-minus-circle"></i>'
+			arguments.state = 'canceled'
+		}
+	}
+}

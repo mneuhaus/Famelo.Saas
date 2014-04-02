@@ -18,6 +18,8 @@
                 label: 'Authenticated Users'
               guests:
                 label: Guests
+              'Famelo.Saas:Administrator':
+                label: 'Famelo.Saas:Administrator'
 
 'Famelo.Saas:Login':
   superTypes:

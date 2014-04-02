@@ -60,7 +60,10 @@ class CurrencyViewHelper extends \TYPO3\Fluid\ViewHelpers\Format\CurrencyViewHel
 		}
 
 		$currency = $this->i18nService->getCurrency($currency, $useLocale);
-		$currencySign = $currency['symbol'];
+		if ($currencySign === '') {
+			$currencySign = $currency['symbol'];
+		}
+		$currencySign = '';
 
 		return parent::render($currencySign, $decimalSeparator, $thousandsSeparator);
 	}

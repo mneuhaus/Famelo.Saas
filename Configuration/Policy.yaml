@@ -6,6 +6,7 @@ resources:
   methods:
     Famelo_Saas_General: 'method(Famelo\Saas\Controller\(Login|Registration|Profile|Invoice|Invite)Controller->.*Action())'
     Famelo_Saas_Transaction: 'method(Famelo\Saas\Controller\TransactionController->.*Action())'
+    Famelo_Saas_Management: 'method(Famelo\Saas\Controller\Transaction\StateController->.*Action())'
 
 roles:
   Administrator: [Customer]
@@ -18,3 +19,6 @@ acls:
   Customer:
     methods:
       Famelo_Saas_Transaction: GRANT
+  Administrator:
+    methods:
+      Famelo_Saas_Management: GRANT

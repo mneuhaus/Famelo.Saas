@@ -1,8 +1,9 @@
 <?php
 namespace Famelo\Saas\Domain\Model;
 use Doctrine\ORM\Mapping as ORM;
-use TYPO3\Flow\Annotations as Flow;
 use Famelo\Common\Annotations as Common;
+use Famelo\Saas\Domain\Model\Subscription;
+use TYPO3\Flow\Annotations as Flow;
 
 /**
  * A transaction
@@ -11,6 +12,9 @@ use Famelo\Common\Annotations as Common;
  * @Common\Accessable
  */
 class Transaction {
+    const STATE_OPEN = 'open';
+    const STATE_PAID = 'paid';
+    const STATE_CANCELED = 'canceled';
 
     /**
      * @var \Famelo\Saas\Domain\Model\Subscription
@@ -52,14 +56,22 @@ class Transaction {
     protected $invoiceNumber;
 
     /**
+     * @var string
+     */
+    protected $state;
+
+    /**
     * TODO: Document this Method! ( __construct )
     */
     public function __construct() {
         $this->created = new \DateTime();
+        $this->state = self::STATE_OPEN;
     }
 
     public function getTeam() {
-        return $this->subscription->getTeam();
+        if ($this->subscription instanceof Subscription) {
+            return $this->subscription->getTeam();
+        }
     }
 
     /**
@@ -200,6 +212,23 @@ class Transaction {
      */
     public function setSubscription($subscription) {
         $this->subscription = $subscription;
+    }
+
+    /**
+     * @param string $state
+     */
+    public function setState($state) {
+        $this->state = $state;
+    }
+
+    /**
+     * @return string
+     */
+    public function getState() {
+        if (empty($this->state)) {
+            return self::STATE_OPEN;
+        }
+        return $this->state;
     }
 
 }

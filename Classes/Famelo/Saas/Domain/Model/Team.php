@@ -84,7 +84,13 @@ class Team {
         if ($this->name == '') {
             return $this->getMainUser()->__toString();
         }
-        return $this->name . ', ' . $this->street . ', ' . $this->zip . ' ' . $this->city;
+        $parts = array();
+        foreach (explode(',', 'name,street,zip,city') as $key) {
+            if (!empty($this->$key)) {
+                $parts[] = $this->$key;
+            }
+        }
+        return implode(', ', $parts);
     }
 
     public function getCurrency() {

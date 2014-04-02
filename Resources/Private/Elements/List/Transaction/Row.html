@@ -1,0 +1,16 @@
+{namespace e=TYPO3\Expose\ViewHelpers}
+{namespace ts=TYPO3\TypoScript\ViewHelpers}
+{namespace s=Famelo\Saas\ViewHelpers}
+
+<tr>
+	<td>{item.created -> f:format.date(forceLocale: true)}</td>
+	<td>{item.team}</td>
+	<td>{item.invoiceNumber} ({item.paymentGateway})</td>
+	<td class="item-amount" data-amount="{item.amount}">{item.amount -> s:format.points()} ({item.amount -> s:format.currency()})</td>
+	<td>
+		<f:translate id="transaction.state.{item.state}" value="{item.state}" package="TYPO3.Expose" />
+	</td>
+	<td class="table-actions">
+		<ts:render path="controllerLinks" />
+	</td>
+</tr>
