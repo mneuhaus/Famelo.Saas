@@ -56,3 +56,10 @@
     - 'TYPO3.Neos:Plugin'
   ui:
     label: 'User Transactions'
+
+
+'Famelo.Saas:AdminDashboard':
+  superTypes:
+    - 'TYPO3.Neos:Plugin'
+  ui:
+    label: 'Admin Dashboard'

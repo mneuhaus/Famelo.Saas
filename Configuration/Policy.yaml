@@ -1,21 +1,19 @@
-#                                                                        #
-# Security policy for the TYPO3.NeosDemoTypo3Org package                 #
-#                                                                        #
-
 resources:
   methods:
     Famelo_Saas_General: 'method(Famelo\Saas\Controller\(Login|Registration|Profile|Invoice|Invite)Controller->.*Action())'
     Famelo_Saas_Transaction: 'method(Famelo\Saas\Controller\TransactionController->.*Action())'
     Famelo_Saas_Management: 'method(Famelo\Saas\Controller\Transaction\StateController->.*Action())'
-
+    Famelo_Saas_AdminDashboardPlugin: 'method(Famelo\Saas\Controller\AdminDashboardController->.*Action())'
 roles:
-  Administrator: [Customer]
-  Customer: [Everybody]
-
+  Administrator:
+    - Customer
+  Customer:
+    - Everybody
 acls:
   Everybody:
     methods:
       Famelo_Saas_General: GRANT
+      Famelo_Saas_AdminDashboardPlugin: GRANT
   Customer:
     methods:
       Famelo_Saas_Transaction: GRANT
