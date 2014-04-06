@@ -12,5 +12,17 @@
 	</td>
 	<td class="table-actions">
 		<ts:render path="controllerLinks" />
+		<f:if condition="{item.team.suspended}">
+			<f:then>
+				<f:link.action action="unsuspendUser" controller="Transaction\State" subpackage="" package="Famelo.Saas" arguments="{team: item.team}" class="btn btn-default">
+				Benutzer entsperren
+				</f:link.action>
+			</f:then>
+			<f:else>
+				<f:link.action action="suspendUser" controller="Transaction\State" subpackage="" package="Famelo.Saas" arguments="{team: item.team}" class="btn btn-default">
+				Benutzer sperren
+				</f:link.action>
+			</f:else>
+		</f:if>
 	</td>
 </tr>

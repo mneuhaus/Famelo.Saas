@@ -48,7 +48,7 @@ class CurrencyViewHelper extends \TYPO3\Fluid\ViewHelpers\Format\CurrencyViewHel
 	 * @throws ViewHelperException
 	 * @api
 	 */
-	public function render($currencySign = '', $decimalSeparator = ',', $thousandsSeparator = '.', $currency = NULL) {
+	public function render($currencySign = NULL, $decimalSeparator = ',', $thousandsSeparator = '.', $currency = NULL) {
 		$useLocale = $this->getLocale();
 
 		if (!is_object($this->transactionService->getSubscription())) {
@@ -60,10 +60,9 @@ class CurrencyViewHelper extends \TYPO3\Fluid\ViewHelpers\Format\CurrencyViewHel
 		}
 
 		$currency = $this->i18nService->getCurrency($currency, $useLocale);
-		if ($currencySign === '') {
+		if ($currencySign === NULL) {
 			$currencySign = $currency['symbol'];
 		}
-		$currencySign = '';
 
 		return parent::render($currencySign, $decimalSeparator, $thousandsSeparator);
 	}

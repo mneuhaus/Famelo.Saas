@@ -36,11 +36,11 @@ prototype(Famelo.Saas:TransactionRow) < prototype(TYPO3.Expose:RecordList.Table.
 			label = '<i class="fa fa-undo"></i>'
 			arguments.state = 'open'
 		}
-		30 {
-			action = 'setState'
-			controller = 'Famelo\\Saas\\Controller\\Transaction\\StateController'
-			label = '<i class="fa fa-minus-circle"></i>'
-			arguments.state = 'canceled'
-		}
+		# 30 {
+		# 	action = 'setState'
+		# 	controller = 'Famelo\\Saas\\Controller\\Transaction\\StateController'
+		# 	label = '<i class="fa fa-minus-circle"></i>'
+		# 	arguments.state = 'canceled'
+		# }
 	}
 }

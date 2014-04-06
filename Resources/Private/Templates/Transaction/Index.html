@@ -5,24 +5,8 @@
 
 <b:flashMessages />
 
-<h2>Dashboard</h2>
+<h2>Transaktionen</h2>
 
-<div class="row">
-	<div class="col-xs-6">
-		<h4>Meine Forderungen</h4>
-		<f:for each="{stats.claims}" as="stat" key="name">
-			<f:translate id="status.{name}" package="Famelo.Broensfin">{name}</f:translate>: {stat} <br />
-		</f:for>
-	</div>
-	<div class="col-xs-6">
-		<h4>Meine Verbindlichkeiten</h4>
-		<f:for each="{stats.debts}" as="stat" key="name">
-			<f:translate id="status.{name}" package="Famelo.Broensfin">{name}</f:translate>: {stat} <br />
-		</f:for>
-	</div>
-</div>
-
-<hr />
 <div class="transactions">
 	<h3><f:translate id="balance-history">Balance history</f:translate></h3>
 	<c:query.paginate objects="{transactionService.transactions}" as="transactions">

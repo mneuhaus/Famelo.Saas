@@ -33,7 +33,7 @@ class Team {
     /**
      * @var boolean
      */
-    protected $active = FALSE;
+    protected $suspended = FALSE;
 
     /**
      * @var \DateTime
@@ -98,21 +98,17 @@ class Team {
     }
 
     /**
-     * Gets active.
-     *
-     * @return boolean $active
+     * @param boolean $suspended
      */
-    public function getActive() {
-        return $this->active;
+    public function setSuspended($suspended) {
+        $this->suspended = $suspended;
     }
 
     /**
-     * Sets the active.
-     *
-     * @param boolean $active
+     * @return boolean
      */
-    public function setActive($active) {
-        $this->active = $active;
+    public function getSuspended() {
+        return $this->suspended;
     }
 
     /**

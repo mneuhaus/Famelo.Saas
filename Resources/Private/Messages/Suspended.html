@@ -1,0 +1,12 @@
+<html>
+    <head>
+        {namespace m=Famelo\Messaging\ViewHelpers}
+        {namespace s=Famelo\Saas\ViewHelpers}
+        <m:message
+            to="{team.mainUser.email}:{team.mainUser.name}"
+            subject="Ihr Konto wurde gesperrt" />
+    </head>
+    <body>
+        Bitte nehmen Sie mit uns Kontakt auf, um das Problem zu lösen.
+    </body>
+</html>

@@ -182,6 +182,10 @@
         <source>state</source>
         <target>state</target>
       </trans-unit>
+      <trans-unit id="Famelo.Saas.Domain.Model.Team.suspended.label">
+        <source>suspended</source>
+        <target>suspended</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

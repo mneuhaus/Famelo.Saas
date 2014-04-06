@@ -38,7 +38,6 @@ class StateController extends \TYPO3\Flow\Mvc\Controller\ActionController implem
 	}
 
 	/**
-	 * delete objects
 	 *
 	 * @param string $type
 	 * @param \Doctrine\Common\Collections\Collection $objects
@@ -52,6 +51,38 @@ class StateController extends \TYPO3\Flow\Mvc\Controller\ActionController implem
 		}
 		$this->redirect('index', 'List', 'TYPO3.Expose', array(
 			'type' => $type
+		));
+	}
+
+	/**
+	 *
+	 * @param \Famelo\Saas\Domain\Model\Team $team
+	 * @return void
+	 */
+	public function suspendUserAction($team) {
+		$team->setSuspended(TRUE);
+		$this->persistenceManager->update($team);
+
+		$mail = new \Famelo\Messaging\Message();
+		$mail->setMessage('Famelo.Saas:Suspended')
+			 ->assign('team', $team)
+			 ->send();
+
+		$this->redirect('index', 'List', 'TYPO3.Expose', array(
+			'type' => '\Famelo\Broensfin\Domain\Model\Claim'
+		));
+	}
+
+	/**
+	 *
+	 * @param \Famelo\Saas\Domain\Model\Team $team
+	 * @return void
+	 */
+	public function unsuspendUserAction($team) {
+		$team->setSuspended(FALSE);
+		$this->persistenceManager->update($team);
+		$this->redirect('index', 'List', 'TYPO3.Expose', array(
+			'type' => '\Famelo\Broensfin\Domain\Model\Claim'
 		));
 	}
 }
