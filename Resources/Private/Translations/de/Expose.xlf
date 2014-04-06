@@ -186,6 +186,10 @@
         <source>suspended</source>
         <target>suspended</target>
       </trans-unit>
+      <trans-unit id="Famelo.Saas.Domain.Model.Team.notify.infotext">
+        <source>Entfernen Sie hier den haken, um nicht mehr &#xFC;ber neue oder ge&#xE4;nderte Forderungen per E-Mail benachrichtigt zu werden.</source>
+        <target>Entfernen Sie hier den haken, um nicht mehr &#xFC;ber neue oder ge&#xE4;nderte Forderungen per E-Mail benachrichtigt zu werden.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
