@@ -104,11 +104,11 @@
       </trans-unit>
       <trans-unit id="TYPO3.Flow.Security.Account.creationDate.label">
         <source>creationDate</source>
-        <target>creationDate</target>
+        <target>Erstellungsdatum</target>
       </trans-unit>
       <trans-unit id="TYPO3.Flow.Security.Account.expirationDate.label">
         <source>expirationDate</source>
-        <target>expirationDate</target>
+        <target>Ablaufdatum</target>
       </trans-unit>
       <trans-unit id="TYPO3.Flow.Security.Account.roles.label">
         <source>roles</source>
@@ -120,7 +120,7 @@
       </trans-unit>
       <trans-unit id="form-objects_0_accounts_0_credentialsSource-confirmation">
         <source>Confirmation</source>
-        <target>Confirmation</target>
+        <target>Bestätigung</target>
       </trans-unit>
       <trans-unit id="Famelo.Saas.Domain.Model.Team.user.label">
         <source>user</source>
@@ -128,63 +128,63 @@
       </trans-unit>
       <trans-unit id="Famelo.Saas.Domain.Model.Transaction.subscription.label">
         <source>subscription</source>
-        <target>subscription</target>
+        <target>Abonnement</target>
       </trans-unit>
       <trans-unit id="Famelo.Saas.Domain.Model.Transaction.created.label">
         <source>created</source>
-        <target>created</target>
+        <target>Erstellt am</target>
       </trans-unit>
       <trans-unit id="Famelo.Saas.Domain.Model.Transaction.amount.label">
         <source>amount</source>
-        <target>amount</target>
+        <target>Guthaben</target>
       </trans-unit>
       <trans-unit id="Famelo.Saas.Domain.Model.Transaction.currency.label">
         <source>currency</source>
-        <target>currency</target>
+        <target>Währung</target>
       </trans-unit>
       <trans-unit id="Famelo.Saas.Domain.Model.Transaction.note.label">
         <source>note</source>
-        <target>note</target>
+        <target>Notiz</target>
       </trans-unit>
       <trans-unit id="Famelo.Saas.Domain.Model.Transaction.paymentGateway.label">
         <source>paymentGateway</source>
-        <target>paymentGateway</target>
+        <target>Bezahlgateway</target>
       </trans-unit>
       <trans-unit id="Famelo.Saas.Domain.Model.Transaction.invoiceNumber.label">
         <source>invoiceNumber</source>
-        <target>invoiceNumber</target>
+        <target>Rechnungsnummer</target>
       </trans-unit>
       <trans-unit id="form-objects_10_accounts_0_credentialsSource-confirmation">
         <source>Confirmation</source>
-        <target>Confirmation</target>
+        <target>Bestätigung</target>
       </trans-unit>
       <trans-unit id="Famelo.Saas.Domain.Model.Team.street.label">
         <source>street</source>
-        <target>street</target>
+        <target>Straße</target>
       </trans-unit>
       <trans-unit id="Famelo.Saas.Domain.Model.Team.city.label">
         <source>city</source>
-        <target>city</target>
+        <target>Stadt</target>
       </trans-unit>
       <trans-unit id="Famelo.Saas.Domain.Model.Team.zip.label">
         <source>zip</source>
-        <target>zip</target>
+        <target>PLZ</target>
       </trans-unit>
       <trans-unit id="Famelo.Saas.Domain.Model.Team.notify.label">
         <source>notify</source>
-        <target>notify</target>
+        <target>Benachrichtigung</target>
       </trans-unit>
       <trans-unit id="Famelo.Saas.Domain.Model.Team.country.label">
         <source>country</source>
-        <target>country</target>
+        <target>Land</target>
       </trans-unit>
       <trans-unit id="Famelo.Saas.Domain.Model.Transaction.state.label">
         <source>state</source>
-        <target>state</target>
+        <target>Status</target>
       </trans-unit>
       <trans-unit id="Famelo.Saas.Domain.Model.Team.suspended.label">
         <source>suspended</source>
-        <target>suspended</target>
+        <target>Gesperrt</target>
       </trans-unit>
       <trans-unit id="Famelo.Saas.Domain.Model.Team.notify.infotext">
         <source>Entfernen Sie hier den haken, um nicht mehr &#xFC;ber neue oder ge&#xE4;nderte Forderungen per E-Mail benachrichtigt zu werden.</source>

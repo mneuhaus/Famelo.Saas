@@ -116,23 +116,23 @@
       </trans-unit>
       <trans-unit id="balance-history">
         <source>Balance history</source>
-        <target>Balance history</target>
+        <target>Guthaben history</target>
       </trans-unit>
       <trans-unit id="balance.date">
         <source>Date</source>
-        <target>Date</target>
+        <target>Datum</target>
       </trans-unit>
       <trans-unit id="balance.note">
         <source>Note</source>
-        <target>Note</target>
+        <target>Notiz</target>
       </trans-unit>
       <trans-unit id="balance.invoice">
         <source>Invoice</source>
-        <target>Invoice</target>
+        <target>Rechnung</target>
       </trans-unit>
       <trans-unit id="slug.download-invoice">
         <source>Download invoice</source>
-        <target>Download invoice</target>
+        <target>Rechnung herunterladen</target>
       </trans-unit>
       <trans-unit id="slug.login">
         <source>Login</source>
@@ -140,7 +140,7 @@
       </trans-unit>
       <trans-unit id="status.accepted">
         <source>accepted</source>
-        <target>accepted</target>
+        <target>Angenommen</target>
       </trans-unit>
     </body>
   </file>
