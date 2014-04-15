@@ -1,5 +1,7 @@
+{namespace s=Famelo\Saas\ViewHelpers}
+
 <f:form action="makePayment">
-	<f:flashMessages />
+<f:flashMessages />
 <h4>1. Betrag wählen</h4>
 
 <section class="payment">
@@ -12,15 +14,15 @@
 				</div>
 				<div class="body">
 					<p class="credits">
-						1.000 <br />
+						<s:format.points amount="10" currency="EUR"/> <br />
 						Credits
 					</p>
 					<div class="order">
-						10 Euro<f:form.radio name="amount" value="10" />		
+						10 Euro<f:form.radio name="amount" value="10" />
 					</div>
 				</div>
-			</label> 
-			</div>	
+			</label>
+			</div>
 		</div>
 		<div class=" col-sm-4">
 			<div class="radio">
@@ -30,17 +32,17 @@
 				</div>
 				<div class="body">
 					<p class="credits">
-						2.000 <br />
+						<s:format.points amount="20" currency="EUR"/> <br />
 						Credits
 					</p>
 					<div class="order">
 						20 Euro <f:form.radio name="amount" value="20" />
-						
+
 					</div>
 				</div>
 			</label>
-			</div>	
-		</div>		
+			</div>
+		</div>
 		<div class=" col-sm-4">
 			<div class="radio">
 			<label>
@@ -49,18 +51,18 @@
 				</div>
 				<div class="body">
 					<p class="credits">
-						3.000 <br />
+						<s:format.points amount="30" currency="EUR"/> <br />
 						Credits
 					</p>
 					<div class="order">
-						30 Euro <f:form.radio name="amount" value="30" />		
+						30 Euro <f:form.radio name="amount" value="30" />
 					</div>
 				</div>
 			</label>
-			</div>	
-		</div>	
+			</div>
+		</div>
 	</fieldset>
-</section>	
+</section>
 <h4>2. Zahlungsweise wählen</h4>
 <section class="payment payment-second ">
 	<fieldset>
