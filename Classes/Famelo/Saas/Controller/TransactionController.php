@@ -159,7 +159,7 @@ class TransactionController extends \TYPO3\Flow\Mvc\Controller\ActionController 
 			if ($response->isSuccessful()) {
 				$this->flashMessageContainer->addMessage(new Message('Payment successful'));
 				$transaction->setNote($response->getTransactionReference());
-				$transaction->setStatus(Transaction::STATE_PAID);
+				$transaction->setState(Transaction::STATE_PAID);
 				$this->transactionService->addTransaction($transaction);
 				$this->transactionService->sendInvoice($transaction);
 				$this->redirectToOriginalRequest();
