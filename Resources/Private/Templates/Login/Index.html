@@ -11,7 +11,7 @@
 			<input type="password" id="password" type="password" placeholder="{f:translate(value: 'Password')}" class="form-control" name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][password]" />
 	  	</div>
 		<div class="neos-actions">
-			<!-- Forgot password link will be here -->
+			<f:link.action action="newPassword">{f:translate(value: 'Forgotten your password?')}</f:link.action>
 			<f:form.button type="submit" class="pull-right">
 				<f:translate>Login</f:translate>
 			</f:form.button>

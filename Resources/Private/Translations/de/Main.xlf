@@ -142,6 +142,66 @@
         <source>accepted</source>
         <target>Angenommen</target>
       </trans-unit>
+      <trans-unit id="slug.forgotten-your-password">
+        <source>Forgotten your password?</source>
+        <target>Haben Sie Ihr Passwort vergessen?</target>
+      </trans-unit>
+      <trans-unit id="slug.continue">
+        <source>continue</source>
+        <target>weiter</target>
+      </trans-unit>
+      <trans-unit id="slug.enter-the-e-mail-address-associated-with-your-account-then-click-continue-we-ll-email-you-a-link-to-a-page-where-you-can-easily-create-a-new-password">
+        <source>Enter the e-mail address associated with your account, then click Continue. We'll email you a link to a page where you can easily create a new password.</source>
+        <target>Geben Sie die zu Ihrem Konto geh&#xF6;rende E-Mail-Adresse ein. Klicken Sie dann auf "Weiter". Wir senden Ihnen per E-Mail einen Link zu unserer Webseite, auf der Sie ganz einfach Ihr neues Passwort anlegen k&#xF6;nnen.</target>
+      </trans-unit>
+      <trans-unit id="slug.please-check-your-e-mails-you-should-receive-an-e-mail-with-a-link-to-create-a-new-password-shortly">
+        <source>Please check your e-mails, you should receive an e-mail with a link to create a new password shortly.</source>
+        <target>Please check your e-mails, you should receive an e-mail with a link to create a new password shortly.</target>
+      </trans-unit>
+      <trans-unit id="slug.password-reset">
+        <source>Password reset</source>
+        <target>Password reset</target>
+      </trans-unit>
+      <trans-unit id="message.reset-password">
+        <source><![CDATA[
+            <p>You're receiving this e-mail because you requested a password reset for your user account.</p>
+
+            <p>Please go to the following page and choose a new password:</p>
+
+            <p><a href="{1}">Reset password</a></p>
+
+            <p>Your username, in case you've forgotten: {0}</p>
+
+            <p>Thanks for using our site!</p>
+        ]]></source>
+        <target><![CDATA[
+            <p>You're receiving this e-mail because you requested a password reset for your user account.</p>
+
+            <p>Please go to the following page and choose a new password:</p>
+
+            <p><a href="{1}">Reset password</a></p>
+
+            <p>Your username, in case you've forgotten: {0}</p>
+
+            <p>Thanks for using our site!</p>
+        ]]></target>
+      </trans-unit>
+      <trans-unit id="slug.please-enter-a-new-password-for-your-account">
+        <source>Please enter a new password for your account</source>
+        <target>Please enter a new password for your account</target>
+      </trans-unit>
+      <trans-unit id="slug.confirmation">
+        <source>Confirmation</source>
+        <target>Confirmation</target>
+      </trans-unit>
+      <trans-unit id="slug.save">
+        <source>Save</source>
+        <target>Save</target>
+      </trans-unit>
+      <trans-unit id="slug.the-passwords-do-not-match">
+        <source>The passwords do not match.</source>
+        <target>The passwords do not match.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

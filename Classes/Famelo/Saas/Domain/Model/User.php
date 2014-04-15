@@ -51,6 +51,11 @@ class User extends \TYPO3\Party\Domain\Model\Person {
     protected $team;
 
     /**
+     * @var string
+     */
+    protected $resetToken;
+
+    /**
     * TODO: Document this Method! ( __construct )
     */
     public function __construct() {
@@ -200,6 +205,19 @@ class User extends \TYPO3\Party\Domain\Model\Person {
         $this->team = $team;
     }
 
+    /**
+     * @param string $resetToken
+     */
+    public function setResetToken($resetToken) {
+        $this->resetToken = $resetToken;
+    }
+
+    /**
+     * @return string
+     */
+    public function getResetToken() {
+        return $this->resetToken;
+    }
 }
 
 ?>
