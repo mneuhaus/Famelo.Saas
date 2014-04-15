@@ -120,7 +120,7 @@
       </trans-unit>
       <trans-unit id="form-objects_0_accounts_0_credentialsSource-confirmation">
         <source>Confirmation</source>
-        <target>Bestätigung</target>
+        <target>Best&#xE4;tigung</target>
       </trans-unit>
       <trans-unit id="Famelo.Saas.Domain.Model.Team.user.label">
         <source>user</source>
@@ -140,7 +140,7 @@
       </trans-unit>
       <trans-unit id="Famelo.Saas.Domain.Model.Transaction.currency.label">
         <source>currency</source>
-        <target>Währung</target>
+        <target>W&#xE4;hrung</target>
       </trans-unit>
       <trans-unit id="Famelo.Saas.Domain.Model.Transaction.note.label">
         <source>note</source>
@@ -156,11 +156,11 @@
       </trans-unit>
       <trans-unit id="form-objects_10_accounts_0_credentialsSource-confirmation">
         <source>Confirmation</source>
-        <target>Bestätigung</target>
+        <target>Best&#xE4;tigung</target>
       </trans-unit>
       <trans-unit id="Famelo.Saas.Domain.Model.Team.street.label">
         <source>street</source>
-        <target>Straße</target>
+        <target>Stra&#xDF;e</target>
       </trans-unit>
       <trans-unit id="Famelo.Saas.Domain.Model.Team.city.label">
         <source>city</source>
@@ -189,6 +189,10 @@
       <trans-unit id="Famelo.Saas.Domain.Model.Team.notify.infotext">
         <source>Entfernen Sie hier den haken, um nicht mehr &#xFC;ber neue oder ge&#xE4;nderte Forderungen per E-Mail benachrichtigt zu werden.</source>
         <target>Entfernen Sie hier den haken, um nicht mehr &#xFC;ber neue oder ge&#xE4;nderte Forderungen per E-Mail benachrichtigt zu werden.</target>
+      </trans-unit>
+      <trans-unit id="Famelo.Saas.Domain.Model.User.resetToken.label">
+        <source>resetToken</source>
+        <target>resetToken</target>
       </trans-unit>
     </body>
   </file>
