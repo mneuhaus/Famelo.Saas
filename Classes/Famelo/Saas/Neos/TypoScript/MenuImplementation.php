@@ -34,7 +34,7 @@ class MenuImplementation extends \TYPO3\Neos\TypoScript\MenuImplementation {
 	 */
 	protected function buildMenuItemRecursive(NodeInterface $currentNode) {
 		$access = $currentNode->getProperty('access');
-		if ($access !== NULL && $access !== 'everyone') {
+		if ($access !== NULL && $access !== '' && $access !== 'everyone') {
 			if ($access === 'guests' && $this->securityContext->getAccount() !== NULL) {
 				return NULL;
 			}
