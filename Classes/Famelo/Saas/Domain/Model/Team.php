@@ -22,7 +22,7 @@ class Team {
     /**
      * @var string
      */
-    protected $name = '';
+    protected $name;
 
     /**
      * @var \Famelo\Saas\Domain\Model\Subscription

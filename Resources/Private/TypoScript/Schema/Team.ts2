@@ -7,6 +7,11 @@ prototype(TYPO3.Expose:Schema:Famelo.Saas.Domain.Model.Team) < prototype(TYPO3.E
 		name {
 			label = 'Company Name'
 			@position = 'start'
+			validate {
+				0 {
+					type = "NotEmpty"
+				}
+			}
 		}
 
 		subscription {
@@ -25,12 +30,16 @@ prototype(TYPO3.Expose:Schema:Famelo.Saas.Domain.Model.Team) < prototype(TYPO3.E
 			}
 		}
 
+		street.@position = 'start'
+		zip.@position = 'start'
+		city.@position = 'start'
 		country {
 			element = 'TYPO3.Form:SingleSelectDropdown'
 			optionsProvider {
 				class = 'I18n'
 				type = 'Countries'
 			}
+			@position = 'start'
 		}
 
 		notify.infotext = 'Entfernen Sie hier den haken, um nicht mehr über neue oder geänderte Forderungen per E-Mail benachrichtigt zu werden.'
