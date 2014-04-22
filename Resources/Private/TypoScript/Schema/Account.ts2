@@ -22,6 +22,11 @@ prototype(TYPO3.Expose:Schema:TYPO3.Flow.Security.Account) < prototype(TYPO3.Exp
 			label = 'Password'
 			confirmationLabel = 'Confirmation'
 			element = 'TYPO3.Expose:PasswordWithHashing'
+			validate {
+				0 {
+					type = "NotEmpty"
+				}
+			}
 		}
 	}
 }

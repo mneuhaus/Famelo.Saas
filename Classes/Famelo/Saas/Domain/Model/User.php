@@ -53,7 +53,7 @@ class User extends \TYPO3\Party\Domain\Model\Person {
     /**
      * @var string
      */
-    protected $resetToken;
+    protected $resetToken = '';
 
     /**
     * TODO: Document this Method! ( __construct )
