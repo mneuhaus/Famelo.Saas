@@ -30,6 +30,7 @@ class AdminDashboardController extends \TYPO3\Flow\Mvc\Controller\ActionControll
 		$states = array(
 			'pending' => 0,
 			'accepted' => 0,
+			'bpo' => 0,
 			'rejected' => 0
 		);
 		foreach ($states as $key => $value) {
