@@ -202,6 +202,10 @@
         <source>The passwords do not match.</source>
         <target>The passwords do not match.</target>
       </trans-unit>
+      <trans-unit id="slug.wrong-username-or-password">
+        <source>Wrong username or password.</source>
+        <target>Der Benutzer oder das eingegebene Passwort ist nicht korrekt.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

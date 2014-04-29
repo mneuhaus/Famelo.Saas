@@ -114,6 +114,14 @@
         <source>roles</source>
         <target>roles</target>
       </trans-unit>
+      <trans-unit id="slug.forgotten-your-password">
+        <source>Forgotten your password?</source>
+        <target>Forgotten your password?</target>
+      </trans-unit>
+      <trans-unit id="slug.login">
+        <source>Login</source>
+        <target>Login</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

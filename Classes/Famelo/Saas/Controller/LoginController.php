@@ -3,6 +3,7 @@ namespace Famelo\Saas\Controller;
 
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Form\Core\Model\FormDefinition;
+use TYPO3\Flow\Error\Message;
 
 /**
  * @Flow\Scope("singleton")
@@ -68,8 +69,8 @@ class LoginController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 			$this->authenticationManager->authenticate();
 			$this->redirectToUri('/de/mein-konto.html');
 		} catch (\TYPO3\Flow\Security\Exception\AuthenticationRequiredException $exception) {
-			$this->addFlashMessage('Wrong username or password.');
-			throw $exception;
+			$this->addFlashMessage('Wrong username or password.', '', Message::SEVERITY_ERROR);
+			$this->forward('index');
 		}
 	}
 
