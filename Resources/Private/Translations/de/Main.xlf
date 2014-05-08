@@ -206,6 +206,98 @@
         <source>Wrong username or password.</source>
         <target>Der Benutzer oder das eingegebene Passwort ist nicht korrekt.</target>
       </trans-unit>
+      <trans-unit id="slug.account-has-been-created">
+        <source>Account has been created.</source>
+        <target>Ihr Konto wurde erstellt.</target>
+      </trans-unit>
+      <trans-unit id="slug.amount">
+        <source>Amount</source>
+        <target>Betrag</target>
+      </trans-unit>
+      <trans-unit id="slug.created-a-new-claim">
+        <source>Created a new Claim</source>
+        <target>Neue Forderung erstellt</target>
+      </trans-unit>
+      <trans-unit id="slug.start-balance">
+        <source>start balance</source>
+        <target>Startguthaben</target>
+      </trans-unit>
+      <trans-unit id="slug.transactions">
+        <source>Transactions</source>
+        <target>Transaktionen</target>
+      </trans-unit>
+      <trans-unit id="slug.1-choose-amount">
+        <source>1. Choose Amount</source>
+        <target>1. Betrag ausw&#xE4;hlen</target>
+      </trans-unit>
+      <trans-unit id="slug.2-choose-payment-method">
+        <source>2. Choose Payment method</source>
+        <target>2. Zahlungsweise w&#xE4;hlen</target>
+      </trans-unit>
+      <trans-unit id="slug.buy-now">
+        <source>Buy now</source>
+        <target>Jetzt kaufen</target>
+      </trans-unit>
+      <trans-unit id="slug.paypal-express">
+        <source>PayPal Express</source>
+        <target>PayPal Express</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source/>
+        <target/>
+      </trans-unit>
+      <trans-unit id="slug.-rechnung-herunterladen">
+        <source>&#x276A;Rechnung herunterladen&#x276B;</source>
+        <target>&#x276A;Rechnung herunterladen&#x276B;</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source/>
+        <target/>
+      </trans-unit>
+      <trans-unit id="">
+        <source/>
+        <target/>
+      </trans-unit>
+      <trans-unit id="slug.umsatzsteuer-id">
+        <source>Umsatzsteuer-ID:</source>
+        <target>Umsatzsteuer-ID:</target>
+      </trans-unit>
+      <trans-unit id="slug.invoicenumber">
+        <source>Invoicenumber:</source>
+        <target>Rechnungsnummer:</target>
+      </trans-unit>
+      <trans-unit id="slug.invoice-from">
+        <source>Invoice from</source>
+        <target>Rechnung vom</target>
+      </trans-unit>
+      <trans-unit id="slug.description">
+        <source>Description</source>
+        <target>Beschreibung</target>
+      </trans-unit>
+      <trans-unit id="slug.price">
+        <source>Price</source>
+        <target>Preis</target>
+      </trans-unit>
+      <trans-unit id="slug.points-for">
+        <source>Points for</source>
+        <target>Punkte f&#xFC;r</target>
+      </trans-unit>
+      <trans-unit id="slug.total">
+        <source>Total</source>
+        <target>Gesamtsumme</target>
+      </trans-unit>
+      <trans-unit id="slug.yours-faithfully">
+        <source>Yours faithfully</source>
+        <target>Mit freundlichen Gr&#xFC;&#xDF;en</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source/>
+        <target/>
+      </trans-unit>
+      <trans-unit id="slug.please-make-sure-you-pay-any-possible-taxes-that-my-apply-in-your-country">
+        <source>Please make sure you pay any possible Taxes that my apply in your country.</source>
+        <target>Denken Sie daran, die in Ihrem Land eventuel anfallenden Steuern, etc. zu begleichen.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

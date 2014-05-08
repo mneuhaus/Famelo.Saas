@@ -26,16 +26,24 @@
             <table>
                 <tbody>
                     <tr>
-                        <th>Umsatzsteuer-ID:</th>
+                        <th>{f:translate(value: 'Umsatzsteuer-ID:')}</th>
                         <td>DE293528834</td>
                     </tr>
                     <tr>
-                        <th>Rechnugnsnummer:</th>
+                        <th>{f:translate(value: 'Invoicenumber:')}</th>
                         <td>{transaction.invoiceNumber}</td>
                     </tr>
                     <tr>
-                        <th>Datum:</th>
+                        <th>{f:translate(value: 'Date')}:</th>
                         <td>{transaction.created -> f:format.date(forceLocale: true, localeFormatType: 'date')}</td>
+                    </tr>
+                    <tr>
+                        <th>BIC:</th>
+                        <td>GENODEM1GTL</td>
+                    </tr>
+                    <tr>
+                        <th>IBAN:</th>
+                        <td>DE77478601251052198500</td>
                     </tr>
                 </tbody>
             </table>
@@ -63,19 +71,19 @@
         </address>
 
         <div class="content">
-            <h3>Rechnung vom {transaction.created -> f:format.date(forceLocale: true, localeFormatType: 'date')}</h3>
+            <h3>{f:translate(value: 'Invoice from')} {transaction.created -> f:format.date(forceLocale: true, localeFormatType: 'date')}</h3>
 
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th>Beschreibung</th>
-                        <th>Datum</th>
-                        <th>Preis</th>
+                        <th>{f:translate(value: 'Description')}</th>
+                        <th>{f:translate(value: 'Date')}</th>
+                        <th>{f:translate(value: 'Price')}</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>{transaction.amount -> s:format.points()} Punkte für Broensfin.com</td>
+                        <td>{transaction.amount -> s:format.points()} {f:translate(value: 'Points for')} Broensfin.com</td>
                         <td>{transaction.created -> f:format.date(forceLocale: true, localeFormatType: 'date')}</td>
                         <td>{transaction.amount -> s:format.currency()}</td>
                     </tr>
@@ -100,8 +108,8 @@
                             <f:else>
                                 <tr>
                                     <td colspan="2" class="text-right">
-                                        Gesamtsumme:<br />
-                                        <small>Denken Sie daran, die in Ihrem Land eventuel anfallenden Steuern, etc. zu begleichen.</small>
+                                        {f:translate(value: 'Total')}<br />
+                                        <small>{f:translate(value: 'Please make sure you pay any possible Taxes that my apply in your country.')}</small>
                                     </td>
                                     <td>{transaction.amount -> s:format.currency()}</td>
                                 </tr>
@@ -112,7 +120,7 @@
             </table>
 
             <p>
-                Mit freundlichen Grüssen <br />
+                {f:translate(value: 'Yours faithfully')} <br />
                 Broensfin
             </p>
         </div>

@@ -2,7 +2,7 @@
 
 <f:form action="makePayment">
 <f:flashMessages />
-<h4>1. Betrag wählen</h4>
+<h4>{f:translate(value: '1. Choose Amount')}</h4>
 
 <section class="payment">
 	<fieldset class="row">
@@ -63,18 +63,18 @@
 		</div>
 	</fieldset>
 </section>
-<h4>2. Zahlungsweise wählen</h4>
+<h4>{f:translate(value: '2. Choose Payment method')}</h4>
 <section class="payment payment-second ">
 	<fieldset>
 		<f:for each="{paymentGateways}" as="paymentGateway" key="paymentGatewayName">
 				<label>
 					<f:form.radio name="paymentGateway" value="{paymentGatewayName}" />
-			    	{paymentGateway.name}
+			    	{f:translate(value: paymentGateway.name)}
 			  	</label>
 		</f:for>
 	</fieldset>
 </section>
 
-	<button type="submit" class="btn btn-success pull-right">Jetzt kaufen</button>
+	<button type="submit" class="btn btn-success pull-right">{f:translate(value: 'Buy now')}</button>
 
 </f:form>

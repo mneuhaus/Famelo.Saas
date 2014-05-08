@@ -122,6 +122,110 @@
         <source>Login</source>
         <target>Login</target>
       </trans-unit>
+      <trans-unit id="balance-history">
+        <source>Balance history</source>
+        <target>Balance history</target>
+      </trans-unit>
+      <trans-unit id="balance.date">
+        <source>Date</source>
+        <target>Date</target>
+      </trans-unit>
+      <trans-unit id="slug.amount">
+        <source>Amount</source>
+        <target>Amount</target>
+      </trans-unit>
+      <trans-unit id="balance.note">
+        <source>Note</source>
+        <target>Note</target>
+      </trans-unit>
+      <trans-unit id="balance.invoice">
+        <source>Invoice</source>
+        <target>Invoice</target>
+      </trans-unit>
+      <trans-unit id="slug.created-a-new-claim">
+        <source>Created a new Claim</source>
+        <target>Created a new Receivable</target>
+      </trans-unit>
+      <trans-unit id="slug.start-balance">
+        <source>start balance</source>
+        <target>Startbalance</target>
+      </trans-unit>
+      <trans-unit id="slug.transactions">
+        <source>Transactions</source>
+        <target>Transactions</target>
+      </trans-unit>
+      <trans-unit id="slug.1-choose-amount">
+        <source>1. Choose Amount</source>
+        <target>1. Choose Amount</target>
+      </trans-unit>
+      <trans-unit id="slug.2-choose-payment-method">
+        <source>2. Choose Payment method</source>
+        <target>2. Choose Payment method</target>
+      </trans-unit>
+      <trans-unit id="slug.paypal-express">
+        <source>PayPal Express</source>
+        <target>PayPal Express</target>
+      </trans-unit>
+      <trans-unit id="slug.buy-now">
+        <source>Buy now</source>
+        <target>Buy now</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source/>
+        <target/>
+      </trans-unit>
+      <trans-unit id="slug.download-invoice">
+        <source>Download invoice</source>
+        <target>Download invoice</target>
+      </trans-unit>
+      <trans-unit id="slug.-download-invoice">
+        <source>&#x276A;Download invoice&#x276B;</source>
+        <target>&#x276A;Download invoice&#x276B;</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source/>
+        <target/>
+      </trans-unit>
+      <trans-unit id="">
+        <source/>
+        <target/>
+      </trans-unit>
+      <trans-unit id="slug.umsatzsteuer-id">
+        <source>Umsatzsteuer-ID:</source>
+        <target>Umsatzsteuer-ID:</target>
+      </trans-unit>
+      <trans-unit id="slug.invoicenumber">
+        <source>Invoicenumber:</source>
+        <target>Invoicenumber:</target>
+      </trans-unit>
+      <trans-unit id="slug.invoice-from">
+        <source>Invoice from</source>
+        <target>Invoice from</target>
+      </trans-unit>
+      <trans-unit id="slug.description">
+        <source>Description</source>
+        <target>Description</target>
+      </trans-unit>
+      <trans-unit id="slug.price">
+        <source>Price</source>
+        <target>Price</target>
+      </trans-unit>
+      <trans-unit id="slug.points-for">
+        <source>Points for</source>
+        <target>Points for</target>
+      </trans-unit>
+      <trans-unit id="slug.total">
+        <source>Total</source>
+        <target>Total</target>
+      </trans-unit>
+      <trans-unit id="slug.yours-faithfully">
+        <source>Yours faithfully</source>
+        <target>Yours faithfully</target>
+      </trans-unit>
+      <trans-unit id="slug.please-make-sure-you-pay-any-possible-taxes-that-my-apply-in-your-country">
+        <source>Please make sure you pay any possible Taxes that my apply in your country.</source>
+        <target>Please, we pay German VAT taxes, remember to pay the import duties or taxes in your country.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

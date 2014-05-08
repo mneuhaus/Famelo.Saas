@@ -186,13 +186,13 @@
         <source>suspended</source>
         <target>Gesperrt</target>
       </trans-unit>
-      <trans-unit id="Famelo.Saas.Domain.Model.Team.notify.infotext">
-        <source>Entfernen Sie hier den haken, um nicht mehr &#xFC;ber neue oder ge&#xE4;nderte Forderungen per E-Mail benachrichtigt zu werden.</source>
-        <target>Entfernen Sie hier den haken, um nicht mehr &#xFC;ber neue oder ge&#xE4;nderte Forderungen per E-Mail benachrichtigt zu werden.</target>
-      </trans-unit>
       <trans-unit id="Famelo.Saas.Domain.Model.User.resetToken.label">
         <source>resetToken</source>
         <target>resetToken</target>
+      </trans-unit>
+      <trans-unit id="Famelo.Saas.Domain.Model.Team.notify.infotext">
+        <source>Please uncheck this checkbox, if you don't want to receive notifications about new or updated receivables</source>
+        <target>Entfernen Sie hier den Haken, um nicht mehr über neue oder geänderte Forderungen per E-Mail benachrichtigt zu werden.</target>
       </trans-unit>
     </body>
   </file>

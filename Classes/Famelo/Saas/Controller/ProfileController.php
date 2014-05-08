@@ -17,6 +17,12 @@ class ProfileController extends EditController {
 	protected $transactionService;
 
 	/**
+	 * @var \Famelo\Saas\Services\NodeTargetUriService
+	 * @Flow\Inject
+	 */
+	protected $nodeTargetUriService;
+
+	/**
 	 * @return void
 	 */
 	public function initializeIndexAction() {
@@ -55,7 +61,7 @@ class ProfileController extends EditController {
 		}
 		$this->persistenceManager->persistAll();
 		$this->flashMessageContainer->addMessage(new Message('Account has been updated.'));
-		$this->redirectToUri('/de/mein-konto.html');
+		$this->redirectToUri($this->nodeTargetUriService->getUri('mein-konto'));
 	}
 }
 

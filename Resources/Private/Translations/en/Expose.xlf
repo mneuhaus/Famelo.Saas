@@ -1,0 +1,159 @@
+<?xml version="1.0"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file original="" source-language="en" target-language="en" datatype="plaintext">
+    <body>
+      <trans-unit id="form-objects_0_users_0_accounts_0_credentialsSource-confirmation">
+        <source>Confirmation</source>
+        <target>Confirmation</target>
+      </trans-unit>
+      <trans-unit id="Famelo.Saas.Domain.Model.Team.users.label">
+        <source>users</source>
+        <target>users</target>
+      </trans-unit>
+      <trans-unit id="Famelo.Saas.Domain.Model.Team.name.label">
+        <source>Company Name</source>
+        <target>Company Name</target>
+      </trans-unit>
+      <trans-unit id="Famelo.Saas.Domain.Model.Team.subscription.label">
+        <source>Subscription</source>
+        <target>Subscription</target>
+      </trans-unit>
+      <trans-unit id="Famelo.Saas.Domain.Model.Team.suspended.label">
+        <source>suspended</source>
+        <target>suspended</target>
+      </trans-unit>
+      <trans-unit id="Famelo.Saas.Domain.Model.Team.deletedAt.label">
+        <source>deletedAt</source>
+        <target>deletedAt</target>
+      </trans-unit>
+      <trans-unit id="Famelo.Saas.Domain.Model.Team.street.label">
+        <source>street</source>
+        <target>Street</target>
+      </trans-unit>
+      <trans-unit id="Famelo.Saas.Domain.Model.Team.city.label">
+        <source>city</source>
+        <target>City</target>
+      </trans-unit>
+      <trans-unit id="Famelo.Saas.Domain.Model.Team.zip.label">
+        <source>zip</source>
+        <target>ZIP</target>
+      </trans-unit>
+      <trans-unit id="Famelo.Saas.Domain.Model.Team.country.label">
+        <source>country</source>
+        <target>Country</target>
+      </trans-unit>
+      <trans-unit id="Famelo.Saas.Domain.Model.Team.notify.infotext">
+        <source>Please uncheck this checkbox, if you don't want to receive notifications about new or updated receivables</source>
+        <target>Please uncheck this checkbox, if you don't want to receive notifications about new or updated receivables</target>
+      </trans-unit>
+      <trans-unit id="Famelo.Saas.Domain.Model.Team.notify.label">
+        <source>notify</source>
+        <target>Notification</target>
+      </trans-unit>
+      <trans-unit id="Famelo.Saas.Domain.Model.User.policyService.label">
+        <source>policyService</source>
+        <target>policyService</target>
+      </trans-unit>
+      <trans-unit id="Famelo.Saas.Domain.Model.User.accounts.label">
+        <source>accounts</source>
+        <target>accounts</target>
+      </trans-unit>
+      <trans-unit id="Famelo.Saas.Domain.Model.User.phone.label">
+        <source>phone</source>
+        <target>Phone</target>
+      </trans-unit>
+      <trans-unit id="Famelo.Saas.Domain.Model.User.mobile.label">
+        <source>mobile</source>
+        <target>Mobile</target>
+      </trans-unit>
+      <trans-unit id="Famelo.Saas.Domain.Model.User.email.label">
+        <source>email</source>
+        <target>E-Mail</target>
+      </trans-unit>
+      <trans-unit id="Famelo.Saas.Domain.Model.User.team.label">
+        <source>team</source>
+        <target>team</target>
+      </trans-unit>
+      <trans-unit id="Famelo.Saas.Domain.Model.User.resetToken.label">
+        <source>resetToken</source>
+        <target>resetToken</target>
+      </trans-unit>
+      <trans-unit id="Famelo.Saas.Domain.Model.User.name.label">
+        <source>name</source>
+        <target>name</target>
+      </trans-unit>
+      <trans-unit id="Famelo.Saas.Domain.Model.User.electronicAddresses.label">
+        <source>electronicAddresses</source>
+        <target>electronicAddresses</target>
+      </trans-unit>
+      <trans-unit id="Famelo.Saas.Domain.Model.User.primaryElectronicAddress.label">
+        <source>primaryElectronicAddress</source>
+        <target>primaryElectronicAddress</target>
+      </trans-unit>
+      <trans-unit id="TYPO3.Party.Domain.Model.PersonName.title.label">
+        <source>title</source>
+        <target>Title</target>
+      </trans-unit>
+      <trans-unit id="TYPO3.Party.Domain.Model.PersonName.firstName.label">
+        <source>firstName</source>
+        <target>Name</target>
+      </trans-unit>
+      <trans-unit id="TYPO3.Party.Domain.Model.PersonName.middleName.label">
+        <source>middleName</source>
+        <target>middleName</target>
+      </trans-unit>
+      <trans-unit id="TYPO3.Party.Domain.Model.PersonName.lastName.label">
+        <source>lastName</source>
+        <target>Surname</target>
+      </trans-unit>
+      <trans-unit id="TYPO3.Party.Domain.Model.PersonName.otherName.label">
+        <source>otherName</source>
+        <target>otherName</target>
+      </trans-unit>
+      <trans-unit id="TYPO3.Party.Domain.Model.PersonName.alias.label">
+        <source>alias</source>
+        <target>alias</target>
+      </trans-unit>
+      <trans-unit id="TYPO3.Party.Domain.Model.PersonName.fullName.label">
+        <source>fullName</source>
+        <target>fullName</target>
+      </trans-unit>
+      <trans-unit id="TYPO3.Flow.Security.Account.accountIdentifier.label">
+        <source>accountIdentifier</source>
+        <target>Username</target>
+      </trans-unit>
+      <trans-unit id="TYPO3.Flow.Security.Account.authenticationProviderName.label">
+        <source>authenticationProviderName</source>
+        <target>authenticationProviderName</target>
+      </trans-unit>
+      <trans-unit id="TYPO3.Flow.Security.Account.credentialsSource.label">
+        <source>credentialsSource</source>
+        <target>Password</target>
+      </trans-unit>
+      <trans-unit id="TYPO3.Flow.Security.Account.party.label">
+        <source>party</source>
+        <target>party</target>
+      </trans-unit>
+      <trans-unit id="TYPO3.Flow.Security.Account.creationDate.label">
+        <source>creationDate</source>
+        <target>creationDate</target>
+      </trans-unit>
+      <trans-unit id="TYPO3.Flow.Security.Account.expirationDate.label">
+        <source>expirationDate</source>
+        <target>expirationDate</target>
+      </trans-unit>
+      <trans-unit id="TYPO3.Flow.Security.Account.roles.label">
+        <source>roles</source>
+        <target>roles</target>
+      </trans-unit>
+      <trans-unit id="TYPO3.Flow.Security.Account.credentialsSource.confirmationLabel">
+        <source>Confirmation</source>
+        <target>Confirmation</target>
+      </trans-unit>
+      <trans-unit id="form-objects_0_accounts_0_credentialsSource-confirmation">
+        <source>Confirmation</source>
+        <target>Confirmation</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

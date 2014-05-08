@@ -17,6 +17,7 @@ class RegistrationController extends \TYPO3\Flow\Mvc\Controller\ActionController
 	public function indexAction() {
 		$factory = new TeamFactory();
 		$this->view->assign('team', $factory->create());
+		// $this->redirectToUri('/de/login.html');
 	}
 
 	/**

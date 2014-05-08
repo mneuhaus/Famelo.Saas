@@ -41,8 +41,7 @@ prototype(TYPO3.Expose:Schema:Famelo.Saas.Domain.Model.Team) < prototype(TYPO3.E
 			}
 			@position = 'start'
 		}
-
-		notify.infotext = 'Entfernen Sie hier den haken, um nicht mehr über neue oder geänderte Forderungen per E-Mail benachrichtigt zu werden.'
+		notify.infotext = 'Please uncheck this checkbox, if you don\'t want to receive notifications about new or updated receivables'
 	}
 }
 

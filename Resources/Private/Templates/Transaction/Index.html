@@ -5,7 +5,7 @@
 
 <b:flashMessages />
 
-<h2>Transaktionen</h2>
+<h2>{f:translate(value: 'Transactions')}</h2>
 
 <div class="transactions">
 	<h3><f:translate id="balance-history">Balance history</f:translate></h3>
@@ -17,7 +17,7 @@
 			        	<i class="fa fa-calendar"></i>
 			        	<f:translate id="balance.date">Date</f:translate>
 			        </th>
-			        <th>Amount</th>
+			        <th>{f:translate(value: 'Amount')}</th>
 			        <th>
 			        	<i class="fa fa-paperclip"></i>
 			        	<f:translate id="balance.note">Note</f:translate>
@@ -32,11 +32,11 @@
 				<tr{f:if(condition: iteration.isFirst, then: ' class="first"')}>
 					<td>{transaction.created -> f:format.date(forceLocale: true)}</td>
 					<td class="transaction-amount" data-amount="{transaction.amount}">{transaction.amount -> s:format.points()} ({transaction.amount -> s:format.currency()})</td>
-					<td>{transaction.note}</td>
+					<td>{f:translate(value: transaction.note)}</td>
 					<td>
 						<f:if condition="{transaction.invoiceNumber}">
 							<f:link.action action="index" controller="Invoice" package="Famelo.Saas" arguments="{transaction: transaction}">
-								 <f:translate>Download invoice</f:translate>
+								 <f:translate>{f:translate(value: 'Download invoice')}</f:translate>
 							</f:link.action>
 						</f:if>
 					</td>
