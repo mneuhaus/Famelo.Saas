@@ -226,6 +226,10 @@
         <source>Please make sure you pay any possible Taxes that my apply in your country.</source>
         <target>Please, we pay German VAT taxes, remember to pay the import duties or taxes in your country.</target>
       </trans-unit>
+      <trans-unit id="">
+        <source/>
+        <target/>
+      </trans-unit>
     </body>
   </file>
 </xliff>
