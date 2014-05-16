@@ -4,9 +4,9 @@
         {namespace s=Famelo\Saas\ViewHelpers}
         <m:message
             to="{team.mainUser.email}:{team.mainUser.name}"
-            subject="Ihr Konto wurde gesperrt" />
+            subject="{f:translate(value: 'You account has been suspended')}" />
     </head>
     <body>
-        Bitte nehmen Sie mit uns Kontakt auf, um das Problem zu lösen.
+        {f:translate(value: 'Please contact us to resolve the situation')}
     </body>
 </html>

@@ -64,7 +64,7 @@ class Team {
     /**
      * @var boolean
      */
-    protected $notify;
+    protected $notify = TRUE;
 
     /**
     * TODO: Document this Method! ( __construct )
@@ -225,6 +225,9 @@ class Team {
         }
     }
 
+    public function getHasZipAndCity() {
+        return !empty($this->zip) && !empty($this->street);
+    }
 }
 
 ?>

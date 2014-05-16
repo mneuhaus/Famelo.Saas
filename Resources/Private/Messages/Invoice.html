@@ -4,10 +4,10 @@
         {namespace s=Famelo\Saas\ViewHelpers}
         <m:message
             to="{transaction.subscription.team.mainUser.email}:{transaction.subscription.team.mainUser.name}"
-            subject="Rechnung" />
+            subject="{f:translate(value: 'Invoice for Broensfin')}" />
     </head>
     <body>
-        <h3>Rechnung</h3>
-        <f:link.action action="index" controller="Invoice" package="Famelo.Saas" arguments="{transaction: transaction}">Rechnung.pdf</f:link.action>
+        <h3>{f:translate(value: 'Invoice for Broensfin')}</h3>
+        <f:link.action action="index" controller="Invoice" package="Famelo.Saas" arguments="{transaction: transaction}">{f:translate(value: 'Invoice for Broensfin')}.pdf</f:link.action>
     </body>
 </html>

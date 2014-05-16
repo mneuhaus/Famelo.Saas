@@ -5,15 +5,18 @@
         <m:message
             toEmail="{user.email}"
             toName="{user.name}"
-            subject="Invitation to Broensfin" />
+            subject="{f:translate(value: 'Invitation to Broensfin')}" />
     </head>
     <body>
-        <h3>You have been invited to Broensfin</h3>
+        <f:translate id="message.invite">
+            <h3>You have been invited to Broensfin</h3>
+            <p>
+            You have been invited to use Broensfin.
+            Please follow the link below to accept the invitation and create
+            an account.
+            </p>
+        </f:translate>
 
-        <p>
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.
-        </p>
-
-        <a href="{baseUri}de/invite.html?--famelo_saas-invite[@package]=famelo.saas&--famelo_saas-invite[@controller]=invite&--famelo_saas-invite[@action]=index&--famelo_saas-invite[user]={user.identifier}">Click here to accept the Invitation.</a>
+        <a href="{baseUri}de/invite.html?--famelo_saas-invite[@package]=famelo.saas&--famelo_saas-invite[@controller]=invite&--famelo_saas-invite[@action]=index&--famelo_saas-invite[user]={user.identifier}">{f:translate(value: 'Click here to accept the Invitation.')}</a>
     </body>
 </html>

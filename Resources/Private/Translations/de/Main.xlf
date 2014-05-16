@@ -298,6 +298,32 @@
         <source>Please make sure you pay any possible Taxes that my apply in your country.</source>
         <target>Denken Sie daran, die in Ihrem Land eventuel anfallenden Steuern, etc. zu begleichen.</target>
       </trans-unit>
+      <trans-unit id="slug.invitation-to-broensfin">
+        <source>Invitation to Broensfin</source>
+        <target>Invitation to Broensfin</target>
+      </trans-unit>
+      <trans-unit id="message.invite">
+        <source>
+            &lt;h3&gt;You have been invited to Broensfin&lt;/h3&gt;
+            &lt;p&gt;
+            You have been invited to use Broensfin.
+            Please follow the link below to accept the invitation and create
+            an account.
+            &lt;/p&gt;
+        </source>
+        <target>
+            &lt;h3&gt;You have been invited to Broensfin&lt;/h3&gt;
+            &lt;p&gt;
+            You have been invited to use Broensfin.
+            Please follow the link below to accept the invitation and create
+            an account.
+            &lt;/p&gt;
+        </target>
+      </trans-unit>
+      <trans-unit id="slug.click-here-to-accept-the-invitation">
+        <source>Click here to accept the Invitation.</source>
+        <target>Click here to accept the Invitation.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
