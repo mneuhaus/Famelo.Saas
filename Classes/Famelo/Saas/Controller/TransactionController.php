@@ -14,7 +14,7 @@ use TYPO3\Flow\Utility\Algorithms;
 class TransactionController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 
 	/**
-	 * @var \Famelo\Saas\Domain\Service\TransactionService
+	 * @var \Famelo\Saas\Services\TransactionService
 	 * @Flow\Inject
 	 */
 	protected $transactionService;

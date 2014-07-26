@@ -33,7 +33,7 @@ class PointsViewHelper extends AbstractViewHelper {
 	protected $configurationManager;
 
 	/**
-	 * @var \Famelo\Saas\Domain\Service\TransactionService
+	 * @var \Famelo\Saas\Services\TransactionService
 	 * @Flow\Inject
 	 */
 	protected $transactionService;

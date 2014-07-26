@@ -32,7 +32,7 @@ class CurrencyViewHelper extends \TYPO3\Fluid\ViewHelpers\Format\CurrencyViewHel
 	protected $i18nService;
 
 	/**
-	 * @var \Famelo\Saas\Domain\Service\TransactionService
+	 * @var \Famelo\Saas\Services\TransactionService
 	 * @Flow\Inject
 	 */
 	protected $transactionService;

@@ -1,13 +1,4 @@
 -
-  name: 'Logout'
-  uriPattern: 'logout.html'
-  defaults:
-    '@format': 'html'
-    '@controller': 'Login'
-    '@action':     'logout'
-    '@package': 'Famelo.Saas'
-
--
   name: 'Invoice'
   uriPattern: 'invoice'
   defaults:

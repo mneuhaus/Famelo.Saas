@@ -36,13 +36,13 @@ class SaasService {
 	protected $flashMessageContainer;
 
 	/**
-	 * @var \Famelo\Saas\Domain\Service\TransactionService
+	 * @var \Famelo\Saas\Services\TransactionService
 	 * @Flow\Inject
 	 */
 	protected $transactionService;
 
 	/**
-	 * @var \Famelo\Saas\Domain\Service\TransactionService
+	 * @var \Famelo\Saas\Services\TransactionService
 	 * @Flow\Inject(setting="paymentUrl")
 	 */
 	protected $paymentUrl;

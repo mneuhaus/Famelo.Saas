@@ -4,19 +4,17 @@ resources:
     Famelo_Saas_Transaction: 'method(Famelo\Saas\Controller\TransactionController->.*Action())'
     Famelo_Saas_Management: 'method(Famelo\Saas\Controller\Transaction\StateController->.*Action())'
     Famelo_Saas_AdminDashboardPlugin: 'method(Famelo\Saas\Controller\AdminDashboardController->.*Action())'
-roles:
-  Administrator:
-    - Customer
-  Customer:
-    - Everybody
+
+# roles:
+#   Administrator:
+#     - Customer
+#   Customer:
+#     - Everybody
+
 acls:
   Everybody:
     methods:
       Famelo_Saas_General: GRANT
       Famelo_Saas_AdminDashboardPlugin: GRANT
-  Customer:
-    methods:
       Famelo_Saas_Transaction: GRANT
-  Administrator:
-    methods:
-      Famelo_Saas_Management: GRANT
+      Famelo_Saas_Management: DENY

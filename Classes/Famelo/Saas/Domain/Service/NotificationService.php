@@ -1,5 +1,5 @@
 <?php
-namespace Famelo\Saas\Domain\Service;
+namespace Famelo\Saas\Services;
 
 use TYPO3\Flow\Annotations as Flow;
 

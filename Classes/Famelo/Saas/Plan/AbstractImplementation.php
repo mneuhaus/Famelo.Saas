@@ -16,7 +16,7 @@ class AbstractImplementation implements PlanImplementationInterface {
 	protected $configurationManager;
 
 	/**
-	 * @var \Famelo\Saas\Domain\Service\TransactionService
+	 * @var \Famelo\Saas\Services\TransactionService
 	 * @Flow\Inject
 	 */
 	protected $transactionService;

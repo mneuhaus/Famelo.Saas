@@ -1,17 +1,14 @@
 Famelo:
   Saas:
-    targets:
-      payment: "/de/mein-konto/transaktionen.html?--famelo_saas-transactions%5B%40package%5D=famelo.saas&--famelo_saas-transactions%5B%40controller%5D=transaction&--famelo_saas-transactions%5B%40action%5D=choosepayment"
-      debtDetail: "/de/mein-konto/meine-verbindlichkeiten.html?--typo3_neos_expose-plugin[@package]=famelo.broensfin&--typo3_neos_expose-plugin[@controller]=claim\detail&--typo3_neos_expose-plugin[@action]=index&--typo3_neos_expose-plugin[type]=Famelo\Broensfin\Domain\Model\Claim&--typo3_neos_expose-plugin[@subpackage]=&--typo3_neos_expose-plugin[objects][0][__identity]="
-      claimDetail: "/de/mein-konto/meine-forderungen.html?--typo3_neos_expose-plugin[@package]=famelo.broensfin&--typo3_neos_expose-plugin[@controller]=claim\detail&--typo3_neos_expose-plugin[@action]=index&--typo3_neos_expose-plugin[type]=Famelo\Broensfin\Domain\Model\Claim&--typo3_neos_expose-plugin[@subpackage]=&--typo3_neos_expose-plugin[objects][0][__identity]="
     adminEmail: mneuhaus@famelo.com
+
     defaults:
       InvoiceDocument: "Famelo.Saas:Invoice"
       InvoiceMessage: "Famelo.Saas:Invoice"
       plan: 'Deposit'
       currency: 'EUR'
       balance: 5
-    paymentUrl: /de/mein-konto/transaktionen.html?--famelo_saas-transactions%5B%40package%5D=famelo.saas&--famelo_saas-transactions%5B%40controller%5D=transaction&--famelo_saas-transactions%5B%40action%5D=choosepayment
+
     plans:
       Flatrate:
         name: "Flatrate"
@@ -58,26 +55,7 @@ Famelo:
 
 TYPO3:
   Flow:
-    security:
-      authentication:
-        providers:
-          Typo3BackendProvider:
-            requestPatterns:
-              'Famelo\Saas\Security\NeosRequestPattern': 'backend'
-          SaasProvider:
-            provider: 'Famelo\Saas\Security\PersistedUsernamePasswordProvider'
-            requestPatterns:
-              'Famelo\Saas\Security\NeosRequestPattern': 'frontend'
-            entryPoint: 'WebRedirect'
-            entryPointOptions:
-              uri: de/login.html
-
     object:
       excludeClasses:
        'Omnipay.Common': ['.*']
        'Guzzle.Http': ['.*']
-
-  Neos:
-    typoScript:
-      autoInclude:
-        'Famelo.Saas': TRUE

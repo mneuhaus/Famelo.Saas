@@ -1,5 +1,5 @@
 <?php
-namespace Famelo\Saas\Domain\Service;
+namespace Famelo\Saas\Services;
 
 use Famelo\Saas\Domain\Model\Subscription;
 use Famelo\Saas\Domain\Model\Transaction;
