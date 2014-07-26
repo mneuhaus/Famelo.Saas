@@ -3,13 +3,11 @@ namespace Famelo\Saas\Domain\Model;
 use Doctrine\ORM\Mapping as ORM;
 use TYPO3\Flow\Annotations as Flow;
 use Famelo\Common\Annotations as Common;
-use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @Flow\Entity
  * @ORM\HasLifecycleCallbacks
  * @Common\Accessable
- * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false)
  */
 class Team {
 

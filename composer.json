@@ -1,7 +1,7 @@
 {
     "name": "famelo/saas",
     "type": "typo3-flow-package",
-    "description": "Add description here",
+    "description": "Helpers to create a TYPO3 Flow based SAAS App",
     "require": {
         "typo3/flow": "*",
         "famelo/pdf": "*",

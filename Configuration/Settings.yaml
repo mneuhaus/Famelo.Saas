@@ -58,4 +58,3 @@ TYPO3:
     object:
       excludeClasses:
        'Omnipay.Common': ['.*']
-       'Guzzle.Http': ['.*']

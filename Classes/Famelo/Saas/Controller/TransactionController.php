@@ -26,12 +26,6 @@ class TransactionController extends \TYPO3\Flow\Mvc\Controller\ActionController 
 	protected $saasService;
 
 	/**
-	 * @var \Famelo\Broensfin\Domain\Repository\ClaimRepository
-	 * @Flow\Inject
-	 */
-	protected $claimRepository;
-
-	/**
 	 * @return string
 	 */
 	public function indexAction() {

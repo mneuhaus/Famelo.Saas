@@ -19,7 +19,7 @@ use TYPO3\Flow\Security\Account;
 /**
  *
  */
-class SaasMatcher extends PolicyMatcher {
+class SaasMatcher extends RequestMatcher {
 	/**
 	 * @var string
 	 */
