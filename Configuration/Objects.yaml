@@ -7,3 +7,6 @@ Famelo\Saas\Services\I18nService:
         arguments:
           1:
             value: Flow_I18n_AvailableLocalesCache
+
+Famelo\Saas\Domain\Model\SaasPartyInterface:
+  className: Famelo\Harvest\Domain\Model\User

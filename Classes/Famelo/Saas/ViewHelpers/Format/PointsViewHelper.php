@@ -33,12 +33,6 @@ class PointsViewHelper extends AbstractViewHelper {
 	protected $configurationManager;
 
 	/**
-	 * @var \Famelo\Saas\Services\TransactionService
-	 * @Flow\Inject
-	 */
-	protected $transactionService;
-
-	/**
 	 * @param float $amount
 	 * @param string $currency
 	 * @return string the formatted points.
@@ -51,8 +45,8 @@ class PointsViewHelper extends AbstractViewHelper {
 
 		$exchangeRates = $this->configurationManager->getConfiguration(ConfigurationManager::CONFIGURATION_TYPE_SETTINGS, 'Famelo.Saas.exchangeRates');
 
-		if (is_object($this->transactionService->getSubscription()) && $currency === NULL) {
-			$currency = $this->transactionService->getSubscription()->getCurrency();
+		if (is_object($this->transactionService->getPlan()) && $currency === NULL) {
+			$currency = $this->transactionService->getPlan()->getCurrency();
 		}
 
 		if (isset($exchangeRates[$currency])) {

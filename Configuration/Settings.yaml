@@ -9,23 +9,43 @@ Famelo:
       currency: 'EUR'
       balance: 5
 
-    plans:
-      Flatrate:
-        name: "Flatrate"
-        cycle: "1 month"
-        implementation: "Famelo\\Saas\\Plan\\FlatrateImplementation"
+#    Plans: []
+      # Free:
+      #   name: "Free"
+      #   cycle: "1 month"
+      #   implementation: "Famelo\\Saas\\Plan\\FlatrateImplementation"
+      #   choosable: true
+      #   amount: 0.0
 
-      Deposit:
-        name: "Deposit"
-        cycle: "1 month"
-        implementation: "Famelo\\Saas\\Plan\\DepositImplementation"
+      # Small:
+      #   name: "Small"
+      #   cycle: "1 month"
+      #   implementation: "Famelo\\Saas\\Plan\\FlatrateImplementation"
+      #   choosable: true
+      #   amount: 5.0
 
-      Billing:
-        name: "Billing"
-        cycle: "1 month"
-        implementation: "Famelo\\Saas\\Plan\\DepositImplementation"
+      # Large:
+      #   name: "Large"
+      #   cycle: "1 month"
+      #   implementation: "Famelo\\Saas\\Plan\\FlatrateImplementation"
+      #   choosable: true
+      #   amount: 10.0
 
-    paymentGateways:
+      # Deposit:
+      #   name: "Deposit"
+      #   cycle: "1 month"
+      #   implementation: "Famelo\\Saas\\Plan\\DepositImplementation"
+      #   choosable: true
+      #   amount: 10.0
+
+      # Billing:
+      #   name: "Billing"
+      #   cycle: "1 month"
+      #   implementation: "Famelo\\Saas\\Plan\\DepositImplementation"
+      #   choosable: true
+      #   amount: 10.0
+
+    PaymentGateways:
       Invoice:
           name: "Invoice"
           gateway: Manual

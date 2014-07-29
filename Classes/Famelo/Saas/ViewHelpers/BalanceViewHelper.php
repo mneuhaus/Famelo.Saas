@@ -18,11 +18,6 @@ use TYPO3\Flow\Annotations as Flow;
  * @api
  */
 class BalanceViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper {
-	/**
-	 * @var \Famelo\Saas\Services\TransactionService
-	 * @Flow\Inject
-	 */
-	protected $transactionService;
 
 	/**
 	 * @return string Rendered string

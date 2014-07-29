@@ -15,12 +15,6 @@ class AbstractImplementation implements PlanImplementationInterface {
 	 */
 	protected $configurationManager;
 
-	/**
-	 * @var \Famelo\Saas\Services\TransactionService
-	 * @Flow\Inject
-	 */
-	protected $transactionService;
-
 	public function createTransaction($amount, $paymentGateway, $currency = NULL, $note = NULL) {
 		$transaction = new Transaction();
 		$transaction->setAmount($amount);
@@ -34,7 +28,7 @@ class AbstractImplementation implements PlanImplementationInterface {
 			throw new \Famelo\Saas\Exception\InsufficientFundsException();
 		}
 		$this->convertCurrency($transaction);
-		$this->transactionService->getSubscription()->addTransaction($transaction);
+		$this->transactionService->getPlan()->addTransaction($transaction);
 	}
 
 	public function withdraw($amount, $note = NULL, $currency = NULL) {
@@ -48,11 +42,11 @@ class AbstractImplementation implements PlanImplementationInterface {
 
 	public function hasFunds($transaction) {
 		$this->convertCurrency($transaction);
-		return ($this->transactionService->getSubscription()->getBalance() + $transaction->getAmount()) > 0;
+		return ($this->transactionService->getPlan()->getBalance() + $transaction->getAmount()) > 0;
 	}
 
 	public function convertCurrency($transaction) {
-		$subscriptionCurrency = $this->transactionService->getSubscription()->getCurrency();
+		$subscriptionCurrency = $this->transactionService->getPlan()->getCurrency();
 		if ($subscriptionCurrency === $transaction->getCurrency()) {
 			return;
 		}

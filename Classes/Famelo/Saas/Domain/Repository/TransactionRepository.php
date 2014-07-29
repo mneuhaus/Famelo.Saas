@@ -14,17 +14,13 @@ class TransactionRepository extends \TYPO3\Flow\Persistence\Repository {
 	 */
 	protected $securityContext;
 
-	public function getUserTransactions() {
-		$user = $this->securityContext->getPartyByType('\Famelo\Saas\Domain\Model\User');
+	public function getPartyTransactions() {
+		$party = $this->securityContext->getParty();
 
-		if ($user instanceof \Famelo\Saas\Domain\Model\User) {
-			$team = $user->getTeam();
-		}
-
-		if ($team instanceof \Famelo\Saas\Domain\Model\Team) {
-			$subscription = $team->getSubscription();
+		if ($party instanceof SaasParty) {
+			$plan = $party->getPlan();
 			$query = $this->createQuery();
-			$query->matching($query->equals('subscription', $subscription));
+			$query->matching($query->equals('plan', $plan));
 			$query->setOrderings(array(
 				'created' => \TYPO3\Flow\Persistence\QueryInterface::ORDER_DESCENDING
 			));

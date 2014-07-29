@@ -1,8 +1,8 @@
 <?php
-namespace Famelo\Saas\ViewHelpers;
+namespace Famelo\Saas\Rules;
 
 /*                                                                        *
- * This script belongs to the Flow package "TYPO3.Expose".                *
+ * This script belongs to the TYPO3 Flow framework.                       *
  *                                                                        *
  * It is free software; you can redistribute it and/or modify it under    *
  * the terms of the GNU Lesser General Public License, either version 3   *
@@ -11,25 +11,11 @@ namespace Famelo\Saas\ViewHelpers;
  * The TYPO3 project - inspiring people to share!                         *
  *                                                                        */
 
-use Doctrine\ORM\Mapping as ORM;
 use TYPO3\Flow\Annotations as Flow;
 
-/**
- * @api
- */
-class SaasViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper {
-
+interface RulesInterface {
 	/**
-	 * @param string $as
-	 * @return string Rendered string
-	 * @api
-	 */
-	public function render($as = 'transactionService') {
-		$this->templateVariableContainer->add($as, $this->transactionService);
-		$content = $this->renderChildren();
-		$this->templateVariableContainer->remove($as);
-		return $content;
-	}
+      * contains short name for this matcher used for reference in the eel expression
+      */
+	// const NAME = '';
 }
-
-?>

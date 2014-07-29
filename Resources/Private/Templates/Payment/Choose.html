@@ -1,0 +1,44 @@
+<f:layout name="Default" />
+{namespace s=Famelo\Saas\ViewHelpers}
+
+<f:section name="Content">
+<f:flashMessages />
+
+<h4>Due Amount:</h4>
+
+<table class="table table-bordered table-striped">
+	<tr><th>Plan</th><th>Cost</th></tr>
+	<tr><td>{party.plan.configuration.name}</td><td>{party.plan.dueAmount}€</td></tr>
+</table>
+
+<h4>Choose Payment</h4>
+
+<div class="row">
+	<f:for each="{paymentGateways}" as="paymentGateway" key="paymentGatewayName">
+		<div class="col-md-{col-width}">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="text-center">{paymentGateway.name}</h4>
+				</div>
+				<f:if condition="{paymentGateway.description}">
+				<div class="panel-body text-center">
+					<p class="lead">
+						<strong>{paymentGateway.description}</strong>
+					</p>
+				</div>
+				</f:if>
+				<ul class="list-group list-group-flush text-center">
+					<f:for each="{paymentGateway.bulletPoints}" as="bulletPoint">
+						<li class="list-group-item">{bulletPoint}</li>
+					</f:for>
+				</ul>
+				<div class="panel-footer">
+					<f:link.action action="pay" arguments="{paymentGatewayName: paymentGatewayName}" class="btn btn-lg btn-block btn-default">
+						Select
+					</f:link.action>
+				</div>
+			</div>
+		</div>
+	</f:for>
+</div>
+</f:section>

@@ -1,8 +1,8 @@
 <?php
-namespace Famelo\Saas\ViewHelpers;
+namespace Famelo\Saas\Annotations;
 
 /*                                                                        *
- * This script belongs to the Flow package "TYPO3.Expose".                *
+ * This script belongs to the TYPO3 Flow framework.                       *
  *                                                                        *
  * It is free software; you can redistribute it and/or modify it under    *
  * the terms of the GNU Lesser General Public License, either version 3   *
@@ -11,25 +11,32 @@ namespace Famelo\Saas\ViewHelpers;
  * The TYPO3 project - inspiring people to share!                         *
  *                                                                        */
 
-use Doctrine\ORM\Mapping as ORM;
-use TYPO3\Flow\Annotations as Flow;
-
 /**
- * @api
+ * @Annotation
+ * @Target("PROPERTY")
  */
-class SaasViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper {
+final class Tenancy {
 
 	/**
-	 * @param string $as
-	 * @return string Rendered string
-	 * @api
+	 * @var string
 	 */
-	public function render($as = 'transactionService') {
-		$this->templateVariableContainer->add($as, $this->transactionService);
-		$content = $this->renderChildren();
-		$this->templateVariableContainer->remove($as);
-		return $content;
-	}
-}
+	public $tenancyRole;
 
-?>
+	/**
+	 * @var string
+	 */
+	public $managingRole;
+
+	/**
+	 * @param array $values
+	 */
+	public function __construct(array $values) {
+		if (isset($values['tenant'])) {
+			$this->tenancyRole = (boolean)$values['tenant'];
+		}
+		if (isset($values['manager'])) {
+			$this->managingRole = (boolean)$values['manager'];
+		}
+	}
+
+}

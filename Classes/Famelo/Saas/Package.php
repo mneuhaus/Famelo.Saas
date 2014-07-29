@@ -29,7 +29,12 @@ class Package extends BasePackage {
 	public function boot(Bootstrap $bootstrap) {
 		$dispatcher = $bootstrap->getSignalSlotDispatcher();
 		$dispatcher->connect('TYPO3\Flow\Configuration\ConfigurationManager', 'configurationManagerReady', function(ConfigurationManager $configurationManager) {
-			$configurationManager->registerConfigurationType('Saas', ConfigurationManager::CONFIGURATION_PROCESSING_TYPE_APPEND);
+			$configurationManager->registerConfigurationType('Rules', ConfigurationManager::CONFIGURATION_PROCESSING_TYPE_APPEND);
 		});
+
+		$dispatcher->connect(
+			'TYPO3\Flow\Mvc\ActionRequest', 'requestDispatched',
+			'Famelo\Saas\Services\RedirectService', 'injectCurrentRequest'
+		);
 	}
 }

@@ -32,7 +32,8 @@ class TaxViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper {
 	 * @api
 	 */
 	public function render($transaction, $tax = NULL) {
-		$country = $transaction->getTeam()->getCountry();
+		return $tax;
+		$country = $transaction->getCountry();
 
 		$taxes = $this->configurationManager->getConfiguration(ConfigurationManager::CONFIGURATION_TYPE_SETTINGS, 'Famelo.Saas.taxes');
 

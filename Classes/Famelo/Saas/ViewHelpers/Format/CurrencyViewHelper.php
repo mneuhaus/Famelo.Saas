@@ -31,11 +31,6 @@ class CurrencyViewHelper extends \TYPO3\Fluid\ViewHelpers\Format\CurrencyViewHel
 	 */
 	protected $i18nService;
 
-	/**
-	 * @var \Famelo\Saas\Services\TransactionService
-	 * @Flow\Inject
-	 */
-	protected $transactionService;
 
 	/**
 	 * @param string $currencySign (optional) The currency sign, eg $ or €.
@@ -51,12 +46,12 @@ class CurrencyViewHelper extends \TYPO3\Fluid\ViewHelpers\Format\CurrencyViewHel
 	public function render($currencySign = NULL, $decimalSeparator = ',', $thousandsSeparator = '.', $currency = NULL) {
 		$useLocale = $this->getLocale();
 
-		if (!is_object($this->transactionService->getSubscription())) {
+		if (!is_object($this->transactionService->getPlan())) {
 			return;
 		}
 
 		if ($currency === NULL) {
-			$currency = $this->transactionService->getSubscription()->getCurrency();
+			$currency = $this->transactionService->getPlan()->getCurrency();
 		}
 
 		$currency = $this->i18nService->getCurrency($currency, $useLocale);

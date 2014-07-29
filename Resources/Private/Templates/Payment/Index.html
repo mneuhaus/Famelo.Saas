@@ -1,0 +1,44 @@
+<f:layout name="Default" />
+{namespace s=Famelo\Saas\ViewHelpers}
+{namespace b=Famelo\Bootstrap\ViewHelpers}
+{namespace c=Famelo\Common\ViewHelpers}
+
+<f:section name="Content">
+	<b:flashMessages />
+	<h2>{f:translate(value: 'Transactions')}</h2>
+	<div class="transactions">
+		<table class="table table-striped">
+			<thead>
+				  <tr>
+					<th>
+						<i class="fa fa-calendar"></i>
+						<f:translate id="balance.date">Date</f:translate>
+					</th>
+					<th>{f:translate(value: 'Amount')}</th>
+					<th>
+						<i class="fa fa-paperclip"></i>
+						<f:translate id="balance.note">Note</f:translate>
+					</th>
+					<th>
+						<i class="fa fa-file-text-o"></i>
+						<f:translate id="balance.invoice">Invoice</f:translate>
+					</th>
+				  </tr>
+				</thead>
+			<f:for each="{party.plan.transactions}" as="transaction" iteration="iteration">
+				<tr{f:if(condition: iteration.isFirst, then: ' class="first"')}>
+					<td>{transaction.created -> f:format.date(forceLocale: true)}</td>
+					<td class="transaction-amount" data-amount="{transaction.amount}">{transaction.amount -> s:format.points()} ({transaction.amount -> s:format.currency()})</td>
+					<td>{f:translate(value: transaction.note)}</td>
+					<td>
+						<f:if condition="{transaction.invoiceNumber}">
+							<f:link.action action="index" controller="Invoice" package="Famelo.Saas" arguments="{transaction: transaction}">
+								 <f:translate>{f:translate(value: 'Download invoice')}</f:translate>
+							</f:link.action>
+						</f:if>
+					</td>
+				</tr>
+			</f:for>
+		</table>
+	</div>
+</f:section>

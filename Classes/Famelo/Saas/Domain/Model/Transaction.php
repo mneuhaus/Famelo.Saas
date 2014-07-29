@@ -2,25 +2,25 @@
 namespace Famelo\Saas\Domain\Model;
 use Doctrine\ORM\Mapping as ORM;
 use Famelo\Common\Annotations as Common;
-use Famelo\Saas\Domain\Model\Subscription;
 use TYPO3\Flow\Annotations as Flow;
 
 /**
  * A transaction
  *
  * @Flow\Entity
- * @Common\Accessable
  */
 class Transaction {
+    use TenancyTrait;
+
     const STATE_OPEN = 'open';
     const STATE_PAID = 'paid';
     const STATE_CANCELED = 'canceled';
 
     /**
-     * @var \Famelo\Saas\Domain\Model\Subscription
+     * @var \Famelo\Saas\Domain\Model\Plan
      * @ORM\ManyToOne(inversedBy="transactions")
      */
-    protected $subscription;
+    protected $plan;
 
     /**
      * @var DateTime
@@ -60,18 +60,9 @@ class Transaction {
      */
     protected $state;
 
-    /**
-    * TODO: Document this Method! ( __construct )
-    */
     public function __construct() {
         $this->created = new \DateTime();
         $this->state = self::STATE_OPEN;
-    }
-
-    public function getTeam() {
-        if ($this->subscription instanceof Subscription) {
-            return $this->subscription->getTeam();
-        }
     }
 
     /**
@@ -197,21 +188,21 @@ class Transaction {
     }
 
     /**
-     * Gets subscription.
+     * Gets plan.
      *
-     * @return \Famelo\Saas\Domain\Model\Subscription $subscription
+     * @return \Famelo\Saas\Domain\Model\Plan $plan
      */
-    public function getSubscription() {
-        return $this->subscription;
+    public function getPlan() {
+        return $this->plan;
     }
 
     /**
-     * Sets the subscription.
+     * Sets the plan.
      *
-     * @param \Famelo\Saas\Domain\Model\Subscription $subscription
+     * @param \Famelo\Saas\Domain\Model\Plan $plan
      */
-    public function setSubscription($subscription) {
-        $this->subscription = $subscription;
+    public function setPlan($plan) {
+        $this->plan = $plan;
     }
 
     /**

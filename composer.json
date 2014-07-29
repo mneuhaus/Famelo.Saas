@@ -6,7 +6,12 @@
         "typo3/flow": "*",
         "famelo/pdf": "*",
         "omnipay/common": "*",
-        "guzzle/http": "*"
+        "guzzle/http": "*",
+        "cleverage/ruler": "*"
+    },
+    "suggest": {
+        "omnipay/manual": "Manual/Invoice Gateway",
+        "omnipay/paypal": "PayPal Gateway"
     },
     "autoload": {
         "psr-0": {

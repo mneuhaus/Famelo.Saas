@@ -7,3 +7,22 @@
     '@action':     'index'
     '@package': 'Famelo.Saas'
   appendExceedingArguments: true
+
+-
+  name: 'Set Plan'
+  uriPattern: 'plan/select/{planName}'
+  defaults:
+    '@format': 'html'
+    '@controller': 'Plan'
+    '@action':     'select'
+    '@package': 'Famelo.Saas'
+  appendExceedingArguments: true
+
+-
+  name: 'Choose Plan'
+  uriPattern: 'plan/{@action}'
+  defaults:
+    '@format': 'html'
+    '@controller': 'Plan'
+    '@package': 'Famelo.Saas'
+  appendExceedingArguments: true

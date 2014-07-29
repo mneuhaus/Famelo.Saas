@@ -3,7 +3,7 @@
         {namespace m=Famelo\Messaging\ViewHelpers}
         {namespace s=Famelo\Saas\ViewHelpers}
         <m:message
-            to="{transaction.subscription.team.mainUser.email}:{transaction.subscription.team.mainUser.name}"
+            to="{transaction.plan.mainParty.email}:{transaction.plan.mainParty.name}"
             subject="{f:translate(value: 'Invoice for Broensfin')}" />
     </head>
     <body>
