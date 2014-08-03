@@ -78,3 +78,12 @@ TYPO3:
     object:
       excludeClasses:
        'Omnipay.Common': ['.*']
+
+    persistence:
+      doctrine:
+        filters:
+          'SoftDeleteableFilter': 'Famelo\Saas\Domain\Filter\TenancyFilter'
+        eventListeners:
+          -
+            events: ['onFlush']
+            listener: 'Famelo\Saas\Domain\Listener\TenancyListener'

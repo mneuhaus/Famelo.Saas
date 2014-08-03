@@ -13,29 +13,29 @@ namespace Famelo\Saas\Annotations;
 
 /**
  * @Annotation
- * @Target("PROPERTY")
+ * @Target("CLASS")
  */
 final class Tenancy {
 
 	/**
 	 * @var string
 	 */
-	public $tenancyRole;
+	public $tenantRole;
 
 	/**
 	 * @var string
 	 */
-	public $managingRole;
+	public $ownerRole;
 
 	/**
 	 * @param array $values
 	 */
 	public function __construct(array $values) {
 		if (isset($values['tenant'])) {
-			$this->tenancyRole = (boolean)$values['tenant'];
+			$this->tenantRole = $values['tenant'];
 		}
-		if (isset($values['manager'])) {
-			$this->managingRole = (boolean)$values['manager'];
+		if (isset($values['owner'])) {
+			$this->ownerRole = $values['owner'];
 		}
 	}
 
