@@ -1,0 +1,41 @@
+<f:layout name="Default" />
+
+<f:section name="Content">
+
+<h4>Choose Plan</h4>
+<div class="row">
+	<f:for each="{plans}" as="plan" key="planName">
+		<f:if condition="{plan.choosable}">
+			<div class="col-md-{col-width}">
+				<div class="panel {f:if(condition: plan.current, then: 'panel-success', else: 'panel-default')}">
+					<div class="panel-heading">
+						<h4 class="text-center">{planName}</h4>
+					</div>
+					<div class="panel-body text-center">
+						<p class="lead">
+							<strong>{plan.description}</strong>
+						</p>
+					</div>
+					<ul class="list-group list-group-flush text-center">
+						<f:for each="{plan.bulletPoints}" as="bulletPoint">
+							<li class="list-group-item">{bulletPoint}</li>
+						</f:for>
+					</ul>
+					<div class="panel-footer">
+						<f:if condition="{plan.current}">
+							<f:then>
+								<strong>Current Plan</strong>
+							</f:then>
+							<f:else>
+								<f:link.action action="select" arguments="{planName: planName}" class="btn btn-lg btn-block btn-default">
+									Select
+								</f:link.action>
+							</f:else>
+						</f:if>
+					</div>
+				</div>
+			</div>
+		</f:if>
+	</f:for>
+</div>
+</f:section>

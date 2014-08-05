@@ -4,6 +4,7 @@ use Famelo\Saas\Domain\Model\Plan;
 use Famelo\Saas\Domain\Model\Transaction;
 use Famelo\Saas\Services\RedirectService;
 use Omnipay\Common\CreditCard;
+use Omnipay\Omnipay;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Error\Message;
 /**
@@ -29,14 +30,6 @@ class PaymentController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 	protected $redirectService;
 
 	/**
-	 * @return string
-	 */
-	public function indexAction() {
-		$party = $this->securityContext->getParty();
-		$this->view->assign('party', $party);
-	}
-
-	/**
 	 *
 	 * @return string
 	 */
@@ -58,7 +51,6 @@ class PaymentController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 		$party = $this->securityContext->getParty();
 		if ($amount === NULL) {
 			$amount = $party->getPlan()->getDueAmount();
-			$party->getPlan()->updateCycleCost();
 		}
 		$planImplementation = $party->getPlan()->getImplementation();
 
@@ -72,38 +64,18 @@ class PaymentController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 			$response = $paymentGateway->capture($payment)->send();
 		}
 
-		exit();
+		if ($response->isSuccessful()) {
+			$this->flashMessageContainer->addMessage(new Message('Payment successful'));
+			$transaction->setNote($response->getTransactionReference());
+			$planImplementation->addTransaction($transaction);
+			$this->redirectToOriginalRequest();
+		} elseif ($response->isRedirect()) {
+			$response->redirect();
+		} else {
+			$this->flashMessageContainer->addMessage(new Message('Payment failed: ' . $response->getMessage()));
+		}
 
-		// $transaction = $this->transactionService->createTransaction($amount, $paymentGatewayName, $currency);
-		// $paymentGateway = $this->transactionService->createPaymentGatewayInstance($paymentGatewayName);
-
-		// $card = new CreditCard($card);
-		// $payment = array(
-		// 	'amount' => $amount,
-		// 	'card' => $card,
-		// 	'returnUrl' => $this->getReturnUrl($transaction),
-		// 	'cancelUrl' => $this->getCancelUrl(),
-		// 	'currency' => $currency
-		// );
-		// if (method_exists($paymentGateway, 'purchase')) {
-		// 	$response = $paymentGateway->purchase($payment)->send();
-		// } else {
-		// 	$response = $paymentGateway->capture($payment)->send();
-		// }
-
-		// if ($response->isSuccessful()) {
-		// 	$this->flashMessageContainer->addMessage(new Message('Payment successful'));
-		// 	$transaction->setNote($response->getTransactionReference());
-		// 	$this->transactionService->addTransaction($transaction);
-  //           // $this->transactionService->sendInvoice($transaction);
-		// 	$this->redirectToOriginalRequest();
-		// } elseif ($response->isRedirect()) {
-		// 	$response->redirect();
-		// } else {
-		// 	$this->flashMessageContainer->addMessage(new Message('Payment failed: ' . $response->getMessage()));
-		// }
-
-		// $this->redirect('index');
+		$this->redirect('index', 'Transaction');
 	}
 
 	/**
@@ -143,11 +115,11 @@ class PaymentController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 	}
 
 	public function createPaymentGatewayInstance($paymentGateway) {
-		$this->paymentGateways = $this->getPaymentGateway($paymentGateway);
-		$gateway = Omnipay::create($this->paymentGateways['gateway']);
+		$paymentGateway = $this->paymentGateways[$paymentGateway];
+		$gateway = Omnipay::create($paymentGateway['gateway']);
 
-		if (isset($this->paymentGateways['parameters'])) {
-			$gateway->initialize($this->paymentGateways['parameters']);
+		if (isset($paymentGateway['parameters'])) {
+			$gateway->initialize($paymentGateway['parameters']);
 		}
 		return $gateway;
 	}

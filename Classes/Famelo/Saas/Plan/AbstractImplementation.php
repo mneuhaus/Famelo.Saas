@@ -5,6 +5,7 @@ use Famelo\Saas\Domain\Model\Transaction;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Configuration\ConfigurationManager;
 use TYPO3\Flow\Error\Message;
+use TYPO3\Flow\Persistence\PersistenceManagerInterface;
 
 /**
  */
@@ -15,6 +16,21 @@ class AbstractImplementation implements PlanImplementationInterface {
 	 */
 	protected $configurationManager;
 
+	/**
+	 * @Flow\Inject
+	 * @var PersistenceManagerInterface
+	 */
+	protected $persistenceManager;
+
+	/**
+	 * @var \Famelo\Saas\Domain\Model\Plan
+	 */
+	protected $plan;
+
+	public function __construct($plan) {
+		$this->plan = $plan;
+	}
+
 	public function createTransaction($amount, $paymentGateway, $currency = NULL, $note = NULL) {
 		$transaction = new Transaction();
 		$transaction->setAmount($amount);
@@ -24,11 +40,16 @@ class AbstractImplementation implements PlanImplementationInterface {
 	}
 
 	public function addTransaction($transaction) {
-		if ($this->hasFunds($transaction) === FALSE) {
-			throw new \Famelo\Saas\Exception\InsufficientFundsException();
+		if ($transaction->getAmount() < 0) {
+			if ($this->hasFunds($transaction) === FALSE) {
+				throw new \Famelo\Saas\Exception\InsufficientFundsException();
+			}
 		}
 		$this->convertCurrency($transaction);
-		$this->transactionService->getPlan()->addTransaction($transaction);
+		$this->plan->addTransaction($transaction);
+		$this->persistenceManager->add($transaction);
+		$this->persistenceManager->update($this->plan);
+		$this->persistenceManager->persistAll();
 	}
 
 	public function withdraw($amount, $note = NULL, $currency = NULL) {
@@ -42,11 +63,11 @@ class AbstractImplementation implements PlanImplementationInterface {
 
 	public function hasFunds($transaction) {
 		$this->convertCurrency($transaction);
-		return ($this->transactionService->getPlan()->getBalance() + $transaction->getAmount()) > 0;
+		return ($this->plan->getBalance() + $transaction->getAmount()) >= 0;
 	}
 
 	public function convertCurrency($transaction) {
-		$subscriptionCurrency = $this->transactionService->getPlan()->getCurrency();
+		$subscriptionCurrency = $this->plan->getCurrency();
 		if ($subscriptionCurrency === $transaction->getCurrency()) {
 			return;
 		}

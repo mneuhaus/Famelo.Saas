@@ -28,12 +28,16 @@ class PlanController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 
 	/**
 	 *
-	 * @param \Famelo\Saas\Domain\Model\User $user
 	 * @return string
 	 */
-	public function indexAction($user) {
+	public function indexAction() {
 		$party = $this->securityContext->getParty();
 		$this->view->assign('party', $party);
+		foreach ($this->plans as $planName => $plan) {
+			$this->plans[$planName]['current'] = $party->getPlan()->getType() == $planName;
+		}
+		$this->view->assign('plans', $this->plans);
+		$this->view->assign('col-width', 12 / count($this->plans));
 	}
 
 	/**
@@ -60,18 +64,20 @@ class PlanController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 			$plan = new Plan();
 			$plan->setType($planName);
 			$plan->addParty($party);
+			$plan->updateBalance();
 			$this->persistenceManager->add($plan);
 			$this->persistenceManager->persistAll();
 		} else {
 			$plan->setType($planName);
+			$plan->updateBalance();
 			$this->persistenceManager->update($plan);
 			$this->persistenceManager->persistAll();
 		}
 
-		if ($plan->getDueAmount() > 0) {
+		if ($plan->getBalance() < 0) {
 			$this->redirect('choose', 'Payment');
 		} else {
-			$this->redirectToUri('/');
+			$this->redirect('index');
 		}
 	}
 }

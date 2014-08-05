@@ -1,37 +1,37 @@
+<f:layout name="Default" />
 {namespace s=Famelo\Saas\ViewHelpers}
 {namespace b=Famelo\Bootstrap\ViewHelpers}
 {namespace c=Famelo\Common\ViewHelpers}
 
+<f:section name="Content">
+	<b:flashMessages />
 
-<b:flashMessages />
+	<h2>{f:translate(value: 'Transactions')}</h2>
 
-<h2>{f:translate(value: 'Transactions')}</h2>
-
-<div class="transactions">
-	<h3><f:translate id="balance-history">Balance history</f:translate></h3>
-	<c:query.paginate objects="{transactionService.transactions}" as="transactions">
+	<div class="transactions">
+		<h3><f:translate id="balance-history">Balance history</f:translate></h3>
 		<table class="table table-striped">
 			<thead>
-			      <tr>
-			        <th>
-			        	<i class="fa fa-calendar"></i>
-			        	<f:translate id="balance.date">Date</f:translate>
-			        </th>
-			        <th>{f:translate(value: 'Amount')}</th>
-			        <th>
-			        	<i class="fa fa-paperclip"></i>
-			        	<f:translate id="balance.note">Note</f:translate>
-			        </th>
-			        <th>
-			        	<i class="fa fa-file-text-o"></i>
-			        	<f:translate id="balance.invoice">Invoice</f:translate>
-			        </th>
-			      </tr>
-			    </thead>
+				  <tr>
+					<th>
+						<i class="fa fa-calendar"></i>
+						<f:translate id="balance.date">Date</f:translate>
+					</th>
+					<th>{f:translate(value: 'Amount')}</th>
+					<th>
+						<i class="fa fa-paperclip"></i>
+						<f:translate id="balance.note">Note</f:translate>
+					</th>
+					<th>
+						<i class="fa fa-file-text-o"></i>
+						<f:translate id="balance.invoice">Invoice</f:translate>
+					</th>
+				  </tr>
+				</thead>
 			<f:for each="{transactions}" as="transaction" iteration="iteration">
 				<tr{f:if(condition: iteration.isFirst, then: ' class="first"')}>
 					<td>{transaction.created -> f:format.date(forceLocale: true)}</td>
-					<td class="transaction-amount" data-amount="{transaction.amount}">{transaction.amount -> s:format.points()} ({transaction.amount -> s:format.currency()})</td>
+					<td class="transaction-amount" data-amount="{transaction.amount}">{transaction.amount} ({transaction.amount})</td>
 					<td>{f:translate(value: transaction.note)}</td>
 					<td>
 						<f:if condition="{transaction.invoiceNumber}">
@@ -43,6 +43,5 @@
 				</tr>
 			</f:for>
 		</table>
-		<f:render partial="Pagination" arguments="{action: 'index', pagination: pagination}" />
-	</c:query.paginate>
-</div>
+	</div>
+</f:section>

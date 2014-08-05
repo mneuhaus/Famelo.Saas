@@ -144,6 +144,22 @@ class Plan {
         $this->balance = $balance;
     }
 
+    public function updateBalance() {
+        $now = new \DateTime();
+
+        $previousCycleCost = $this->cycleCost;
+        $currentCycleCost = $this->configuration[$this->type]['cycleCost'];
+
+        if ($this->cycleNext < $now) {
+            $this->cycleNext = clone $this->cycleNext->modify($this->cycle);
+            $this->cycleCost = $currentCycleCost;
+            $this->balance -= $currentCycleCost;
+        } else if ($previousCycleCost !== $currentCycleCost) {
+            $this->balance -= ($currentCycleCost - $previousCycleCost);
+            $this->cycleCost = $currentCycleCost;
+        }
+    }
+
     /**
      * Gets billing.
      *
@@ -225,13 +241,6 @@ class Plan {
     }
 
     /**
-    * TODO: Document this Method! ( updateCycleCost )
-    */
-    public function updateCycleCost() {
-        $this->cycleCost = isset($this->configuration[$this->type]['cycleCost']) ? $this->configuration[$this->type]['cycleCost'] : 0;
-    }
-
-    /**
      * Gets cycleNext.
      *
      * @return \DateTime $cycleNext
@@ -264,6 +273,7 @@ class Plan {
      * @param \DateTime $cycleStart
      */
     public function setCycleStart($cycleStart) {
+        $this->setCycleNext($cycleStart);
         $this->cycleStart = $cycleStart;
     }
 
@@ -289,15 +299,14 @@ class Plan {
     * TODO: Document this Method! ( getDueAmount )
     */
     public function getDueAmount() {
-        $cycleCost = isset($this->configuration[$this->type]['cycleCost']) ? $this->configuration[$this->type]['cycleCost'] : 0;
-        return $cycleCost - $this->cycleCost;
+        return $this->balance * -1;
     }
 
     /**
     * TODO: Document this Method! ( getImplementation )
     */
     public function getImplementation() {
-        return new $this->configuration[$this->type]['implementation']();
+        return new $this->configuration[$this->type]['implementation']($this);
     }
 
     /**
@@ -390,6 +399,7 @@ class Plan {
      */
     public function setType($type) {
         $this->type = $type;
+        $this->cycle = $this->configuration[$this->type]['cycle'];
     }
 
 }

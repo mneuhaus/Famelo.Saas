@@ -65,11 +65,11 @@ class TenancyListener implements EventSubscriber {
             $className = get_class($entity);
             $classMetadata = $entityManager->getClassMetadata($className);
             $annotation = $this->reflectionService->getClassAnnotation($className, 'Famelo\Saas\Annotations\Tenancy');
-            $tenantRole = $annotation->tenantRole !== NULL ? $annotation->tenantRole : $this->defaultTenantRole;
-            if (!$this->securityContext->hasRole($tenantRole)) {
-                continue;
-            }
             if ($annotation instanceof Tenancy) {
+                $tenantRole = $annotation->tenantRole !== NULL ? $annotation->tenantRole : $this->defaultTenantRole;
+                if (!$this->securityContext->hasRole($tenantRole)) {
+                    continue;
+                }
                 $entity->setTenant($party);
                 $unitOfWork->propertyChanged($entity, 'tenant', NULL, $party);
             }
