@@ -6,6 +6,7 @@
         "typo3/flow": "*",
         "famelo/pdf": "*",
         "omnipay/common": "*",
+        "omnipay/manual": "*",
         "guzzle/http": "*",
         "cleverage/ruler": "*"
     },
