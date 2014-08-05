@@ -4,11 +4,11 @@
     "description": "Helpers to create a TYPO3 Flow based SAAS App",
     "require": {
         "typo3/flow": "*",
+        "typo3/eel": "*",
         "famelo/pdf": "*",
         "omnipay/common": "*",
         "omnipay/manual": "*",
-        "guzzle/http": "*",
-        "cleverage/ruler": "*"
+        "guzzle/http": "*"
     },
     "suggest": {
         "omnipay/manual": "Manual/Invoice Gateway",
