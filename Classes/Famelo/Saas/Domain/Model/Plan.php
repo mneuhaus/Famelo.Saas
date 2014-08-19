@@ -150,7 +150,12 @@ class Plan {
         $previousCycleCost = $this->cycleCost;
         $currentCycleCost = $this->configuration[$this->type]['cycleCost'];
 
-        if ($this->cycleNext < $now) {
+        if ($this->cycleNext === NULL) {
+            $this->cycleNext = $now;
+            $this->cycleStart = $now;
+        }
+
+        if ($this->cycleNext <= $now) {
             $this->cycleNext = clone $this->cycleNext->modify($this->cycle);
             $this->cycleCost = $currentCycleCost;
             $this->balance -= $currentCycleCost;

@@ -1,0 +1,25 @@
+'Famelo\Saas\Domain\Model\InviteRequest':
+  listFields: email, status
+  # listProcessors:
+  #   '\Flowpack\Expose\Processors\SearchProcessor': true
+  #   '\Flowpack\Expose\Processors\FilterProcessor': true
+  #   '\Flowpack\Expose\Processors\PaginationProcessor': true
+  #   '\Flowpack\Expose\Processors\SortProcessor': true
+
+  # #searchFields: textfield, textarea
+
+  # #filterFields: textfield
+
+  # defaultSortBy: textarea
+  # defaultOrder: ASC
+
+  # properties:
+  #   textfield:
+  #     label: Some awesome textfield!
+  #     description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.'
+  #     control: 'Textarea'
+
+  #   oneToMany:
+  #     label: Addresses
+  #   manyToOne:
+  #     label: Address

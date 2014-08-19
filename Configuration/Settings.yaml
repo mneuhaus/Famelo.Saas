@@ -87,3 +87,6 @@ TYPO3:
           -
             events: ['onFlush']
             listener: 'Famelo\Saas\Domain\Listener\TenancyListener'
+          -
+            events: ['onFlush']
+            listener: 'Famelo\Saas\Domain\Listener\GenerateListener'
