@@ -20,7 +20,6 @@ class Version20140727174256 extends AbstractMigration {
 		$this->addSql("CREATE TABLE famelo_saas_domain_model_plan (persistence_object_identifier VARCHAR(40) NOT NULL, created DATETIME NOT NULL, active TINYINT(1) NOT NULL, type VARCHAR(255) NOT NULL, balance DOUBLE PRECISION NOT NULL, currency VARCHAR(255) NOT NULL, PRIMARY KEY(persistence_object_identifier))");
 		$this->addSql("CREATE TABLE famelo_saas_domain_model_transaction (persistence_object_identifier VARCHAR(40) NOT NULL, plan VARCHAR(40) DEFAULT NULL, created DATETIME NOT NULL, amount DOUBLE PRECISION NOT NULL, currency VARCHAR(255) NOT NULL, note VARCHAR(255) DEFAULT NULL, paymentgateway VARCHAR(255) DEFAULT NULL, invoicenumber VARCHAR(255) DEFAULT NULL, state VARCHAR(255) NOT NULL, INDEX IDX_3AB1DA8EDD5A5B7D (plan), PRIMARY KEY(persistence_object_identifier))");
 		$this->addSql("ALTER TABLE famelo_saas_domain_model_transaction ADD CONSTRAINT FK_3AB1DA8EDD5A5B7D FOREIGN KEY (plan) REFERENCES famelo_saas_domain_model_plan (persistence_object_identifier)");
-		$this->addSql("DROP TABLE famelo_saas_domain_model_company");
 	}
 
 	/**
@@ -32,7 +31,6 @@ class Version20140727174256 extends AbstractMigration {
 		$this->abortIf($this->connection->getDatabasePlatform()->getName() != "mysql");
 
 		$this->addSql("ALTER TABLE famelo_saas_domain_model_transaction DROP FOREIGN KEY FK_3AB1DA8EDD5A5B7D");
-		$this->addSql("CREATE TABLE famelo_saas_domain_model_company (persistence_object_identifier VARCHAR(40) NOT NULL, plan VARCHAR(40) DEFAULT NULL, name VARCHAR(255) NOT NULL, suspended TINYINT(1) NOT NULL, deletedat DATETIME DEFAULT NULL, street VARCHAR(255) NOT NULL, city VARCHAR(255) NOT NULL, zip VARCHAR(255) NOT NULL, country VARCHAR(255) NOT NULL, UNIQUE INDEX UNIQ_D3F26F7DD5A5B7D (plan), PRIMARY KEY(persistence_object_identifier))");
 		$this->addSql("ALTER TABLE famelo_saas_domain_model_company ADD CONSTRAINT FK_D3F26F7DD5A5B7D FOREIGN KEY (plan) REFERENCES famelo_saas_domain_model_plan (persistence_object_identifier)");
 		$this->addSql("DROP TABLE famelo_saas_domain_model_plan");
 		$this->addSql("DROP TABLE famelo_saas_domain_model_transaction");
