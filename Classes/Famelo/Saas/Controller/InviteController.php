@@ -1,16 +1,17 @@
 <?php
 namespace Famelo\Saas\Controller;
 
-use Famelo\Saas\Domain\Model\InviteRequest;
+use Famelo\Saas\Domain\Model\Invitation;
 use Famelo\Saas\Domain\Repository\InviteRequestRepository;
 use Famelo\Soul\Controller\AbstractSoulController;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Error\Message;
+use TYPO3\Flow\Mvc\Controller\ActionController;
 
 /**
  * @Flow\Scope("singleton")
  */
-class InviteController extends AbstractSoulController {
+class InviteController extends ActionController {
 	/**
 	 * @Flow\Inject
 	 * @var InviteRequestRepository
@@ -28,7 +29,7 @@ class InviteController extends AbstractSoulController {
 	 */
 	public function requestAction($email) {
 		if ($this->inviteRequestRepository->findOneByEmail($email) === FALSE) {
-			$request = new InviteRequest();
+			$request = new Invitation();
 			$request->setEmail($email);
 			$this->persistenceManager->add($request);
 		}

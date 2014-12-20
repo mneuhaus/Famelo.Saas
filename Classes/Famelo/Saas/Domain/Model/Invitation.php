@@ -3,15 +3,13 @@ namespace Famelo\Saas\Domain\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 use Famelo\Saas\Annotations as Saas;
-use Famelo\Soul\Domain\Model\AbstractFragment;
-use Famelo\Soul\Domain\Model\Soul;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Utility\Algorithms;
 
 /**
  * @Flow\Entity
  */
-class InviteRequest extends Soul {
+class Invitation {
 
     const STATE_WAITING = 'waiting';
     const STATE_REJECTED = 'rejected';

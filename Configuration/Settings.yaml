@@ -57,7 +57,7 @@ Famelo:
             password: 1393410139
             signature: AfeGGKOlXPvusrtcaK4I8f8TUGQUAg7eNYweX2MSkTIspTix6sWzHHqm
             testMode: true
-            brandName: 'Broensfin'
+            brandName: 'Famelo.Saas'
 
     usePoints: true
     exchangeRates:
@@ -82,7 +82,7 @@ TYPO3:
     persistence:
       doctrine:
         filters:
-          'SoftDeleteableFilter': 'Famelo\Saas\Domain\Filter\TenancyFilter'
+          'TenancyFilter': 'Famelo\Saas\Domain\Filter\TenancyFilter'
         eventListeners:
           -
             events: ['onFlush']
