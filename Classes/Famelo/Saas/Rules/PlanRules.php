@@ -2,9 +2,9 @@
 namespace Famelo\Saas\Rules;
 
 use Famelo\Saas\Domain\Model\Plan;
-use Famelo\Saas\Domain\Model\SaasPartyInterface;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Security\Context;
+use TYPO3\Party\Domain\Model\AbstractParty;
 
 class PlanRules implements RulesInterface {
     /**
@@ -21,7 +21,7 @@ class PlanRules implements RulesInterface {
     public function hasPlan() {
         $party = $this->securityContext->getParty();
 
-        if (!$party instanceof SaasPartyInterface) {
+        if (!$party instanceof AbstractParty) {
             return FALSE;
         }
 

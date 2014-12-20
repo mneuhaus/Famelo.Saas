@@ -1,14 +1,18 @@
 <?php
 namespace Famelo\Saas\Domain\Model;
+
 use Doctrine\ORM\Mapping as ORM;
-use TYPO3\Flow\Annotations as Flow;
 use Famelo\Saas\Annotations as Saas;
-use Famelo\Common\Annotations as Common;
+use Famelo\Soul\Domain\Model\AbstractFragment;
+use Famelo\Soul\Domain\Model\Soul;
+use TYPO3\Flow\Annotations as Flow;
+use TYPO3\Flow\Utility\Algorithms;
 
 /**
  * @Flow\Entity
  */
-class InviteRequest {
+class InviteRequest extends Soul {
+
     const STATE_WAITING = 'waiting';
     const STATE_REJECTED = 'rejected';
     const STATE_INVITED = 'invited';
@@ -16,6 +20,7 @@ class InviteRequest {
 
     /**
      * @var string
+     * @ORM\Column(nullable=true)
      */
     protected $email;
 
@@ -30,17 +35,12 @@ class InviteRequest {
     protected $createdAt;
 
     /**
-     * @var integer
-     * @Saas\GenerateValue(generator="integer", start="1", increment="1")
+     * @var boolean
      */
-    protected $number;
-
-    /**
-     * @var string
-     */
-    protected $inviteToken = '';
+    protected $emailVerified = FALSE;
 
     public function __construct() {
+        parent::__construct();
         $this->createdAt = new \DateTime();
         $this->status = self::STATE_WAITING;
     }
@@ -92,30 +92,16 @@ class InviteRequest {
     }
 
     /**
-     * @param integer $number
+     * @param boolean $emailVerified
      */
-    public function setNumber($number) {
-        $this->number = $number;
+    public function setEmailVerified($emailVerified) {
+        $this->emailVerified = $emailVerified;
     }
 
     /**
-     * @return integer
+     * @return boolean
      */
-    public function getNumber() {
-        return $this->number;
-    }
-
-    /**
-     * @param string $inviteToken
-     */
-    public function setInviteToken($inviteToken) {
-        $this->inviteToken = $inviteToken;
-    }
-
-    /**
-     * @return string
-     */
-    public function getInviteToken() {
-        return $this->inviteToken;
+    public function getEmailVerified() {
+        return $this->emailVerified;
     }
 }

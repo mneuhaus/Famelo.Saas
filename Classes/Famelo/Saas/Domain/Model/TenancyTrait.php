@@ -6,20 +6,20 @@ use TYPO3\Flow\Annotations as Flow;
 
 trait TenancyTrait {
     /**
-     * @var \Famelo\Saas\Domain\Model\SaasPartyInterface
+     * @var \TYPO3\Party\Domain\Model\AbstractParty
      * @ORM\ManyToOne
      */
     protected $tenant;
 
     /**
-     * @param \Famelo\Saas\Domain\Model\SaasPartyInterface $tenant
+     * @param \TYPO3\Party\Domain\Model\AbstractParty $tenant
      */
     public function setTenant($tenant) {
         $this->tenant = $tenant;
     }
 
     /**
-     * @return \Famelo\Saas\Domain\Model\SaasPartyInterface
+     * @return \TYPO3\Party\Domain\Model\AbstractParty
      */
     public function getTenant() {
         return $this->tenant;

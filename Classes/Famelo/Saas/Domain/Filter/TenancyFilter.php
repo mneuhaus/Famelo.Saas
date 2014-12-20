@@ -6,7 +6,6 @@ use Doctrine\ORM\Mapping\ClassMetaData;
 use Doctrine\ORM\Query\Filter\SQLFilter;
 use Doctrine\ORM\Query\ParameterTypeInferer;
 use Famelo\Saas\Annotations\Tenancy;
-use Famelo\Saas\Domain\Model\SaasPartyInterface;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Persistence\PersistenceManagerInterface;
 use TYPO3\Flow\Reflection\ReflectionService;
