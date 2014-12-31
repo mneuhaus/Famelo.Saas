@@ -34,6 +34,10 @@ class PlanController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 		$party = $this->securityContext->getParty();
 		$this->view->assign('party', $party);
 		foreach ($this->plans as $planName => $plan) {
+			if ($plan['choosable'] === False) {
+				unset($this->plans[$planName]);
+				continue;
+			}
 			$this->plans[$planName]['current'] = $party->getPlan()->getType() == $planName;
 		}
 		$this->view->assign('plans', $this->plans);
