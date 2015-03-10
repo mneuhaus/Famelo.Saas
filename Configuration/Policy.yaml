@@ -1,20 +1,26 @@
-resources:
-  methods:
-    Famelo_Saas_General: 'method(Famelo\Saas\Controller\(Login|Registration|Profile|Invoice|Invite)Controller->.*Action())'
-    Famelo_Saas_Transaction: 'method(Famelo\Saas\Controller\TransactionController->.*Action())'
-    Famelo_Saas_Management: 'method(Famelo\Saas\Controller\Transaction\StateController->.*Action())'
-    Famelo_Saas_AdminDashboardPlugin: 'method(Famelo\Saas\Controller\AdminDashboardController->.*Action())'
 
-# roles:
-#   Administrator:
-#     - Customer
-#   Customer:
-#     - Everybody
-
-acls:
-  Everybody:
-    methods:
-      Famelo_Saas_General: GRANT
-      Famelo_Saas_AdminDashboardPlugin: GRANT
-      Famelo_Saas_Transaction: GRANT
-      Famelo_Saas_Management: DENY
+privilegeTargets:
+  TYPO3\Flow\Security\Authorization\Privilege\Method\MethodPrivilege:
+    Famelo_Saas_General:
+      matcher: 'method(Famelo\Saas\Controller\(Login|Registration|Profile|Invoice|Invite)Controller->.*Action())'
+    Famelo_Saas_Transaction:
+      matcher: 'method(Famelo\Saas\Controller\TransactionController->.*Action())'
+    Famelo_Saas_Management:
+      matcher: 'method(Famelo\Saas\Controller\Transaction\StateController->.*Action())'
+    Famelo_Saas_AdminDashboardPlugin:
+      matcher: 'method(Famelo\Saas\Controller\AdminDashboardController->.*Action())'
+roles:
+  'TYPO3.Flow:Everybody':
+    privileges:
+      -
+        privilegeTarget: Famelo_Saas_General
+        permission: GRANT
+      -
+        privilegeTarget: Famelo_Saas_AdminDashboardPlugin
+        permission: GRANT
+      -
+        privilegeTarget: Famelo_Saas_Transaction
+        permission: GRANT
+      -
+        privilegeTarget: Famelo_Saas_Management
+        permission: DENY
