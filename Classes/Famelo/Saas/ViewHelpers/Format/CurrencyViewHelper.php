@@ -25,6 +25,14 @@ use TYPO3\Fluid\Core\ViewHelper\Exception as ViewHelperException;
  */
 class CurrencyViewHelper extends \TYPO3\Fluid\ViewHelpers\Format\CurrencyViewHelper {
 
+	
+	/**
+	 * NOTE: This property has been introduced via code migration to ensure backwards-compatibility.
+	 * @see AbstractViewHelper::isOutputEscapingEnabled()
+	 * @var boolean
+	 */
+	protected $escapeOutput = FALSE;
+
 	/**
 	 * @var \Famelo\Saas\Services\I18nService
 	 * @Flow\Inject
