@@ -25,7 +25,7 @@ class Plan {
     protected $type;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection<\TYPO3\Party\Domain\Model\AbstractParty>
+     * @var \Doctrine\Common\Collections\Collection<\Famelo\Saas\Domain\Model\SaasPartyInterface>
      * @ORM\OneToMany(mappedBy="plan", cascade={"persist"})
      */
     protected $parties;
@@ -336,7 +336,7 @@ class Plan {
     }
 
     /**
-     * @param \TYPO3\Party\Domain\Model\AbstractParty $party
+     * @param \Famelo\Saas\Domain\Model\SaasPartyInterface $party
      */
     public function addParty($party) {
         $this->parties->add($party);
@@ -344,7 +344,7 @@ class Plan {
     }
 
     /**
-     * @param \TYPO3\Party\Domain\Model\AbstractParty $party
+     * @param \Famelo\Saas\Domain\Model\SaasPartyInterface $party
      */
     public function removeParty($party) {
         $this->parties->remove($party);
