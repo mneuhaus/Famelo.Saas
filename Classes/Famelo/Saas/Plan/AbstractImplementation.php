@@ -27,8 +27,22 @@ class AbstractImplementation implements PlanImplementationInterface {
 	 */
 	protected $plan;
 
+	/**
+	 * @var array
+	 */
+	protected $configuration;
+
 	public function __construct($plan) {
 		$this->plan = $plan;
+		$this->configuration = $plan->getConfiguration();
+	}
+
+	public function setup() {
+
+	}
+
+	public function renew() {
+
 	}
 
 	public function createTransaction($amount, $paymentGateway, $currency = NULL, $note = NULL) {
@@ -45,39 +59,25 @@ class AbstractImplementation implements PlanImplementationInterface {
 				throw new \Famelo\Saas\Exception\InsufficientFundsException();
 			}
 		}
-		$this->convertCurrency($transaction);
+		// $this->convertCurrency($transaction);
 		$this->plan->addTransaction($transaction);
 		$this->persistenceManager->add($transaction);
 		$this->persistenceManager->update($this->plan);
 		$this->persistenceManager->persistAll();
 	}
 
-	public function withdraw($amount, $note = NULL, $currency = NULL) {
-		$transaction = new Transaction();
-		$transaction->setAmount(-$amount);
-		$transaction->setCurrency($currency);
-		$transaction->setNote($note);
-		$this->addTransaction($transaction);
-		return $transaction;
-	}
-
 	public function hasFunds($transaction) {
-		$this->convertCurrency($transaction);
 		return ($this->plan->getBalance() + $transaction->getAmount()) >= 0;
 	}
 
-	public function convertCurrency($transaction) {
-		$subscriptionCurrency = $this->plan->getCurrency();
-		if ($subscriptionCurrency === $transaction->getCurrency()) {
-			return;
-		}
+	public function hasCredit($amount) {
+		return $this->plan->getCredit() >= $amount;
+	}
 
-		$exchangeRates = $this->configurationManager->getConfiguration(ConfigurationManager::CONFIGURATION_TYPE_SETTINGS, 'Famelo.Saas.exchangeRates');
-		if ($transaction->getCurrency() == 'POINT') {
-			$amount = $transaction->getAmount() * $exchangeRates[$subscriptionCurrency];
-			$transaction->setAmount($amount);
-			$transaction->setCurrency($subscriptionCurrency);
-		}
+	public function withdrawCredit($amount) {
+		$this->plan->removeCredit($amount);
+		$this->persistenceManager->update($this->plan);
+		$this->persistenceManager->persistAll();
 	}
 }
 ?>

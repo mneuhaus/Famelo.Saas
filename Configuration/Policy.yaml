@@ -1,26 +1,32 @@
 
 privilegeTargets:
   TYPO3\Flow\Security\Authorization\Privilege\Method\MethodPrivilege:
-    Famelo_Saas_General:
-      matcher: 'method(Famelo\Saas\Controller\(Login|Registration|Profile|Invoice|Invite)Controller->.*Action())'
+    Famelo_Saas_Billing:
+      matcher: 'method(Famelo\Saas\Controller\BillingController->.*Action())'
+    Famelo_Saas_Invoice:
+      matcher: 'method(Famelo\Saas\Controller\InvoiceController->.*Action())'
+    Famelo_Saas_Plan:
+      matcher: 'method(Famelo\Saas\Controller\PlanController->.*Action())'
+    Famelo_Saas_Payment:
+      matcher: 'method(Famelo\Saas\Controller\PaymentController->.*Action())'
     Famelo_Saas_Transaction:
       matcher: 'method(Famelo\Saas\Controller\TransactionController->.*Action())'
-    Famelo_Saas_Management:
-      matcher: 'method(Famelo\Saas\Controller\Transaction\StateController->.*Action())'
-    Famelo_Saas_AdminDashboardPlugin:
-      matcher: 'method(Famelo\Saas\Controller\AdminDashboardController->.*Action())'
+
 roles:
-  'TYPO3.Flow:Everybody':
+  'TYPO3.Flow:AuthenticatedUser':
     privileges:
       -
-        privilegeTarget: Famelo_Saas_General
+        privilegeTarget: Famelo_Saas_Billing
         permission: GRANT
       -
-        privilegeTarget: Famelo_Saas_AdminDashboardPlugin
+        privilegeTarget: Famelo_Saas_Invoice
+        permission: GRANT
+      -
+        privilegeTarget: Famelo_Saas_Plan
+        permission: GRANT
+      -
+        privilegeTarget: Famelo_Saas_Payment
         permission: GRANT
       -
         privilegeTarget: Famelo_Saas_Transaction
         permission: GRANT
-      -
-        privilegeTarget: Famelo_Saas_Management
-        permission: DENY

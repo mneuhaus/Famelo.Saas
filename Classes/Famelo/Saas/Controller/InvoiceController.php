@@ -17,11 +17,6 @@ class InvoiceController extends \TYPO3\Flow\Mvc\Controller\ActionController {
         $document->assign('transaction', $transaction);
         echo $document->send();
         exit();
-
-		$invoice = $transaction->getInvoicePath();
-		header('Content-type: application/pdf');
-		header('Content-Disposition: attachment; filename="Broensfin - Invoice - ' . basename($invoice) . '"');
-		readfile($invoice);
 	}
 }
 

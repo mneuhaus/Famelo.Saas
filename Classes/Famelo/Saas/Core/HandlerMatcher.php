@@ -90,5 +90,9 @@ class HandlerMatcher {
 			}
 		}
 	}
+
+	public function getRequest() {
+		return $this->request;
+	}
 }
 ?>

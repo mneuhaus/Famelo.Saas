@@ -6,7 +6,7 @@
 <div class="row">
 	<f:for each="{plans}" as="plan" key="planName">
 		<f:if condition="{plan.choosable}">
-			<div class="col-md-{col-width}">
+			<div class="col-md-3" style="height: 280px;">
 				<div class="panel {f:if(condition: plan.current, then: 'panel-success', else: 'panel-default')}">
 					<div class="panel-heading">
 						<h4 class="text-center">{planName}</h4>
@@ -25,6 +25,9 @@
 						<f:if condition="{plan.current}">
 							<f:then>
 								<strong>Current Plan</strong>
+								<f:link.action action="select" arguments="{planName: planName}" class="btn btn-lg btn-block btn-default">
+									Select
+								</f:link.action>
 							</f:then>
 							<f:else>
 								<f:link.action action="select" arguments="{planName: planName}" class="btn btn-lg btn-block btn-default">

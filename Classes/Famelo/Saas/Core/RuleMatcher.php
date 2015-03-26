@@ -76,5 +76,8 @@ class RuleMatcher extends RequestMatcher {
 		return new $this->ruleMatchers[$ruleMatcher]();
 	}
 
+	public function getRequest() {
+		return $this->request;
+	}
 }
 ?>

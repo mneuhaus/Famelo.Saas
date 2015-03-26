@@ -6,11 +6,11 @@ use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Security\Context;
 use TYPO3\Party\Domain\Model\AbstractParty;
 
-class PlanRules implements RulesInterface {
+class SecurityRules implements RulesInterface {
     /**
       * contains short name for this matcher used for reference in the eel expression
       */
-    const NAME = 'plan';
+    const NAME = 'security';
 
     /**
      * @Flow\Inject
@@ -18,24 +18,12 @@ class PlanRules implements RulesInterface {
      */
     protected $securityContext;
 
-    public function hasPlan() {
+    public function isAuthenticated() {
         $party = $this->securityContext->getParty();
         $account = $this->securityContext->getAccount();
-
-        if (!$party instanceof AbstractParty) {
-            return TRUE;
-        }
-
-        return $party->getPlan() instanceof Plan;
+        var_dump($party, $account);
+        exit();
+        return $this->securityContext->getAccount() !== NULL;
     }
 
-    public function hasCredit($amount) {
-        $party = $this->securityContext->getParty();
-
-        if (!$party instanceof AbstractParty) {
-            return TRUE;
-        }
-
-        return $party->getPlan()->getImplementation()->hasCredit($amount);
-    }
 }

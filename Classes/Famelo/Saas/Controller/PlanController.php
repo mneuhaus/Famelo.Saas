@@ -34,23 +34,10 @@ class PlanController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 		$party = $this->securityContext->getParty();
 		$this->view->assign('party', $party);
 		foreach ($this->plans as $planName => $plan) {
-			if ($plan['choosable'] === False) {
-				unset($this->plans[$planName]);
-				continue;
+			if ($party->getPlan() !== NULL) {
+				$this->plans[$planName]['current'] = $party->getPlan()->getType() == $planName;
 			}
-			$this->plans[$planName]['current'] = $party->getPlan()->getType() == $planName;
 		}
-		$this->view->assign('plans', $this->plans);
-		$this->view->assign('col-width', 12 / count($this->plans));
-	}
-
-	/**
-	 *
-	 * @return string
-	 */
-	public function chooseAction() {
-		$party = $this->securityContext->getParty();
-		$this->view->assign('party', $party);
 		$this->view->assign('plans', $this->plans);
 		$this->view->assign('col-width', 12 / count($this->plans));
 	}
@@ -68,12 +55,12 @@ class PlanController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 			$plan = new Plan();
 			$plan->setType($planName);
 			$plan->addParty($party);
-			$plan->updateBalance();
+			$plan->getImplementation()->setup();
 			$this->persistenceManager->add($plan);
 			$this->persistenceManager->persistAll();
 		} else {
 			$plan->setType($planName);
-			$plan->updateBalance();
+			$plan->getImplementation()->setup();
 			$this->persistenceManager->update($plan);
 			$this->persistenceManager->persistAll();
 		}
@@ -81,7 +68,13 @@ class PlanController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 		if ($plan->getBalance() < 0) {
 			$this->redirect('choose', 'Payment');
 		} else {
-			$this->redirect('index');
+			$interceptedRequest = $this->securityContext->getInterceptedRequest();
+			if ($interceptedRequest !== NULL) {
+				$this->securityContext->setInterceptedRequest(NULL);
+				$this->redirectToRequest($interceptedRequest);
+			} else {
+				$this->redirect('index');
+			}
 		}
 	}
 }

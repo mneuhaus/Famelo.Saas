@@ -33,6 +33,11 @@ class Plan {
     /**
      * @var float
      */
+    protected $credit = 0;
+
+    /**
+     * @var float
+     */
     protected $balance = 0;
 
     /**
@@ -49,6 +54,14 @@ class Plan {
     protected $transactions;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection<\Famelo\Saas\Domain\Model\CreditUse>
+     * @ORM\OneToMany(mappedBy="plan", cascade={"persist"})
+     * @ORM\OrderBy({"created" = "DESC"})
+     * @Flow\Lazy
+     */
+    protected $creditUses;
+
+    /**
      * @Flow\Inject(setting="Plans")
      * @Flow\Transient
      * @var array
@@ -57,27 +70,31 @@ class Plan {
 
     /**
      * @var string
+     * @ORM\Column(nullable=true)
      *
      */
     protected $cycle;
 
     /**
      * @var \DateTime
+     * @ORM\Column(nullable=true)
      *
      */
     protected $cycleStart;
 
     /**
      * @var \DateTime
+     * @ORM\Column(nullable=true)
      *
      */
     protected $cycleNext;
 
     /**
      * @var float
+     * @ORM\Column(nullable=true)
      *
      */
-    protected $cycleCost;
+    protected $cost;
 
     /**
      * @var \Famelo\Saas\Domain\Model\Billing
@@ -144,25 +161,22 @@ class Plan {
         $this->balance = $balance;
     }
 
-    public function updateBalance() {
-        $now = new \DateTime();
+    /**
+     * Sets the balance.
+     *
+     * @param float $balance
+     */
+    public function addBalance($balance) {
+        $this->balance+= $balance;
+    }
 
-        $previousCycleCost = $this->cycleCost;
-        $currentCycleCost = $this->configuration[$this->type]['cycleCost'];
-
-        if ($this->cycleNext === NULL) {
-            $this->cycleNext = $now;
-            $this->cycleStart = $now;
-        }
-
-        if ($this->cycleNext <= $now) {
-            $this->cycleNext = clone $this->cycleNext->modify($this->cycle);
-            $this->cycleCost = $currentCycleCost;
-            $this->balance -= $currentCycleCost;
-        } else if ($previousCycleCost !== $currentCycleCost) {
-            $this->balance -= ($currentCycleCost - $previousCycleCost);
-            $this->cycleCost = $currentCycleCost;
-        }
+    /**
+     * Sets the balance.
+     *
+     * @param float $balance
+     */
+    public function removeBalance($balance) {
+        $this->balance-= $balance;
     }
 
     /**
@@ -182,6 +196,10 @@ class Plan {
     public function setBilling($billing) {
         $billing->setPlan($this);
         $this->billing = $billing;
+    }
+
+    public function setConfiguration($configuration) {
+        $this->configuration = $configuration;
     }
 
     /**
@@ -228,21 +246,21 @@ class Plan {
     }
 
     /**
-     * Gets cycleCost.
+     * Gets cost.
      *
-     * @return float $cycleCost
+     * @return float $cost
      */
-    public function getCycleCost() {
-        return $this->cycleCost;
+    public function getCost() {
+        return $this->cost;
     }
 
     /**
-     * Sets the cycleCost.
+     * Sets the cost.
      *
-     * @param float $cycleCost
+     * @param float $cost
      */
-    public function setCycleCost($cycleCost) {
-        $this->cycleCost = $cycleCost;
+    public function setCost($cost) {
+        $this->cost = $cost;
     }
 
     /**
@@ -278,7 +296,6 @@ class Plan {
      * @param \DateTime $cycleStart
      */
     public function setCycleStart($cycleStart) {
-        $this->setCycleNext($cycleStart);
         $this->cycleStart = $cycleStart;
     }
 
@@ -389,6 +406,43 @@ class Plan {
     }
 
     /**
+     * Add to the creditUses.
+     *
+     * @param \Famelo\Saas\Domain\Model\CreditUse $creditUse
+     */
+    public function addCreditUse($creditUse) {
+        $creditUse->setPlan($this);
+        $this->creditUses->add($creditUse);
+    }
+
+    /**
+     * Remove from creditUse.
+     *
+     * @param \Famelo\Saas\Domain\Model\CreditUse $creditUse
+     */
+    public function removeCreditUse($creditUse) {
+        $this->creditUses->remove($creditUse);
+    }
+
+    /**
+     * Gets creditUse.
+     *
+     * @return \Doctrine\Common\Collections\Collection<\Famelo\Saas\Domain\Model\CreditUse> $creditUse
+     */
+    public function getCreditUses() {
+        return $this->creditUses;
+    }
+
+    /**
+     * Sets the creditUse.
+     *
+     * @param \Doctrine\Common\Collections\Collection<\Famelo\Saas\Domain\Model\CreditUse> $creditUse
+     */
+    public function setCreditUses($creditUses) {
+        $this->creditUses = $creditUses;
+    }
+
+    /**
      * Gets type.
      *
      * @return string $type
@@ -404,7 +458,37 @@ class Plan {
      */
     public function setType($type) {
         $this->type = $type;
-        $this->cycle = $this->configuration[$this->type]['cycle'];
+        if (isset($this->configuration[$this->type]['cycle'])) {
+            $this->cycle = $this->configuration[$this->type]['cycle'];
+        }
+    }
+
+    /**
+     * @param float $credit
+     */
+    public function setCredit($credit) {
+        $this->credit = $credit;
+    }
+
+    /**
+     * @return float
+     */
+    public function getCredit() {
+        return $this->credit;
+    }
+
+    /**
+     * @param float $credit
+     */
+    public function addCredit($credit) {
+        $this->credit+= $credit;
+    }
+
+    /**
+     * @param float $credit
+     */
+    public function removeCredit($credit) {
+        $this->credit-= $credit;
     }
 
 }
