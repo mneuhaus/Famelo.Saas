@@ -1,5 +1,6 @@
 <?php
 namespace Famelo\Saas\Controller;
+use Famelo\Harvest\Service\HarvoiBilling;
 use Famelo\Saas\Domain\Model\Plan;
 use Famelo\Saas\Domain\Model\Transaction;
 use Famelo\Saas\Services\RedirectService;
@@ -30,6 +31,12 @@ class PaymentController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 	protected $redirectService;
 
 	/**
+	 * @Flow\Inject
+	 * @var HarvoiBilling
+	 */
+	protected $harvoiBilling;
+
+	/**
 	 *
 	 * @return string
 	 */
@@ -53,8 +60,17 @@ class PaymentController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 			$amount = $party->getPlan()->getDueAmount();
 		}
 		$planImplementation = $party->getPlan()->getImplementation();
+		$planConfiguration = $party->getPlan()->getConfiguration();
 
-		$transaction = $planImplementation->createTransaction($amount, $paymentGatewayName, $currency);
+		$contact = $this->harvoiBilling->getContact($party->getContact());
+		$invoiceId = $this->harvoiBilling->createInvoice($contact->clientId, array(
+			'subject' => 'Harvoi',
+			'description' => $planConfiguration['name'],
+			'price' => $amount
+		));
+		$this->harvoiBilling->createPayment($invoiceId, $amount, $paymentGatewayName);
+
+		$transaction = $planImplementation->createTransaction($amount, $paymentGatewayName, $currency, $invoiceId);
 		$paymentGateway = $this->createPaymentGatewayInstance($paymentGatewayName);
 		$payment = $this->createPayment($amount, $transaction, $currency, $card);
 

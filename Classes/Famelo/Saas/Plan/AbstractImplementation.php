@@ -45,11 +45,13 @@ class AbstractImplementation implements PlanImplementationInterface {
 
 	}
 
-	public function createTransaction($amount, $paymentGateway, $currency = NULL, $note = NULL) {
+	public function createTransaction($amount, $paymentGateway, $currency = NULL, $invoiceId = NULL, $note = NULL) {
 		$transaction = new Transaction();
 		$transaction->setAmount($amount);
 		$transaction->setCurrency($currency);
 		$transaction->setPaymentGateway($paymentGateway);
+		$transaction->setNote($note);
+		$transaction->setInvoiceNumber($invoiceId);
 		return $transaction;
 	}
 
