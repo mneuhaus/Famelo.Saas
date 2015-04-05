@@ -42,7 +42,7 @@ class HandlerMatcher {
 	/**
 	 * @var ActionRequest
 	 */
-	protected $request;
+	protected $requestInstance;
 
 	/**
 	 * @var Response
@@ -53,7 +53,7 @@ class HandlerMatcher {
 	 * @param ActionRequest $request
 	 */
 	public function __construct(ActionRequest $request = NULL, $response = NULL) {
-		$this->request = $request;
+		$this->requestInstance = $request;
 		$this->response = $response;
 	}
 
@@ -77,7 +77,7 @@ class HandlerMatcher {
 		}
 
 		if (!isset($this->handlerInstances[$handler])) {
-			$this->handlerInstances[$handler] = new $this->handlers[$handler]($this->request, $this->response);
+			$this->handlerInstances[$handler] = new $this->handlers[$handler]($this->requestInstance, $this->response);
 		}
 
 		return $this->handlerInstances[$handler];
@@ -91,8 +91,8 @@ class HandlerMatcher {
 		}
 	}
 
-	public function getRequest() {
-		return $this->request;
+	public function getRequestInstance() {
+		return $this->requestInstance;
 	}
 }
 ?>

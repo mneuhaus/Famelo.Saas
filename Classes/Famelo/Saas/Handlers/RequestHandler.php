@@ -51,5 +51,11 @@ class RequestHandler implements HandlerInterface {
 	public function saveIntercepted() {
 		$this->securityContext->setInterceptedRequest($this->request->getMainRequest());
 	}
+
+    public function __call($method, $arguments = array()) {
+        if (substr($method, 0, 3) === 'get') {
+            return call_user_func_array(array($this->request, $method), $arguments);
+        }
+    }
 }
 ?>
